@@ -3,12 +3,12 @@ import "./globals.css";
 import { portfolio } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `${portfolio.name} — ${portfolio.role}`,
+  title: `${portfolio.name} | Portfolio`,
   description: `Portfolio of ${portfolio.name}. ${portfolio.tagline}`,
   keywords: ["frontend developer", "react developer", "next.js", "typescript", portfolio.name],
   authors: [{ name: portfolio.name }],
   openGraph: {
-    title: `${portfolio.name} — ${portfolio.role}`,
+    title: `${portfolio.name} | Portfolio`,
     description: portfolio.tagline,
     type: "website",
   },
