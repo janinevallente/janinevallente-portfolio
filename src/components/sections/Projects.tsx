@@ -74,7 +74,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="font-mono text-xs text-paper hover:text-accent border-b border-paper hover:border-accent pb-0.5 transition-colors duration-300"
                   >
-                    Live ↗
+                    Live Site ↗
                   </a>
                 )}
               </div>
