@@ -7,7 +7,7 @@ export default function About() {
         {/* Section header */}
         <div className="mb-16 pb-6 border-b border-paper/10">
           <p className="font-mono text-xs text-paper/40 tracking-widest uppercase mb-2">02 / About</p>
-          <h2 className="font-display text-5xl md:text-6xl text-paper">A Bit About Me</h2>
+          <h2 className="font-display text-5xl md:text-6xl text-paper">About Me</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
