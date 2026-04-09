@@ -23,11 +23,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
+        : "bg-transparent"
+        }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -35,8 +34,9 @@ export default function Navbar() {
           href="/"
           className="font-display text-xl text-ink tracking-tight hover:text-accent transition-colors"
         >
+          <span className="font-md">&lt; </span>
           {portfolio.name.split(" ")[0]}
-          <span className="text-accent">.</span>
+          <span className="font-md"> &gt;</span>
         </Link>
 
         {/* Desktop nav */}
