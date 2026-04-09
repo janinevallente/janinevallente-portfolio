@@ -11,29 +11,63 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+// Sections with a dark (bg-ink) background
+const DARK_SECTIONS = ["about", "projects"];
+
+const NAVBAR_HEIGHT = 64; // matches h-16
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const update = () => {
+      setScrolled(window.scrollY > 40);
+
+      const probeX = window.innerWidth / 2;
+      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 2);
+      const element = document.elementFromPoint(probeX, probeY);
+
+      const dark = Boolean(
+        element &&
+        DARK_SECTIONS.some((id) => element.closest(`#${id}`))
+      );
+
+      setIsDark(dark);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
+  // Derived style tokens
+  const logoColor = isDark ? "text-paper hover:text-accent" : "text-ink hover:text-accent";
+  const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-muted hover:text-ink";
+  const resumeBorder = isDark
+    ? "border-paper text-paper hover:bg-paper hover:text-ink"
+    : "border-ink text-ink hover:bg-ink hover:text-paper";
+  const hamburgerBg = isDark ? "bg-paper" : "bg-ink";
+  const mobileBg = isDark ? "bg-ink border-paper/10" : "bg-paper border-border";
+  const mobileLinkColor = isDark ? "text-paper/60 hover:text-paper" : "text-muted hover:text-ink";
+
+  const headerBg = scrolled
+    ? isDark
+      ? "bg-ink/90 backdrop-blur-md border-b border-paper/10 shadow-sm"
+      : "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
+    : "bg-transparent";
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
-        : "bg-transparent"
-        }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
         {/* Logo */}
-        <Link
-          href="/"
-          className="font-display text-xl text-ink tracking-tight hover:text-accent transition-colors"
-        >
+        <Link href="/" className={`font-display text-xl tracking-tight transition-colors ${logoColor}`}>
           <span className="font-md">&lt; </span>
           {portfolio.name.split(" ")[0]}
           <span className="font-md"> &gt;</span>
@@ -45,7 +79,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-mono text-sm text-muted hover:text-ink transition-colors tracking-wide"
+                className={`font-mono text-sm tracking-wide transition-colors ${linkColor}`}
               >
                 {link.label}
               </a>
@@ -56,41 +90,35 @@ export default function Navbar() {
               href={portfolio.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm px-4 py-2 border border-ink text-ink hover:bg-ink hover:text-paper transition-all duration-200"
+              className={`font-mono text-sm px-4 py-2 border transition-all duration-200 ${resumeBorder}`}
             >
               Resume ↗
             </a>
           </li>
         </ul>
 
-        {/* Mobile menu button */}
+        {/* Mobile hamburger */}
         <button
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span
-            className={`block w-6 h-px bg-ink transition-transform duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
-          />
-          <span
-            className={`block w-6 h-px bg-ink transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-6 h-px bg-ink transition-transform duration-200 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-          />
+          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-px transition-opacity duration-200 ${hamburgerBg} ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </nav>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-paper border-b border-border px-6 py-6">
+        <div className={`md:hidden border-b px-6 py-6 ${mobileBg}`}>
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-mono text-sm text-muted hover:text-ink transition-colors"
+                  className={`font-mono text-sm transition-colors ${mobileLinkColor}`}
                 >
                   {link.label}
                 </a>
@@ -101,7 +129,7 @@ export default function Navbar() {
                 href={portfolio.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm px-4 py-2 border border-ink text-ink hover:bg-ink hover:text-paper transition-all duration-200 inline-block"
+                className={`font-mono text-sm px-4 py-2 border transition-all duration-200 inline-block ${resumeBorder}`}
               >
                 Resume ↗
               </a>
