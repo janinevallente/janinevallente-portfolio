@@ -22,7 +22,7 @@ export const portfolio = {
     {
       id: "01",
       title: "Aquafusion Mobile",
-      category: "Android App",
+      category: "IoT Android App",
       description:
         "A smart aquaponics monitoring application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
       tags: ["Kotlin", "Firebase", "Android Studio"],
@@ -57,7 +57,7 @@ export const portfolio = {
       category: "Photo Strip Booth Web App",
       description:
         "A soft and aesthetic photo strip booth that lets users capture photos, decorate them with stickers, choose a strip theme, and download a polished photo strip.",
-      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
       year: "2026",
       hasUrl: true,
       url: "https://lumibooth.vercel.app/",
