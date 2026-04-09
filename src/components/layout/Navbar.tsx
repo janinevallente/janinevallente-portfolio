@@ -5,9 +5,9 @@ import Link from "next/link";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
-  { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -58,7 +58,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="font-mono text-sm px-4 py-2 border border-ink text-ink hover:bg-ink hover:text-paper transition-all duration-200"
             >
-              Résumé ↗
+              Resume ↗
             </a>
           </li>
         </ul>
@@ -103,7 +103,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="font-mono text-sm px-4 py-2 border border-ink text-ink hover:bg-ink hover:text-paper transition-all duration-200 inline-block"
               >
-                Résumé ↗
+                Resume ↗
               </a>
             </li>
           </ul>
