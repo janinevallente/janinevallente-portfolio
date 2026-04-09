@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { portfolio } from "@/lib/data";
-import HeroImage from "@/assets/images/hero-img.png";
+import HeroImage from "@/assets/images/hero-img.webp";
 
 const roles = ["Frontend Developer", "Mobile Developer"];
 
