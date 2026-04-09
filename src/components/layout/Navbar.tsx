@@ -19,6 +19,7 @@ const NAVBAR_HEIGHT = 64; // matches h-16
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,21 @@ export default function Navbar() {
       );
 
       setIsDark(dark);
+
+      // Determine active section
+      const sectionIds = navLinks.map((link) => link.href.slice(1));
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean) as HTMLElement[];
+
+      let current = "";
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].getBoundingClientRect().top <= NAVBAR_HEIGHT + 16) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      setActiveSection(current);
     };
 
     update();
@@ -49,6 +65,7 @@ export default function Navbar() {
   // Derived style tokens
   const logoColor = isDark ? "text-paper hover:text-accent" : "text-ink hover:text-accent";
   const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-muted hover:text-ink";
+  const activeLinkColor = "text-accent";
   const resumeBorder = isDark
     ? "border-paper text-paper hover:bg-paper hover:text-ink"
     : "border-ink text-ink hover:bg-ink hover:text-paper";
@@ -79,7 +96,8 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`font-mono text-sm tracking-wide transition-colors ${linkColor}`}
+                className={`font-mono text-sm tracking-wide transition-colors ${activeSection === link.href.slice(1) ? activeLinkColor : linkColor
+                  }`}
               >
                 {link.label}
               </a>
@@ -118,7 +136,8 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`font-mono text-sm transition-colors ${mobileLinkColor}`}
+                  className={`font-mono text-sm transition-colors ${activeSection === link.href.slice(1) ? activeLinkColor : mobileLinkColor
+                    }`}
                 >
                   {link.label}
                 </a>
