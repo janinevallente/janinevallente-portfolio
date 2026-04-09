@@ -4,9 +4,19 @@ export default function Experience() {
   return (
     <section id="experience" className="py-32 px-6 max-w-6xl mx-auto">
       {/* Section header */}
-      <div className="mb-16 pb-6 border-b border-border">
-        <p className="font-mono text-xs text-muted tracking-widest uppercase mb-2">03 / Experience</p>
-        <h2 className="font-display text-5xl md:text-6xl text-ink">Where I&apos;ve Worked</h2>
+      <div className="flex items-end justify-between mb-16 border-b border-border pb-6">
+        <div>
+          <p className="font-mono text-xs text-muted tracking-widest uppercase mb-2">03 / Experience</p>
+          <h2 className="font-display text-5xl md:text-6xl text-ink">Where I&apos;ve Worked</h2>
+        </div>
+        <a
+          href={portfolio.resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:inline font-mono text-sm text-muted hover:text-ink transition-colors"
+        >
+          View full resume ↗
+        </a>
       </div>
 
       {/* Timeline */}
@@ -41,21 +51,6 @@ export default function Experience() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Resume CTA */}
-      <div className="mt-12">
-        <a
-          href={portfolio.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 font-mono text-sm text-muted hover:text-ink transition-colors group"
-        >
-          <span className="border-b border-muted group-hover:border-ink transition-colors pb-0.5">
-            View full resume
-          </span>
-          <span className="group-hover:translate-x-1 transition-transform">↗</span>
-        </a>
       </div>
     </section>
   );
