@@ -2,21 +2,20 @@ export const portfolio = {
   name: "Janine Vallente",
   role: "Frontend Developer",
   tagline: "I build interfaces people remember.",
-  bio: "Five years crafting thoughtful, performant UIs. I care obsessively about the 1px details, the 60fps animations, and the human on the other side of the screen. Currently open to full-time and contract work.",
-  email: "alex@example.com",
+  email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
   resumeUrl: "/resume.pdf",
 
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    dribbble: "https://dribbble.com",
+    linkedin: "https://linkedin.com/in/janine-christine-vallente",
+    github: "https://github.com/janinevallente",
   },
 
   skills: {
     core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    also: ["Vue", "Svelte", "GraphQL", "Node.js", "Framer Motion", "Figma", "Storybook", "Vitest", "Playwright"],
+    frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
+    mobile: ["Kotlin", "Firebase"],
+    also: ["Vanilla JS", "Vite", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
   },
 
   projects: [
