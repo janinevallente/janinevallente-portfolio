@@ -27,7 +27,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
 
       const probeX = window.innerWidth / 2;
-      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 2);
+      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 10); // Adjusted probe point
       const element = document.elementFromPoint(probeX, probeY);
 
       const dark = Boolean(

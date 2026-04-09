@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
@@ -11,7 +14,16 @@ export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
       <Navbar />
-      <Hero />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+
+      >
+        <Hero />
+
+      </motion.div>
       <About />
       <Experience />
       <Projects />
