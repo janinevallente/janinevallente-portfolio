@@ -1,10 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
+import Contact from "@/components/sections/Contact";
 // import Marquee from "@/components/ui/Marquee";
-// import Work from "@/components/sections/Work";
-// import Experience from "@/components/sections/Experience";
-// import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {
@@ -13,10 +13,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
+      <Experience />
+      <Projects />
+      <Contact />
       {/* <Marquee /> */}
-      {/* <Experience /> */}
-      {/* <Work /> */}
-      {/* <Contact /> */}
       <Footer />
     </main>
   );
