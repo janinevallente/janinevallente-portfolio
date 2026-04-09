@@ -13,12 +13,12 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Bio */}
           <div>
-            <p className="font-body text-lg text-paper/70 leading-relaxed mb-6">
+            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
               I began my journey as an aspiring Android developer, working with Kotlin and Firebase.
               Overtime, I expanded into frontend web development and developed a strong interest in building
               responsive, user-focused interfaces. < br />
             </p>
-            <p className="font-body text-lg text-paper/70 leading-relaxed mb-6">
+            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
               Now, I work with technologies like React and TypeScript
               while remaining open to mobile development opportunities.
             </p>
