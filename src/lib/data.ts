@@ -15,7 +15,7 @@ export const portfolio = {
     core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
     mobile: ["Kotlin", "Firebase"],
-    also: ["Vanilla JS", "Vite", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
+    also: ["Vanilla JS", "Vite", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
   },
 
   projects: [
