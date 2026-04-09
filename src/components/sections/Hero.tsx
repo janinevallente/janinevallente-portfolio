@@ -65,10 +65,10 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-wrap gap-4">
           <a
-            href="#work"
+            href="#projects"
             className="px-8 py-3.5 bg-ink text-paper font-mono text-sm hover:bg-accent transition"
           >
-            View Work →
+            View Projects →
           </a>
 
           <a
