@@ -9,7 +9,7 @@ export default function Projects() {
         <div className="flex items-end justify-between mb-16 border-b border-border pb-6">
           <div>
             <p className="font-mono text-xs text-muted tracking-widest uppercase mb-2">04 / Projects</p>
-            <h2 className="font-display text-5xl md:text-6xl text-paper">Personal Projects</h2>
+            <h2 className="font-display text-5xl md:text-6xl text-paper">Projects & Commissions</h2>
           </div>
           <a
             href={portfolio?.social?.github}
