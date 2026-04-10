@@ -17,7 +17,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="hidden md:inline font-mono text-sm text-muted hover:text-accent transition-colors"
           >
-            All on GitHub ↗
+            View on GitHub ↗
           </a>
         </div>
 
