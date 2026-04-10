@@ -22,9 +22,9 @@ export const portfolio = {
     {
       id: "01",
       title: "Aquafusion Mobile",
-      category: "IoT Android App",
+      category: "Mobile Application",
       description:
-        "A smart aquaponics monitoring application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
+        "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
       tags: ["Kotlin", "Firebase", "Android Studio"],
       year: "2023 - 2024",
       hasUrl: false,
@@ -38,7 +38,7 @@ export const portfolio = {
     {
       id: "02",
       title: "FinanceVue",
-      category: "Corporate Financial Monitoring Dashboard",
+      category: "Frontend Dashboard",
       description:
         "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through a responsive and user-friendly interface.",
       tags: ["React", "Vite", "TypeScript"],
@@ -54,9 +54,9 @@ export const portfolio = {
     {
       id: "03",
       title: "LumiBooth",
-      category: "Photo Strip Booth Web App",
+      category: "Web Application",
       description:
-        "A soft and aesthetic photo strip booth that lets users capture photos, decorate them with stickers, choose a strip theme, and download a polished photo strip.",
+        "A soft and aesthetic photo strip booth web application that lets users capture photos, decorate them with stickers, choose a strip theme, and download a polished photo strip.",
       tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
       year: "2026",
       hasUrl: true,
