@@ -23,7 +23,7 @@ export default function About() {
               while remaining open to mobile development opportunities.
             </p>
             <p className="font-body text-paper/50 leading-relaxed mb-8">
-              Outside work, you&apos;ll find me building <em>Gunpla</em> kits, playing video games, or attending anime conventions.
+              When I&apos;m not pushing code, you&apos;ll find me building <em>Gunpla</em> kits, playing video games, or attending hobby conventions.
             </p>
             <div className="flex gap-4 flex-wrap">
               {Object.entries(portfolio.social).map(([platform, url]) => (
