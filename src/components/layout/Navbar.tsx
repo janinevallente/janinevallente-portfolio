@@ -86,7 +86,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className={`font-display text-xl tracking-tight transition-colors ${logoColor}`}>
           <span className="font-md">&lt; </span>
-          {portfolio.name.split(" ")[0]}
+          {portfolio.name.split(" ")[0]} V<span className="text-accent">.</span>
           <span className="font-md"> &gt;</span>
         </Link>
 
