@@ -26,11 +26,16 @@ export default function Projects() {
           {portfolio?.projects?.map((project) => (
             <article
               key={project?.id}
-              className="bg-ink p-8 group"
+              className="bg-ink px-1.3 py-8 md:p-8 group"
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="font-mono text-xs text-muted">
-                  {project?.category} · {project?.year}
+                  {project?.category} ·{" "}
+                  {project.id === "04" ? (
+                    <span className="text-accent">{project.year}</span>
+                  ) : (
+                    project.year
+                  )}
                 </span>
                 <span
                   className="font-display text-4xl text-border transition-colors"
@@ -59,14 +64,23 @@ export default function Projects() {
               </div>
 
               <div className="flex gap-4">
-                <a
-                  href={project?.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-xs text-muted hover:text-accent border-b border-muted hover:border-accent pb-0.5 transition-colors duration-300"
-                >
-                  GitHub ↗
-                </a>
+                {(project.id === "04") && (
+                  <span
+                    className="font-mono text-xs text-accent border-b border-accent pb-0.5 transition-colors duration-300"
+                  >
+                    Current Live Site
+                  </span>
+                )}
+                {(project.hasGithub && project.id !== "04") && (
+                  <a
+                    href={project?.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs text-muted hover:text-accent border-b border-muted hover:border-accent pb-0.5 transition-colors duration-300"
+                  >
+                    GitHub ↗
+                  </a>
+                )}
                 {project?.hasUrl && (
                   <a
                     href={project.url}

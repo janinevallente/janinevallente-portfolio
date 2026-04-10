@@ -67,6 +67,22 @@ export const portfolio = {
       gradient: "from-emerald-50 to-teal-100",
       accent: "#2d7a5f",
     },
+    {
+      id: "04",
+      title: "Developer Portfolio",
+      category: "Website",
+      description:
+        "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
+      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      year: "✦",
+      hasUrl: false,
+      url: "",
+      hasGithub: false,
+      github: "",
+      featured: true,
+      gradient: "from-emerald-50 to-teal-100",
+      accent: "#e8622a",
+    },
   ],
 
   experience: [
