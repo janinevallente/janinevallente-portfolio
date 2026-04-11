@@ -9,14 +9,6 @@ export default function Experience() {
           <p className="font-mono text-xs text-muted tracking-widest uppercase mb-2">03 / Experience</p>
           <h2 className="font-display text-5xl md:text-6xl text-ink">Where I&apos;ve Worked</h2>
         </div>
-        <a
-          href={portfolio.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline font-mono text-sm text-muted hover:text-ink transition-colors"
-        >
-          View full resume ↗
-        </a>
       </div>
 
       {/* Timeline */}
