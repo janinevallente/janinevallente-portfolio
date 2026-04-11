@@ -18,17 +18,14 @@ export default function Experience() {
 
         <div className="flex flex-col gap-0">
           {portfolio.experience.map((job, i) => (
-            <div
-              key={i}
-              className="md:pl-12 relative group"
-            >
+            <div key={i} className="md:pl-12 relative group">
               {/* Timeline dot */}
-              <div className="hidden md:block absolute left-0 top-6 w-2 h-2 rounded-full bg-border group-hover:bg-accent -translate-x-[3.5px] transition-colors duration-200" />
+              <div className="hidden md:block absolute left-0 top-12 w-2 h-2 rounded-full bg-border group-hover:bg-accent -translate-x-[3.5px] transition-colors duration-200" />
 
               <div className="border-b border-border py-10 grid grid-cols-1 md:grid-cols-[200px,1fr] gap-4 md:gap-12">
                 {/* Left: period */}
                 <div>
-                  <p className="font-mono text-xs text-muted tracking-wide">{job.period}</p>
+                  <p className="font-mono text-xs text-muted tracking-wide md:mt-2">{job.period}</p>
                 </div>
 
                 {/* Right: content */}
@@ -37,7 +34,16 @@ export default function Experience() {
                     {job.role}
                   </h3>
                   <p className="font-mono text-sm text-muted mb-4">{job.company}</p>
-                  <p className="font-body text-muted leading-relaxed text-sm">{job.description}</p>
+
+                  {/* Bullet list */}
+                  <ul className="flex flex-col gap-2">
+                    {job.description.map((point, j) => (
+                      <li key={j} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-accent shrink-0 mt-[7px]" />
+                        <span className="font-body text-ink/55 leading-relaxed text-sm">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
