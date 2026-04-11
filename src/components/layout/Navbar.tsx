@@ -5,16 +5,23 @@ import Link from "next/link";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+  { href: "about", label: "About" },
+  { href: "experience", label: "Experience" },
+  { href: "projects", label: "Projects" },
+  { href: "contact", label: "Contact" },
 ];
 
 // Sections with a dark (bg-ink) background
 const DARK_SECTIONS = ["about", "projects"];
 
 const NAVBAR_HEIGHT = 64; // matches h-16
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
+  window.scrollTo({ top, behavior: "smooth" });
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,20 +34,18 @@ export default function Navbar() {
       setScrolled(window.scrollY > 40);
 
       const probeX = window.innerWidth / 2;
-      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 10); // Adjusted probe point
+      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 10);
       const element = document.elementFromPoint(probeX, probeY);
 
       const dark = Boolean(
         element &&
         DARK_SECTIONS.some((id) => element.closest(`#${id}`))
       );
-
       setIsDark(dark);
 
       // Determine active section
-      const sectionIds = navLinks.map((link) => link.href.slice(1));
-      const sections = sectionIds
-        .map((id) => document.getElementById(id))
+      const sections = navLinks
+        .map((link) => document.getElementById(link.href))
         .filter(Boolean) as HTMLElement[];
 
       let current = "";
@@ -94,13 +99,13 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className={`font-mono text-sm tracking-wide transition-colors ${activeSection === link.href.slice(1) ? activeLinkColor : linkColor
+              <button
+                onClick={() => scrollToSection(link.href)}
+                className={`font-mono text-sm tracking-wide transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : linkColor
                   }`}
               >
                 {link.label}
-              </a>
+              </button>
             </li>
           ))}
           <li>
@@ -133,14 +138,13 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`font-mono text-sm transition-colors ${activeSection === link.href.slice(1) ? activeLinkColor : mobileLinkColor
+                <button
+                  onClick={() => { scrollToSection(link.href); setMenuOpen(false); }}
+                  className={`font-mono text-sm transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : mobileLinkColor
                     }`}
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
             <li className="pt-2">
