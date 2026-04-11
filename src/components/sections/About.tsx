@@ -19,25 +19,15 @@ export default function About() {
               responsive, user-focused interfaces. < br />
             </p>
             <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
-              Now, I work with technologies like React and TypeScript
-              while remaining open to mobile development opportunities.
+              Today, I combine my background in mobile and software development with frontend expertise
+              to build applications that are not only functional, but intuitive and reliable.
+            </p>
+            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
+              I am currently open to full-time and contract opportunities.
             </p>
             <p className="font-body text-paper/50 leading-relaxed mb-8">
               When I&apos;m not pushing code, you&apos;ll find me building <em>Gunpla</em> kits, playing video games, or attending hobby conventions.
             </p>
-            <div className="flex gap-4 flex-wrap">
-              {Object.entries(portfolio.social).map(([platform, url]) => (
-                <a
-                  key={platform}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-xs text-paper/40 border-b border-paper/20 pb-0.5 hover:text-accent hover:border-accent transition-colors capitalize"
-                >
-                  {platform} ↗
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Skills */}

@@ -1,3 +1,8 @@
+import LumiBoothImg from "@/assets/images/lumibooth.webp"
+import FinanceVueImg from "@/assets/images/financevue.webp"
+import AquafusionImg from "@/assets/images/aquafusion.webp"
+import PortfolioImg from "@/assets/images/portfolio.webp"
+
 export const portfolio = {
   name: "Janine Vallente",
   role: "Frontend Developer",
@@ -15,34 +20,36 @@ export const portfolio = {
     core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
     mobile: ["Kotlin", "Firebase"],
-    also: ["Vanilla JS", "Vite", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
+    also: ["Vite", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
   },
 
   projects: [
     {
       id: "01",
-      title: "Aquafusion Mobile",
-      category: "Mobile Application",
+      title: "LumiBooth",
+      category: "Web Application",
       description:
-        "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
-      tags: ["Kotlin", "Firebase", "Android Studio"],
-      year: "2023 - 2024",
-      hasUrl: false,
-      url: "",
+        "A soft and aesthetic photo strip booth web application that lets users capture photos, decorate them with stickers, choose a filter or strip theme, and download a polished photo strip.",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      year: "2026",
+      image: LumiBoothImg,
+      hasUrl: true,
+      url: "https://lumibooth.vercel.app/",
       hasGithub: true,
-      github: "https://github.com/janinevallente/aquafusion-mobile-kotlin",
-      featured: false,
-      gradient: "from-amber-100 to-orange-100",
-      accent: "#e8622a",
+      github: "https://github.com/janinevallente/lumibooth-nextjs",
+      featured: true,
+      gradient: "from-emerald-50 to-teal-100",
+      accent: "#2d7a5f",
     },
     {
       id: "02",
       title: "FinanceVue",
       category: "Frontend Dashboard",
       description:
-        "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through a responsive and user-friendly interface.",
+        "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through data visualization.",
       tags: ["React", "Vite", "TypeScript"],
       year: "2024",
+      image: FinanceVueImg,
       hasUrl: false,
       url: "",
       hasGithub: true,
@@ -53,19 +60,20 @@ export const portfolio = {
     },
     {
       id: "03",
-      title: "LumiBooth",
-      category: "Web Application",
+      title: "Aquafusion Mobile",
+      category: "Mobile Application",
       description:
-        "A soft and aesthetic photo strip booth web application that lets users capture photos, decorate them with stickers, choose a strip theme, and download a polished photo strip.",
-      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-      year: "2026",
-      hasUrl: true,
-      url: "https://lumibooth.vercel.app/",
+        "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
+      tags: ["Kotlin", "Firebase", "Android Studio"],
+      year: "2023 - 2024",
+      image: AquafusionImg,
+      hasUrl: false,
+      url: "",
       hasGithub: true,
-      github: "https://github.com/janinevallente/lumibooth-nextjs",
-      featured: true,
-      gradient: "from-emerald-50 to-teal-100",
-      accent: "#2d7a5f",
+      github: "https://github.com/janinevallente/aquafusion-mobile-kotlin",
+      featured: false,
+      gradient: "from-amber-100 to-orange-100",
+      accent: "#e8622a",
     },
     {
       id: "04",
@@ -73,8 +81,9 @@ export const portfolio = {
       category: "Website",
       description:
         "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
-      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
       year: "✦",
+      image: PortfolioImg,
       hasUrl: false,
       url: "",
       hasGithub: false,
