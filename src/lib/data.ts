@@ -60,7 +60,7 @@ export const portfolio = {
     },
     {
       id: "03",
-      title: "Aquafusion Mobile",
+      title: "AquaFusion Mobile",
       category: "Mobile Application",
       description:
         "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
