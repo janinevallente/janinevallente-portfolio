@@ -60,7 +60,7 @@ export const portfolio = {
     },
     {
       id: "03",
-      title: "Aquafusion Mobile",
+      title: "AquaFusion Mobile",
       category: "Mobile Application",
       description:
         "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
@@ -99,15 +99,22 @@ export const portfolio = {
       company: "MYT SoftDev Solutions, Inc.",
       role: "Junior Software Developer",
       period: "Jun 2024 — Oct 2025",
-      description:
-        "Developed and maintained frontend features for enterprise systems including ERP, EMR, Voting, and CTPL insurance platforms. Integrated REST APIs to ensure reliable data flow and resolved production issues to improve system stability and user experience. Collaborated with teams using Git to deliver consistent and high-quality releases.",
+      description: [
+        "Developed and maintained frontend features for enterprise systems including ERP, EMR, Voting, and CTPL insurance platforms.",
+        "Integrated REST APIs to ensure reliable data flow between frontend and backend services.",
+        "Resolved production issues to improve system stability and overall user experience.",
+        "Collaborated with cross-functional teams using Git to deliver consistent and high-quality releases.",
+      ],
     },
     {
       company: "MYT SoftDev Solutions, Inc.",
       role: "Software Developer Intern",
       period: "Jan 2024 — Apr 2024",
-      description:
-        "Supported development and testing of web application modules while learning real-world workflows. Assisted in debugging issues and gained hands-on experience with version control, collaborative development, and production-level systems.",
+      description: [
+        "Supported development and testing of web application modules while learning real-world workflows.",
+        "Assisted in debugging issues across the codebase to maintain system reliability.",
+        "Gained hands-on experience with version control, collaborative development, and production-level systems.",
+      ],
     },
   ],
 

@@ -17,9 +17,12 @@ export default function ProjectAccordion({ project, index }: { project: Project;
             >
                 <div className="flex items-center gap-6 py-6 md:py-7 px-1 transition-colors duration-200 hover:bg-paper/5">
                     {/* Number */}
-                    <span className="font-display text-3xl md:text-4xl text-paper/40 w-14 shrink-0 select-none">
-                        {project.id}
-                    </span>
+                    <div>
+                        <span className="font-display text-3xl md:text-4xl text-paper/40 w-14 shrink-0 select-none">
+                            {project.id}
+                        </span>
+                        <div className="my-5 mb-10 md:mb-2" />
+                    </div>
 
                     {/* Title + tags */}
                     <div className="flex-1 min-w-0">
