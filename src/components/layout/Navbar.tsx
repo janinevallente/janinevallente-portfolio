@@ -64,14 +64,14 @@ export default function Navbar() {
 
   // Derived style tokens
   const logoColor = isDark ? "text-paper hover:text-accent" : "text-ink hover:text-accent";
-  const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-muted hover:text-ink";
+  const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
   const activeLinkColor = "text-accent";
   const resumeBorder = isDark
     ? "border-paper text-paper hover:bg-paper hover:text-ink"
     : "border-ink text-ink hover:bg-ink hover:text-paper";
   const hamburgerBg = isDark ? "bg-paper" : "bg-ink";
   const mobileBg = isDark ? "bg-ink border-paper/10" : "bg-paper border-border";
-  const mobileLinkColor = isDark ? "text-paper/60 hover:text-paper" : "text-muted hover:text-ink";
+  const mobileLinkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
 
   const headerBg = scrolled
     ? isDark
