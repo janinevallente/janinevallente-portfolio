@@ -15,11 +15,14 @@ const navLinks = [
 const DARK_SECTIONS = ["about", "projects"];
 
 const NAVBAR_HEIGHT = 64; // matches h-16
+const SCROLL_OFFSET = -64; // to let navbar scroll lower to each section (section will hide under navbar)
+
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT;
+
+  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT - (SCROLL_OFFSET);
   window.scrollTo({ top, behavior: "smooth" });
 }
 
