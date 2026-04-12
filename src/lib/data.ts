@@ -9,7 +9,7 @@ export const portfolio = {
   tagline: "I build interfaces people remember.",
   email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
-  resumeUrl: "https://drive.google.com/file/d/14BEugN8f90jUFlufpnyk82n15U4UZ7Ig/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1u7xLskPCzToVql_xwC1JHPwpNgz59rAP/view?usp=sharing",
 
   social: {
     linkedin: "https://linkedin.com/in/janine-christine-vallente",
