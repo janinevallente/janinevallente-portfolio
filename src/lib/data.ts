@@ -10,7 +10,7 @@ export const portfolio = {
   tagline: "I build interfaces people remember.",
   email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
-  resumeUrl: "https://drive.google.com/file/d/1dDPr4Lc57VOv9bOY4dwQ0P7rwUbAnJ5P/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1qUzsLG-dUcYatOaZ3wHvCoBARbPrpI8O/view?usp=sharing",
 
   social: {
     linkedin: "https://linkedin.com/in/janine-christine-vallente",
@@ -113,6 +113,7 @@ export const portfolio = {
         "Resolved production issues to improve system stability and overall user experience.",
         "Collaborated with cross-functional teams using Git to deliver consistent and high-quality releases.",
       ],
+      technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "Tailwind CSS", "AntDesign", "Git"],
     },
     {
       company: "MYT SoftDev Solutions, Inc.",
@@ -123,6 +124,7 @@ export const portfolio = {
         "Assisted in debugging issues across the codebase to maintain system reliability.",
         "Gained hands-on experience with version control, collaborative development, and production-level systems.",
       ],
+      technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "AntDesign", "Node.js", "PHP", "MySQL", "Git"],
     },
   ],
 

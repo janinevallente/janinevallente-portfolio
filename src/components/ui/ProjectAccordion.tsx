@@ -87,7 +87,7 @@ export default function ProjectAccordion({ project, index }: { project: Project;
                                 </span>
                                 <span className="text-paper/20">·</span>
                                 <span
-                                    className={`font-mono text-[10px] ${project.id === "04" ? "text-accent" : "text-paper/40"
+                                    className={`font-mono text-[10px] ${project.title === "Developer Portfolio" ? "text-accent" : "text-paper/40"
                                         }`}
                                 >
                                     {project.year}
@@ -102,12 +102,12 @@ export default function ProjectAccordion({ project, index }: { project: Project;
 
                         {/* Links */}
                         <div className="flex gap-4 mt-6 pt-4 border-t border-paper/10">
-                            {project.id === "04" && (
+                            {project.title === "Developer Portfolio" && (
                                 <span className="font-mono text-xs text-accent border-b border-accent pb-0.5">
                                     Current Live Site
                                 </span>
                             )}
-                            {project.hasGithub && project.id !== "04" && (
+                            {project.hasGithub && project.title !== "Developer Portfolio" && (
                                 <a
                                     href={project.github}
                                     target="_blank"

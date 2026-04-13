@@ -36,7 +36,7 @@ export default function Experience() {
                   <p className="font-mono text-sm text-muted mb-4">{job.company}</p>
 
                   {/* Bullet list */}
-                  <ul className="flex flex-col gap-2">
+                  <ul className="flex flex-col gap-2 mb-6">
                     {job.description.map((point, j) => (
                       <li key={j} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 bg-accent shrink-0 mt-[7px]" />
@@ -44,6 +44,23 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Technologies */}
+                  <div>
+                    <p className="font-mono text-xs text-muted tracking-widest uppercase mb-3">
+                      Technologies I worked with
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {job.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-mono text-xs px-2 py-1 border border-ink text-ink"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
