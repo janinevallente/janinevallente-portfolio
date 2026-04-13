@@ -113,6 +113,7 @@ export const portfolio = {
         "Resolved production issues to improve system stability and overall user experience.",
         "Collaborated with cross-functional teams using Git to deliver consistent and high-quality releases.",
       ],
+      technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "Tailwind CSS", "AntDesign", "Git"],
     },
     {
       company: "MYT SoftDev Solutions, Inc.",
@@ -123,6 +124,7 @@ export const portfolio = {
         "Assisted in debugging issues across the codebase to maintain system reliability.",
         "Gained hands-on experience with version control, collaborative development, and production-level systems.",
       ],
+      technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "AntDesign", "Node.js", "PHP", "MySQL", "Git"],
     },
   ],
 
