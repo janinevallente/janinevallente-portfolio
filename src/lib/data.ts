@@ -1,4 +1,5 @@
 import LumiBoothImg from "@/assets/images/lumibooth.webp"
+import PokedexHubImg from "@/assets/images/pokedexhub.webp"
 import FinanceVueImg from "@/assets/images/financevue.webp"
 import AquafusionImg from "@/assets/images/aquafusion.webp"
 import PortfolioImg from "@/assets/images/portfolio.webp"
@@ -20,7 +21,7 @@ export const portfolio = {
     core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
     mobile: ["Kotlin", "Firebase"],
-    also: ["Vite", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
+    also: ["Vite", "Vue", "Nuxt", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
   },
 
   projects: [
@@ -38,11 +39,24 @@ export const portfolio = {
       hasGithub: true,
       github: "https://github.com/janinevallente/lumibooth-nextjs",
       featured: true,
-      gradient: "from-emerald-50 to-teal-100",
-      accent: "#2d7a5f",
     },
     {
       id: "02",
+      title: "Pokédex Hub",
+      category: "Web Application",
+      description:
+        "A responsive Pokédex web application built with Nuxt 3 and the PokéAPI. Features include generation filtering, real-time search, type-based filtering, and dynamic Pokémon detail modals with smooth navigation.",
+      tags: ["Nuxt", "TypeScript", "CSS", "PokeAPI", "Vercel"],
+      year: "2026",
+      image: PokedexHubImg,
+      hasUrl: true,
+      url: "https://pokedexhub.vercel.app/",
+      hasGithub: true,
+      github: "https://github.com/janinevallente/pokedex-app",
+      featured: true,
+    },
+    {
+      id: "03",
       title: "FinanceVue",
       category: "Frontend Dashboard",
       description:
@@ -55,11 +69,9 @@ export const portfolio = {
       hasGithub: true,
       github: "https://github.com/janinevallente/financevue-dashboard",
       featured: false,
-      gradient: "from-stone-100 to-slate-100",
-      accent: "#4a6fa5",
     },
     {
-      id: "03",
+      id: "04",
       title: "AquaFusion Mobile",
       category: "Mobile Application",
       description:
@@ -72,11 +84,9 @@ export const portfolio = {
       hasGithub: true,
       github: "https://github.com/janinevallente/aquafusion-mobile-kotlin",
       featured: false,
-      gradient: "from-amber-100 to-orange-100",
-      accent: "#e8622a",
     },
     {
-      id: "04",
+      id: "05",
       title: "Developer Portfolio",
       category: "Website",
       description:
@@ -89,8 +99,6 @@ export const portfolio = {
       hasGithub: false,
       github: "",
       featured: true,
-      gradient: "from-emerald-50 to-teal-100",
-      accent: "#e8622a",
     },
   ],
 

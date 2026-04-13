@@ -5,7 +5,7 @@ import Image from "next/image";
 import { portfolio } from "@/lib/data";
 import HeroImage from "@/assets/images/hero-img.webp";
 
-const roles = ["Frontend Developer", "Mobile Developer", "IoT Enthusiast"];
+const roles = ["Software Developer", "Frontend Web Developer", "Mobile Developer", "IoT Enthusiast"];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
