@@ -45,8 +45,8 @@ export const portfolio = {
       title: "Pokédex Hub",
       category: "Web Application",
       description:
-        "A responsive Pokédex web application built with Nuxt 3 and the PokéAPI. Features include generation filtering, real-time search, type-based filtering, and dynamic Pokémon detail modals with smooth navigation.",
-      tags: ["Nuxt", "TypeScript", "CSS", "PokeAPI", "Vercel"],
+        "A modern pokédex web application powered by PokéAPI, enabling users to explore 1,000+ Pokémon and their variants. Features dynamic search and filtering by type and generation, along with detailed views of stats, moves, evolution chains, and encounter locations. Designed with a focus on performance, scalability, and an intuitive user experience.",
+      tags: ["Nuxt", "TypeScript", "CSS", "PokéAPI", "Vercel"],
       year: "2026",
       image: PokedexHubImg,
       hasUrl: true,
@@ -58,7 +58,7 @@ export const portfolio = {
     {
       id: "03",
       title: "FinanceVue",
-      category: "Frontend Dashboard",
+      category: "Web Dashboard",
       description:
         "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through data visualization.",
       tags: ["React", "Vite", "TypeScript"],
