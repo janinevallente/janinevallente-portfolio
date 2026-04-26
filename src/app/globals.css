@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
 
 :root {
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Inter Tight', sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-body: "Inter Tight", sans-serif;
 
   --color-bg: #f0ede6;
   --color-ink: #111110;
+  --color-ink-secondary: #1c1c1a;
   --color-ink-muted: #6b6a67;
   --color-surface: #1a1a18;
   --color-accent: #c8f04a;
@@ -41,10 +42,19 @@ body {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: #c5c2bb; border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: #999891; }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #c5c2bb;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999891;
+}
 
 /* Hide default cursor over project list area */
 .projects-list-area {

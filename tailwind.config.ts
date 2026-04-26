@@ -20,6 +20,7 @@ const config: Config = {
       colors: {
         bg: "#f0ede6",
         ink: "#111110",
+        "ink-secondary": "#111110",
         "ink-muted": "#6b6a67",
         surface: "#1a1a18",
         accent: "#c8f04a",

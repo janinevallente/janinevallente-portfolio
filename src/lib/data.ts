@@ -18,10 +18,38 @@ export const portfolio = {
   },
 
   skills: {
-    core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
-    mobile: ["Kotlin", "Firebase"],
-    also: ["Vite", "Vue", "Nuxt", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
+    // core: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    // frontend: ["JavaScript", "HTML", "CSS", "Bootstrap", "Material UI", "Ant Design"],
+    // mobile: ["Kotlin", "Firebase"],
+    // also: ["Vite", "Vue", "Nuxt", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
+    technologies: [
+    "HTML", "CSS", "JavaScript", "TypeScript", "Bootstrap", "Tailwind CSS",
+    "Material UI", "Ant Design", "Kotlin", "Firebase", "React", "Next.js",
+    "Vue", "Nuxt", "Vite", "Node.js", "MongoDB", "Java", "React Native", "Git", "Figma"
+    ],
+    icons: [
+      "html5/html5-original",
+      "css3/css3-original",
+      "javascript/javascript-original",
+      "typescript/typescript-original",
+      "bootstrap/bootstrap-original",
+      "tailwindcss/tailwindcss-original",
+      "materialui/materialui-original",
+      "antdesign/antdesign-original",
+      "kotlin/kotlin-original",
+      "firebase/firebase-original",
+      "react/react-original",
+      "nextjs/nextjs-original",
+      "vuejs/vuejs-original",
+      "nuxtjs/nuxtjs-original",
+      "vitejs/vitejs-original",
+      "nodejs/nodejs-original",
+      "mongodb/mongodb-original",
+      "java/java-original",
+      "react/react-original",
+      "git/git-original",
+      "figma/figma-original"
+    ]
   },
 
   projects: [
@@ -92,7 +120,7 @@ export const portfolio = {
       description:
         "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-      year: "✦",
+      year: "2026",
       image: PortfolioImg,
       hasUrl: false,
       url: "",

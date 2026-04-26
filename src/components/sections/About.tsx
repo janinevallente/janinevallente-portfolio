@@ -4,75 +4,53 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-import SectionReveal from "@/components/ui/SectionReveal";
 
-/** Animated line that grows from left to right on scroll */
-function RevealLine({ delay = 0 }: { delay?: number }) {
+function FadeUp({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, { once: true, amount: 0.3 });
   return (
-    <div ref={ref} className="overflow-hidden h-px w-full">
-      <motion.div
-        className="h-full w-full"
-        style={{ backgroundColor: "var(--color-border)", transformOrigin: "left" }}
-        initial={{ scaleX: 0 }}
-        animate={inView ? { scaleX: 1 } : {}}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
-      />
-    </div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
 export default function About() {
-  const phrase =
-    "I build interfaces people remember — clean, responsive, and built with care. From enterprise dashboards to photo booth apps, I bring both craft and reliability to every project.";
-
   return (
     <section id="about" className="bg-bg py-28 md:py-40">
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12">
-
+      <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
-        <SectionReveal delay={0}>
-          <p
-            className="mb-12 text-xs tracking-[0.2em] uppercase"
-            style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-          >
+        <FadeUp>
+          <p className="mb-16 text-xs tracking-[0.2em] uppercase font-body text-ink-muted">
             01 — About
           </p>
-        </SectionReveal>
+        </FadeUp>
 
-        <RevealLine delay={0.05} />
-
-        {/* Hero phrase — word reveal */}
-        <div className="mt-14 mb-20 md:mb-28 max-w-4xl">
+        {/* Large word-reveal paragraph */}
+        <div className="mb-20 md:mb-20">
           <WordReveal
-            text={phrase}
-            delay={0.1}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.55rem, 3.2vw, 2.8rem)",
-              fontWeight: 600,
-              lineHeight: 1.25,
-              color: "var(--color-ink)",
-              letterSpacing: "-0.02em",
-            }}
+            text="I build interfaces people remember — clean, responsive, and built with care."
+            delay={0.05}
+            className="font-display text-[clamp(1.65rem,3.6vw,3rem)] font-bold leading-[1.22] text-ink tracking-tighter"
           />
         </div>
 
-        {/* Two-column grid */}
+        {/* Two-column: bio + skills */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-
           {/* Bio */}
-          <SectionReveal delay={0.05} direction="up">
-            <div
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "1rem",
-                color: "var(--color-ink-muted)",
-                lineHeight: 1.85,
-                fontWeight: 300,
-              }}
-            >
+          <FadeUp delay={0.1}>
+            <div className="font-body text-base text-ink-muted leading-relaxed font-light">
               <p className="mb-5">
                 I began as an Android developer working with Kotlin and Firebase,
                 then expanded into frontend web development and built a strong interest
@@ -82,69 +60,58 @@ export default function About() {
                 Today I combine mobile and software development background with frontend
                 expertise to build applications that are functional, intuitive, and reliable.
               </p>
-              <p style={{ fontStyle: "italic" }}>
+              <p className="mb-5">
+                I am currently open to full-time and contract opportunities.
+              </p>
+              <p className="text-ink-muted italic">
                 When not pushing code, you'll find me building Gunpla kits, playing
                 video games, or attending hobby conventions.
               </p>
 
-              <div className="mt-10">
+              <div className="mt-10 flex items-center gap-4">
                 <a
                   href={portfolio.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm transition-all duration-300 border-b pb-0.5"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    color: "var(--color-ink)",
-                    borderColor: "var(--color-ink)",
-                  }}
+                  className="group inline-flex items-center gap-2 text-sm transition-all duration-300 border-b border-ink pb-0.5 hover:gap-4 font-body text-ink"
                 >
                   View Résumé
-                  <span className="transition-transform duration-300 group-hover:translate-x-1.5">↗</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
                 </a>
               </div>
             </div>
-          </SectionReveal>
+          </FadeUp>
 
           {/* Skills */}
-          <SectionReveal delay={0.15} direction="up">
+          <FadeUp delay={0.2}>
             <div className="flex flex-col gap-10">
-              {[
-                { label: "Core Stack", items: portfolio.skills.core },
-                { label: "Mobile", items: portfolio.skills.mobile },
-                { label: "Also Comfortable With", items: portfolio.skills.also.slice(0, 8) },
-              ].map((group, gi) => (
-                <div key={group.label}>
-                  <p
-                    className="text-xs tracking-[0.18em] uppercase mb-4"
-                    style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                  >
-                    {group.label}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((skill, si) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, ease: "easeOut", delay: gi * 0.1 + si * 0.03 }}
-                        className="text-xs px-3 py-1.5 border transition-colors duration-200 hover:border-ink hover:text-ink"
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          color: "var(--color-ink-muted)",
-                          borderColor: "var(--color-border)",
-                          display: "inline-block",
-                        }}
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
+              <div>
+                <p className="text-xs tracking-[0.18em] uppercase mb-4 font-body text-ink-muted">
+                  Technologies I've Worked With
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {portfolio.skills.technologies.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="relative group flex flex-col rounded-xl items-center gap-2 p-4 border border-color-ink-secondary bg-ink-secondary transition-colors duration-200 hover:border-ink font-body text-ink-muted"
+                    >
+                      <img 
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
+                        alt={skill}
+                        className="w-8 h-8"
+                      />
+                      {/* Tooltip */}
+                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        <div className="bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg">
+                          {skill}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </SectionReveal>
+          </FadeUp>
         </div>
       </div>
     </section>
