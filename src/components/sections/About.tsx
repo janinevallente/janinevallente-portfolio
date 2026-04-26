@@ -50,7 +50,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Bio */}
           <FadeUp delay={0.1}>
-            <div className="font-body text-base text-ink-muted leading-relaxed font-light">
+            <div className="font-body text-base text-ink/80 leading-relaxed font-light">
               <p className="mb-5">
                 I began as an Android developer working with Kotlin and Firebase,
                 then expanded into frontend web development and built a strong interest
@@ -63,9 +63,9 @@ export default function About() {
               <p className="mb-5">
                 I am currently open to full-time and contract opportunities.
               </p>
-              <p className="text-ink-muted italic">
-                When not pushing code, you'll find me building Gunpla kits, playing
-                video games, or attending hobby conventions.
+              <p className="text-ink/80 italic">
+                "When not pushing code, you'll find me building Gunpla kits, playing
+                video games, or attending hobby conventions."
               </p>
 
               <div className="mt-10 flex items-center gap-4">
