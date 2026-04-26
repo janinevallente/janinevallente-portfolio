@@ -50,7 +50,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Bio */}
           <FadeUp delay={0.1}>
-            <div className="font-body text-base text-ink/80 leading-relaxed font-light">
+            <div className="font-body text-base text-ink/80 leading-relaxed font-body">
               <p className="mb-5">
                 I began as an Android developer working with Kotlin and Firebase,
                 then expanded into frontend web development and built a strong interest
@@ -86,7 +86,7 @@ export default function About() {
           <FadeUp delay={0.2}>
             <div className="flex flex-col gap-10">
               <div>
-                <p className="text-xs tracking-[0.18em] uppercase mb-4 font-body text-ink-muted">
+                <p className="text-xs tracking-[0.18em] uppercase mb-4 font-body text-ink">
                   Technologies I've Worked With
                 </p>
                 <div className="flex flex-wrap gap-4">
