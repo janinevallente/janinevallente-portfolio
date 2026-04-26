@@ -1,30 +1,8 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-
-function FadeUp({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import FadeUp from "@/components/ui/FadeUp"
 
 export default function About() {
   return (
@@ -40,7 +18,7 @@ export default function About() {
         {/* Large word-reveal paragraph */}
         <div className="mb-20 md:mb-20">
           <WordReveal
-            text="I build interfaces people remember — clean, responsive, and built with care."
+            text="Hello, I'm Janine Vallente. I'm a Software Developer specializing Front-end Web Development & Mobile Development. I build interfaces people remember — clean, responsive, and built with care."
             delay={0.05}
             className="font-display text-[clamp(1.65rem,3.6vw,3rem)] font-bold leading-[1.22] text-ink tracking-tighter"
           />
@@ -57,7 +35,7 @@ export default function About() {
                 in responsive, user-focused interfaces.
               </p>
               <p className="mb-5">
-                Today I combine mobile and software development background with frontend
+                Today, I combine mobile and software development background with frontend
                 expertise to build applications that are functional, intuitive, and reliable.
               </p>
               <p className="mb-5">
