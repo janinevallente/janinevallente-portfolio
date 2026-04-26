@@ -6,7 +6,7 @@ import { portfolio } from "@/lib/data";
 
 const navLinks = [
   { href: "about", label: "About" },
-  { href: "experience", label: "Work" },
+  { href: "experience", label: "Experience" },
   { href: "projects", label: "Projects" },
   { href: "contact", label: "Contact" },
 ];
@@ -20,7 +20,7 @@ export default function Navbar() {
   const [active, setActive] = useState("");
   const router = useRouter();
   const pathname = usePathname();
-  const isProjectPage = pathname !== "/";
+  const isProjectPage = pathname?.includes("/projects") ?? false;
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,14 +47,16 @@ export default function Navbar() {
     }
   };
 
+  const forceDark = isProjectPage;
+
   return (
     <nav
       className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
       style={{
         padding: scrolled ? "0.75rem 2rem" : "1.25rem 2rem",
-        backgroundColor: scrolled ? "rgba(17,17,16,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none",
+        backgroundColor: forceDark || scrolled ? "rgba(17,17,16,0.92)" : "transparent",
+        backdropFilter: forceDark || scrolled ? "blur(14px)" : "none",
+        borderBottom: forceDark || scrolled ? "1px solid rgba(255,255,255,0.05)" : "none",
       }}
     >
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
@@ -97,10 +99,13 @@ export default function Navbar() {
                 <span
                   className="transition-colors duration-200"
                   style={{
-                    color: active === link.href ? "#c8f04a" : "rgba(255,255,255,0.55)",
+                    color:
+                      active === link.href || (isProjectPage && link.href === "projects")
+                        ? "#c8f04a"
+                        : "rgba(255,255,255,0.55)",
                   }}
                 >
-                  {active === link.href && (
+                  {(active === link.href || (isProjectPage && link.href === "projects")) && (
                     <span
                       className="inline-block w-1 h-1 rounded-full mr-1.5 mb-0.5"
                       style={{ backgroundColor: "#c8f04a" }}
@@ -111,7 +116,7 @@ export default function Navbar() {
               </button>
             </li>
           ))}
-          <li className="ml-3">
+          {/* <li className="ml-3">
             <a
               href={portfolio.resumeUrl}
               target="_blank"
@@ -125,11 +130,11 @@ export default function Navbar() {
             >
               Résumé ↗
             </a>
-          </li>
+          </li> */}
         </ul>
 
         {/* Mobile */}
-        <a
+        {/* <a
           href={portfolio.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -141,7 +146,7 @@ export default function Navbar() {
           }}
         >
           Résumé ↗
-        </a>
+        </a> */}
       </div>
     </nav>
   );
