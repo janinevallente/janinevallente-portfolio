@@ -19,6 +19,7 @@ const config: Config = {
       },
       colors: {
         bg: "#f0ede6",
+        hero: "#20201e",
         ink: "#111110",
         "ink-secondary": "#111110",
         "ink-muted": "#6b6a67",

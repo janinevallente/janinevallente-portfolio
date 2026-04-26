@@ -9,6 +9,7 @@
   --font-body: "Inter Tight", sans-serif;
 
   --color-bg: #f0ede6;
+  --color-hero: #20201e;
   --color-ink: #111110;
   --color-ink-secondary: #1c1c1a;
   --color-ink-muted: #6b6a67;
@@ -62,6 +63,16 @@ body {
 }
 .projects-list-area * {
   cursor: none;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* Page transition overlay */
