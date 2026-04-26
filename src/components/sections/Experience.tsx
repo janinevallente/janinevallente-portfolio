@@ -4,24 +4,19 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-import SectionReveal from "@/components/ui/SectionReveal";
 
-function RevealLine({ delay = 0, dark = false }: { delay?: number; dark?: boolean }) {
+function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   return (
-    <div ref={ref} className="overflow-hidden h-px w-full">
-      <motion.div
-        className="h-full w-full"
-        style={{
-          backgroundColor: dark ? "rgba(255,255,255,0.08)" : "var(--color-border)",
-          transformOrigin: "left",
-        }}
-        initial={{ scaleX: 0 }}
-        animate={inView ? { scaleX: 1 } : {}}
-        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay }}
-      />
-    </div>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
@@ -32,25 +27,21 @@ export default function Experience() {
       className="py-28 md:py-40"
       style={{ backgroundColor: "#111110", color: "white" }}
     >
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12">
-
+      <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
-        <SectionReveal delay={0}>
+        <FadeUp>
           <p
-            className="mb-12 text-xs tracking-[0.2em] uppercase"
+            className="mb-16 text-xs tracking-[0.2em] uppercase"
             style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}
           >
             02 — Experience
           </p>
-        </SectionReveal>
-
-        <RevealLine delay={0.05} dark />
+        </FadeUp>
 
         {/* Heading */}
-        <div className="mt-14 mb-20 md:mb-28 max-w-2xl">
+        <div className="mb-20 md:mb-20">
           <WordReveal
             text="Where I've Worked"
-            delay={0.1}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
@@ -62,33 +53,30 @@ export default function Experience() {
           />
         </div>
 
-        {/* Jobs — each row slides up with stagger */}
+        {/* Jobs */}
         <div>
           {portfolio.experience.map((job, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
-            >
-              <RevealLine dark />
+            <FadeUp key={i} delay={i * 0.1}>
               <div
-                className="group py-10 md:py-14 transition-all duration-300"
+                className="group py-10 md:py-14 border-t transition-all duration-300"
+                style={{ borderColor: "rgba(255,255,255,0.08)" }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 md:gap-12 items-start">
                   {/* Period */}
                   <p
                     className="text-xs pt-1 tracking-wide"
-                    style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      color: "rgba(255,255,255,0.3)",
+                    }}
                   >
                     {job.period}
                   </p>
 
-                  {/* Role + content */}
+                  {/* Role + description */}
                   <div>
                     <h3
-                      className="mb-1 transition-colors duration-300 group-hover:text-[#c8f04a]"
+                      className="mb-1 transition-colors duration-200 group-hover:text-[#c8f04a]"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontSize: "clamp(1.5rem, 3vw, 2rem)",
@@ -106,7 +94,8 @@ export default function Experience() {
                       {job.company}
                     </p>
 
-                    <ul className="flex flex-col gap-2.5 mb-8">
+                    {/* Description bullets */}
+                    <ul className="flex flex-col gap-2.5 mb-4">
                       {job.description.map((point, j) => (
                         <li key={j} className="flex items-start gap-3">
                           <span
@@ -127,7 +116,8 @@ export default function Experience() {
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-2">
+                    {/* Tech tags */}
+                    {/* <div className="flex flex-wrap gap-2">
                       {job.technologies.map((tech) => (
                         <span
                           key={tech}
@@ -141,21 +131,22 @@ export default function Experience() {
                           {tech}
                         </span>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
 
-                  {/* Arrow — appears on hover */}
+                  {/* Arrow */}
                   <div
-                    className="hidden md:block text-xl transition-all duration-300 opacity-0 translate-x-0 translate-y-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    className="hidden md:block text-2xl transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1"
                     style={{ color: "#c8f04a" }}
                   >
                     ↗
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </FadeUp>
           ))}
-          <RevealLine dark />
+          {/* Bottom border */}
+          <div className="border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }} />
         </div>
       </div>
     </section>
