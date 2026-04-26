@@ -1,168 +1,148 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
   { href: "about", label: "About" },
-  { href: "experience", label: "Experience" },
+  { href: "experience", label: "Work" },
   { href: "projects", label: "Projects" },
   { href: "contact", label: "Contact" },
 ];
 
-// Sections with a dark (bg-ink) background
-const DARK_SECTIONS = ["about", "projects"];
-
-const NAVBAR_HEIGHT = 64; // matches h-16
-const SCROLL_OFFSET = -64; // to let navbar scroll lower to each section (section will hide under navbar)
-
-
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT - (SCROLL_OFFSET);
-  window.scrollTo({ top, behavior: "smooth" });
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
+  const isProjectPage = pathname !== "/";
 
   useEffect(() => {
-    const update = () => {
-      setScrolled(window.scrollY > 40);
-
-      const probeX = window.innerWidth / 2;
-      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 10);
-      const element = document.elementFromPoint(probeX, probeY);
-
-      const dark = Boolean(
-        element &&
-        DARK_SECTIONS.some((id) => element.closest(`#${id}`))
-      );
-      setIsDark(dark);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
 
       // Determine active section
-      const sections = navLinks
-        .map((link) => document.getElementById(link.href))
-        .filter(Boolean) as HTMLElement[];
-
+      const sections = navLinks.map((l) => document.getElementById(l.href)).filter(Boolean) as HTMLElement[];
       let current = "";
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].getBoundingClientRect().top <= NAVBAR_HEIGHT + 16) {
-          current = sections[i].id;
-          break;
-        }
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= 120) current = el.id;
       }
-      setActiveSection(current);
+      setActive(current);
     };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Derived style tokens
-  const logoColor = isDark ? "text-paper hover:text-accent" : "text-ink hover:text-accent";
-  const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
-  const activeLinkColor = "text-accent";
-  const resumeBorder = isDark
-    ? "border-paper text-paper hover:bg-paper hover:text-ink"
-    : "border-ink text-ink hover:bg-ink hover:text-paper";
-  const hamburgerBg = isDark ? "bg-paper" : "bg-ink";
-  const mobileBg = isDark ? "bg-ink border-paper/10" : "bg-paper border-border";
-  const mobileLinkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
-
-  const headerBg = scrolled
-    ? isDark
-      ? "bg-ink/90 backdrop-blur-md border-b border-paper/10 shadow-sm"
-      : "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
-    : "bg-transparent";
+  const handleNavClick = (href: string) => {
+    if (isProjectPage) {
+      router.push(`/#${href}`);
+    } else {
+      scrollTo(href);
+    }
+  };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <nav
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
+      style={{
+        padding: scrolled ? "0.75rem 2rem" : "1.25rem 2rem",
+        backgroundColor: scrolled ? "rgba(17,17,16,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none",
+      }}
+    >
+      <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+        {/* Brand */}
+        <button
+          onClick={() => (isProjectPage ? router.push("/") : window.scrollTo({ top: 0, behavior: "smooth" }))}
+          className="group flex items-center gap-2.5 cursor-pointer"
+        >
+          <span
+            className="w-2 h-2 rounded-full transition-all duration-500 group-hover:scale-[1.6]"
+            style={{ backgroundColor: "#c8f04a" }}
+          />
+          <span
+            className="text-sm uppercase overflow-hidden leading-none"
+            style={{
+              fontFamily: "var(--font-display)",
+              letterSpacing: "0.12em",
+              color: "white",
+              height: "1.1em",
+            }}
+          >
+            <span
+              className="block transition-transform duration-500"
+              style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
+            >
+              {portfolio.name.split(" ")[0]} V.
+            </span>
+          </span>
+        </button>
 
-        {/* Logo */}
-        <Link href="/" className={`font-display text-xl tracking-tight transition-colors ${logoColor}`}>
-          <span className="font-md">&lt; </span>
-          {portfolio.name.split(" ")[0]} V<span className="text-accent">.</span>
-          <span className="font-md"> &gt;</span>
-        </Link>
-
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <li key={link.href}>
               <button
-                onClick={() => scrollToSection(link.href)}
-                className={`font-mono text-sm tracking-wide transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : linkColor
-                  }`}
+                onClick={() => handleNavClick(link.href)}
+                className="relative px-4 py-2 text-sm cursor-pointer group overflow-hidden"
+                style={{ fontFamily: "var(--font-body)", letterSpacing: "0.02em" }}
               >
-                {link.label}
+                <span
+                  className="transition-colors duration-200"
+                  style={{
+                    color: active === link.href ? "#c8f04a" : "rgba(255,255,255,0.55)",
+                  }}
+                >
+                  {active === link.href && (
+                    <span
+                      className="inline-block w-1 h-1 rounded-full mr-1.5 mb-0.5"
+                      style={{ backgroundColor: "#c8f04a" }}
+                    />
+                  )}
+                  {link.label}
+                </span>
               </button>
             </li>
           ))}
-          <li>
+          <li className="ml-3">
             <a
               href={portfolio.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`font-mono text-sm px-4 py-2 border transition-all duration-200 ${resumeBorder}`}
+              className="text-sm px-4 py-2 border transition-all duration-300 hover:bg-white hover:text-ink"
+              style={{
+                color: "rgba(255,255,255,0.6)",
+                borderColor: "rgba(255,255,255,0.2)",
+                fontFamily: "var(--font-body)",
+              }}
             >
-              Resume ↗
+              Résumé ↗
             </a>
           </li>
         </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+        {/* Mobile */}
+        <a
+          href={portfolio.resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden text-xs px-3 py-1.5 border"
+          style={{
+            color: "rgba(255,255,255,0.6)",
+            borderColor: "rgba(255,255,255,0.2)",
+            fontFamily: "var(--font-body)",
+          }}
         >
-          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-px transition-opacity duration-200 ${hamburgerBg} ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className={`md:hidden border-b px-6 py-6 ${mobileBg}`}>
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <button
-                  onClick={() => { scrollToSection(link.href); setMenuOpen(false); }}
-                  className={`font-mono text-sm transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : mobileLinkColor
-                    }`}
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-            <li className="pt-2">
-              <a
-                href={portfolio.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`font-mono text-sm px-4 py-2 border transition-all duration-200 inline-block ${resumeBorder}`}
-              >
-                Resume ↗
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
+          Résumé ↗
+        </a>
+      </div>
+    </nav>
   );
 }
