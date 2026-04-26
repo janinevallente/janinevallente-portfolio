@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["Hello.", "Mabuhay.", "Loading...", "Building...", "Welcome."];
+const words = ["Hello.", "Mabuhay.", "Loading...", "Building...", "Welcome to My Portfolio."];
 
 export default function Preloader({ onDone }: { onDone: () => void }) {
   const [index, setIndex] = useState(0);
