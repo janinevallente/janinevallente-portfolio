@@ -1,25 +1,17 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { motion, useInView  } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { portfolio } from "@/lib/data";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionReveal from "@/components/ui/SectionReveal";
 import WordReveal from "@/components/ui/WordReveal";
-
-// Staggered container
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-};
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
-};
+import FadeUp from "@/components/ui/FadeUp"
+import RevealLine from "@/components/ui/RevealLine"
+import { portfolio } from "@/lib/data";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -27,30 +19,21 @@ export default function ProjectDetail() {
 
   const project = portfolio.projects.find((p) => p.id === slug);
 
-  // Redirect if not found
   useEffect(() => {
     if (!project) router.replace("/");
   }, [project, router]);
 
-  // Hero parallax
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   if (!project) return null;
 
-  // Prev / next navigation
   const currentIndex = portfolio.projects.findIndex((p) => p.id === slug);
   const prevProject = portfolio.projects[currentIndex - 1] ?? null;
   const nextProject = portfolio.projects[currentIndex + 1] ?? null;
 
   return (
     <>
-      {/* Page entrance — curtain lifts from top */}
+      {/* Page entrance curtain */}
       <motion.div
-        className="fixed inset-0 z-[200] origin-top"
-        style={{ backgroundColor: "#111110" }}
+        className="fixed inset-0 z-[200] origin-top bg-ink"
         initial={{ scaleY: 1 }}
         animate={{ scaleY: 0 }}
         transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
@@ -58,329 +41,275 @@ export default function ProjectDetail() {
 
       <Navbar />
 
-      <main style={{ backgroundColor: "var(--color-bg)" }}>
+      <main className="min-h-screen bg-bg">
 
-        {/* ── Hero ── */}
-        <div
-          ref={heroRef}
-          className="relative h-[70vh] md:h-[85vh] overflow-hidden"
-          style={{ backgroundColor: "#111110" }}
-        >
-          <motion.div className="absolute inset-0" style={{ y: heroY }}>
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              priority
-              quality={95}
-              sizes="100vw"
-              className="object-cover"
-              style={{ opacity: 0.5, objectPosition: "center 20%" }}
-            />
+        {/* ── Header ── */}
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 pt-32 md:pt-40 pb-0">
+
+          {/* Back link */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+            className="mb-14"
+          >
+            <Link
+              href="/#projects"
+              className="inline-flex items-center gap-2 text-xs tracking-[0.16em] uppercase transition-all duration-200 hover:gap-3 font-body text-ink-muted"
+            >
+              ← Back to Projects
+            </Link>
           </motion.div>
 
-          {/* Gradient overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(17,17,16,0.3) 0%, rgba(17,17,16,0.15) 40%, rgba(17,17,16,0.75) 80%, rgba(17,17,16,1) 100%)",
-            }}
-          />
+          {/* Giant title */}
+          <div className="mb-16 md:mb-20">
+            <WordReveal
+              text={project.title}
+              delay={0.4}
+              className="font-display font-bold text-ink"
+              style={{
+                fontSize: "clamp(3rem, 9vw, 9rem)",
+                letterSpacing: "-0.03em",
+                lineHeight: 0.9,
+              }}
+            />
+          </div>
 
-          {/* Hero content */}
-          <motion.div
-            className="absolute inset-0 flex flex-col justify-end px-8 md:px-12 pb-12 md:pb-16"
-            style={{ opacity: heroOpacity }}
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Back button */}
-            <motion.div variants={fadeUp} className="mb-8">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-xs tracking-widest uppercase transition-colors duration-200 hover:text-[#c8f04a]"
-                style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-body)" }}
+          {/* ── Three-column metadata ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 px-2">
+
+            {/* Category */}
+            <div className="py-6 md:pr-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
               >
-                <span>←</span> Back to Portfolio
-              </Link>
-            </motion.div>
-
-            {/* Category + year */}
-            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-4">
-              <span
-                className="text-xs tracking-[0.18em] uppercase px-3 py-1 border"
+                Category
+              </motion.p>
+              <RevealLine delay={0.6} />
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
+                className="mt-5 font-display font-medium text-ink"
                 style={{
-                  fontFamily: "var(--font-body)",
-                  color: "rgba(255,255,255,0.5)",
-                  borderColor: "rgba(255,255,255,0.15)",
+                  fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {project.category}
-              </span>
-              <span
-                className="text-xs"
-                style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.35)" }}
+              </motion.p>
+            </div>
+
+            {/* Tech stack */}
+            <div className="py-6 md:px-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
+              >
+                Tech Stack
+              </motion.p>
+              <RevealLine delay={0.63} />
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
+                className="mt-5 flex flex-wrap gap-1.5"
+              >
+                {project.tags.map((tag, i) => (
+                  <span
+                    key={tag}
+                    className="font-display font-medium text-ink"
+                    style={{
+                      fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    {tag}{i < project.tags.length - 1 && (
+                      <span className="text-border ml-1">·</span>
+                    )}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Year */}
+            <div className="py-6 md:pl-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
+              >
+                Year
+              </motion.p>
+              <RevealLine delay={0.66} />
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.78 }}
+                className="mt-5 font-display font-medium text-ink"
+                style={{
+                  fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
+                  letterSpacing: "-0.01em",
+                }}
               >
                 {project.year}
-              </span>
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              variants={fadeUp}
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(3rem, 9vw, 9rem)",
-                fontWeight: 800,
-                letterSpacing: "-0.03em",
-                lineHeight: 0.95,
-                color: "white",
-              }}
-            >
-              {project.title}
-            </motion.h1>
-          </motion.div>
+              </motion.p>
+            </div>
+          </div>
         </div>
 
-        {/* ── Content ── */}
+        {/* ── Image collage ── */}
+        <div className="mt-16 md:mt-20 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto">
+          <div className={`grid ${project?.images?.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-2 sm:gap-3`}>
+            {project.images.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.65 + i * 0.1 }}
+                className="relative overflow-hidden"
+                style={{
+                  aspectRatio: project?.images?.length === 1 ? "19/10" : "2/1",
+                }}
+              >
+                <Image
+                  src={img}
+                  alt={`${project.title} screenshot ${i + 1}`}
+                  fill
+                  priority={i === 0}
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1400px) calc((100vw - 6rem) / 2), calc(1400px / 2)"
+                  className="object-cover object-top"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Overview + Prev/Next ── */}
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 py-20 md:py-28">
 
-          {/* Top row: description + links */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-16 lg:gap-24 mb-24">
-
-            {/* Description */}
+          {/* Overview */}
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
+            <SectionReveal delay={0} direction="fade">
+              <p
+                className="text-xs tracking-[0.2em] uppercase pt-1 font-body text-ink-muted"
+              >
+                Overview
+              </p>
+            </SectionReveal>
             <div>
-              <SectionReveal delay={0}>
-                <p
-                  className="text-xs tracking-[0.2em] uppercase mb-8"
-                  style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                >
-                  Overview
-                </p>
-              </SectionReveal>
               <WordReveal
                 text={project.description}
                 delay={0.05}
+                className="font-display font-semibold text-ink"
                 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.3rem, 2.5vw, 2rem)",
-                  fontWeight: 600,
-                  lineHeight: 1.35,
-                  color: "var(--color-ink)",
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.9rem)",
+                  lineHeight: 1.45,
                   letterSpacing: "-0.015em",
                 }}
               />
-            </div>
-
-            {/* Sidebar: tech + links */}
-            <SectionReveal delay={0.15} direction="up">
-              <div className="flex flex-col gap-10 lg:pt-12">
-
-                {/* Tech stack */}
-                <div>
-                  <p
-                    className="text-xs tracking-[0.2em] uppercase mb-5"
-                    style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                  >
-                    Tech Stack
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-3 py-1.5 border"
+              {/* Links */}
+              <div className="mt-10">
+                <FadeUp delay={0.05}>
+                  <div className="flex items-center gap-3 mb-20 md:mb-28">
+                    {project.hasUrl && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-accent group inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black"
                         style={{
-                          fontFamily: "var(--font-body)",
-                          color: "var(--color-ink-muted)",
-                          borderColor: "var(--color-border)",
+                          fontSize: "0.75rem",
+                          letterSpacing: "0.1em",
                         }}
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        Live Site
+                        <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                      </a>
+                    )}
+                    {project?.hasGithub && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-ink group inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-white"
+                        style={{
+                          fontSize: "0.75rem",
+                          letterSpacing: "0.1em",
+                        }}
+                      >
+                        GitHub
+                        <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                      </a>
+                    )}
                   </div>
-                </div>
+                </FadeUp>
+              </div>
+            </div>
+          </div>
 
-                {/* Links */}
-                {(project.hasUrl || project.hasGithub) && (
-                  <div>
-                    <p
-                      className="text-xs tracking-[0.2em] uppercase mb-5"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
+          {/* Prev / Next */}
+          {(prevProject || nextProject) && (
+            <div className="pt-7 border-t border-border">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                {prevProject ? (
+                  <FadeUp delay={0.07}>
+                    <Link
+                      href={`/projects/${prevProject?.id}`}
+                      className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
                     >
-                      Links
-                    </p>
-                    <div className="flex flex-col gap-3">
-                      {project.hasUrl && (
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group inline-flex items-center justify-between px-5 py-3.5 border transition-all duration-300 hover:bg-ink hover:border-ink"
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.85rem",
-                            color: "var(--color-ink)",
-                            borderColor: "var(--color-border)",
-                          }}
-                        >
-                          <span className="transition-colors duration-300 group-hover:text-bg">View Live Site</span>
-                          <span className="transition-all duration-300 group-hover:text-bg group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-                        </a>
-                      )}
-                      {project.hasGithub && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group inline-flex items-center justify-between px-5 py-3.5 border transition-all duration-300 hover:bg-ink hover:border-ink"
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            fontSize: "0.85rem",
-                            color: "var(--color-ink)",
-                            borderColor: "var(--color-border)",
-                          }}
-                        >
-                          <span className="transition-colors duration-300 group-hover:text-bg">View on GitHub</span>
-                          <span className="transition-all duration-300 group-hover:text-bg group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                      <span className="ms-3 text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-white/60 font-body text-ink-muted">
+                        ← Previous 
+                      </span>
+                      <span
+                        className="ms-3 transition-colors duration-300 group-hover:text-white font-display font-bold text-ink"
+                        style={{
+                          fontSize: "clamp(1.25rem, 2.5vw, 1.8rem)",
+                          letterSpacing: "-0.02em",
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {prevProject?.title}
+                      </span>
+                    </Link>
+                  </FadeUp>
+                ) : (
+                  <div />
+                )}
+                {nextProject ? (                 
+                  <FadeUp delay={0.12}>
+                    <Link
+                      href={`/projects/${nextProject?.id}`}
+                      className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
+                    >
+                      <span className="me-3 text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-white/60 font-body text-ink-muted">
+                        Next →
+                      </span>
+                      <span
+                        className="me-3 transition-colors duration-300 group-hover:text-white font-display font-bold text-ink"
+                        style={{
+                          fontSize: "clamp(1.25rem, 2.5vw, 1.8rem)",
+                          letterSpacing: "-0.02em",
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {nextProject?.title}
+                      </span>
+                    </Link>
+                  </FadeUp>
+                ):(
+                  <div />
                 )}
               </div>
-            </SectionReveal>
-          </div>
-
-          {/* Full-width project image */}
-          <SectionReveal direction="scale" delay={0}>
-            <div
-              className="relative w-full overflow-hidden mb-24"
-              style={{ aspectRatio: "16/9", borderRadius: 4 }}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                quality={95}
-                sizes="(max-width: 1400px) 100vw, 1400px"
-                className="object-cover transition-transform duration-700 hover:scale-[1.02]"
-              />
             </div>
-          </SectionReveal>
-
-          {/* ── Prev / Next navigation ── */}
-          <div
-            className="border-t pt-14"
-            style={{ borderColor: "var(--color-border)" }}
-          >
-            <SectionReveal delay={0}>
-              <p
-                className="text-xs tracking-[0.2em] uppercase mb-10"
-                style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-              >
-                More Projects
-              </p>
-            </SectionReveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {prevProject ? (
-                <SectionReveal delay={0.05} direction="up">
-                  <Link
-                    href={`/projects/${prevProject.id}`}
-                    className="group flex flex-col gap-4 p-6 border transition-all duration-300 hover:border-ink hover:bg-ink"
-                    style={{ borderColor: "var(--color-border)" }}
-                  >
-                    <span
-                      className="text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-[rgba(255,255,255,0.4)]"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                    >
-                      ← Previous
-                    </span>
-                    <span
-                      className="transition-colors duration-300 group-hover:text-white"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-                        fontWeight: 700,
-                        letterSpacing: "-0.02em",
-                        lineHeight: 1.1,
-                        color: "var(--color-ink)",
-                      }}
-                    >
-                      {prevProject.title}
-                    </span>
-                    <span
-                      className="text-xs transition-colors duration-300 group-hover:text-[rgba(255,255,255,0.35)]"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                    >
-                      {prevProject.category}
-                    </span>
-                  </Link>
-                </SectionReveal>
-              ) : (
-                <div />
-              )}
-
-              {nextProject ? (
-                <SectionReveal delay={0.1} direction="up">
-                  <Link
-                    href={`/projects/${nextProject.id}`}
-                    className="group flex flex-col gap-4 p-6 border text-right transition-all duration-300 hover:border-ink hover:bg-ink"
-                    style={{ borderColor: "var(--color-border)" }}
-                  >
-                    <span
-                      className="text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-[rgba(255,255,255,0.4)]"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                    >
-                      Next →
-                    </span>
-                    <span
-                      className="transition-colors duration-300 group-hover:text-white"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-                        fontWeight: 700,
-                        letterSpacing: "-0.02em",
-                        lineHeight: 1.1,
-                        color: "var(--color-ink)",
-                      }}
-                    >
-                      {nextProject.title}
-                    </span>
-                    <span
-                      className="text-xs transition-colors duration-300 group-hover:text-[rgba(255,255,255,0.35)]"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--color-ink-muted)" }}
-                    >
-                      {nextProject.category}
-                    </span>
-                  </Link>
-                </SectionReveal>
-              ) : (
-                <div />
-              )}
-            </div>
-
-            {/* Back to all projects */}
-            <SectionReveal delay={0.15} direction="fade">
-              <div className="mt-14 flex justify-center">
-                <Link
-                  href="/#projects"
-                  className="group inline-flex items-center gap-2 text-sm border-b pb-0.5 transition-all duration-300 hover:gap-4"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    color: "var(--color-ink)",
-                    borderColor: "var(--color-border)",
-                  }}
-                >
-                  View all projects
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </Link>
-              </div>
-            </SectionReveal>
-          </div>
+          )}
         </div>
       </main>
 

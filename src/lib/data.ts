@@ -1,5 +1,9 @@
 import LumiBoothImg from "@/assets/images/lumibooth.webp"
+import LumiBoothImg2 from "@/assets/images/lumibooth2.webp"
+import LumiBoothImg3 from "@/assets/images/lumibooth3.webp"
+import LumiBoothImg4 from "@/assets/images/lumibooth4.webp"
 import PokedexHubImg from "@/assets/images/pokedexhub.webp"
+import PokedexHubImg2 from "@/assets/images/pokedexhub2.webp"
 import FinanceVueImg from "@/assets/images/financevue.webp"
 import AquafusionImg from "@/assets/images/aquafusion.webp"
 import PortfolioImg from "@/assets/images/portfolio.webp"
@@ -23,9 +27,9 @@ export const portfolio = {
     // mobile: ["Kotlin", "Firebase"],
     // also: ["Vite", "Vue", "Nuxt", "HTML", "CSS", "JavaScript", "Bootstrap", "Material UI", "Ant Design", "Java", "React Native", "Node.js", "MongoDB"],
     technologies: [
-    "HTML", "CSS", "JavaScript", "TypeScript", "Bootstrap", "Tailwind CSS",
-    "Material UI", "Ant Design", "Kotlin", "Firebase", "React", "Next.js",
-    "Vue", "Nuxt", "Vite", "Node.js", "MongoDB", "Java", "React Native", "Git", "Figma"
+      "HTML", "CSS", "JavaScript", "TypeScript", "Bootstrap", "Tailwind CSS",
+      "Material UI", "Ant Design", "Kotlin", "Firebase", "React", "Next.js",
+      "Vue", "Nuxt", "Vite", "Node.js", "MongoDB", "Java", "React Native", "Git", "Figma",
     ],
     icons: [
       "html5/html5-original",
@@ -48,8 +52,8 @@ export const portfolio = {
       "java/java-original",
       "react/react-original",
       "git/git-original",
-      "figma/figma-original"
-    ]
+      "figma/figma-original",
+    ],
   },
 
   projects: [
@@ -57,11 +61,10 @@ export const portfolio = {
       id: "01",
       title: "LumiBooth",
       category: "Web Application",
-      description:
-        "A soft and aesthetic photo strip booth web application that lets users capture photos, decorate them with stickers, choose a filter or strip theme, and download a polished photo strip.",
+      description: "A soft and aesthetic photo strip booth web application that lets users capture photos, decorate them with stickers, choose a filter or strip theme, and download a polished photo strip.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
       year: "2026",
-      image: LumiBoothImg,
+      images: [LumiBoothImg, LumiBoothImg2, LumiBoothImg3, LumiBoothImg4],
       hasUrl: true,
       url: "https://lumibooth.vercel.app/",
       hasGithub: true,
@@ -72,11 +75,10 @@ export const portfolio = {
       id: "02",
       title: "Pokédex Hub",
       category: "Web Application",
-      description:
-        "A modern pokédex web application powered by PokéAPI, enabling users to explore 1,000+ Pokémon and their variants. Features dynamic search and filtering by type and generation, along with detailed views of stats, moves, evolution chains, and encounter locations. Designed with a focus on performance, scalability, and an intuitive user experience.",
+      description: "A modern pokédex web application powered by PokéAPI, enabling users to explore 1,000+ Pokémon and their variants. Features dynamic search and filtering by type and generation, along with detailed views of stats, moves, evolution chains, and encounter locations. Designed with a focus on performance, scalability, and an intuitive user experience.",
       tags: ["Nuxt", "TypeScript", "CSS", "PokéAPI", "Vercel"],
       year: "2026",
-      image: PokedexHubImg,
+      images: [PokedexHubImg, PokedexHubImg2],
       hasUrl: true,
       url: "https://pokedexhub.vercel.app/",
       hasGithub: true,
@@ -87,11 +89,10 @@ export const portfolio = {
       id: "03",
       title: "FinanceVue",
       category: "Web Dashboard",
-      description:
-        "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through data visualization.",
+      description: "A corporate financial monitoring dashboard providing insights into key metrics, transaction activity, and performance tracking through data visualization.",
       tags: ["React", "Vite", "TypeScript"],
       year: "2024",
-      image: FinanceVueImg,
+      images: [FinanceVueImg],
       hasUrl: false,
       url: "",
       hasGithub: true,
@@ -102,11 +103,10 @@ export const portfolio = {
       id: "04",
       title: "AquaFusion Mobile",
       category: "Mobile Application",
-      description:
-        "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
+      description: "An IoT-based aquaponics monitoring mobile application designed to track real-time aquaponic data — pH levels, TDS, water level, air humidity, water and air temperature with data visualization features to improve aquaponics farming efficiency and reduce manual monitoring.",
       tags: ["Kotlin", "Firebase", "Android Studio"],
       year: "2023 - 2024",
-      image: AquafusionImg,
+      images: [AquafusionImg],
       hasUrl: false,
       url: "",
       hasGithub: true,
@@ -115,13 +115,12 @@ export const portfolio = {
     },
     {
       id: "05",
-      title: "Developer Portfolio",
+      title: "Portfolio Website",
       category: "Website",
-      description:
-        "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
+      description: "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
       year: "2026",
-      image: PortfolioImg,
+      images: [PortfolioImg],
       hasUrl: false,
       url: "",
       hasGithub: false,
@@ -132,7 +131,7 @@ export const portfolio = {
 
   experience: [
     {
-      company: "MYT SoftDev Solutions, Inc.",
+      company: "MYT SoftDev Solutions Inc.",
       role: "Junior Software Developer",
       period: "Jun 2024 — Oct 2025",
       description: [
@@ -144,7 +143,7 @@ export const portfolio = {
       technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "Tailwind CSS", "AntDesign", "Git"],
     },
     {
-      company: "MYT SoftDev Solutions, Inc.",
+      company: "MYT SoftDev Solutions Inc.",
       role: "Software Developer Intern",
       period: "Jan 2024 — Apr 2024",
       description: [
@@ -154,11 +153,5 @@ export const portfolio = {
       ],
       technologies: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Bootstrap", "AntDesign", "Node.js", "PHP", "MySQL", "Git"],
     },
-  ],
-
-  marqueeItems: [
-    "React", "Next.js", "TypeScript", "Tailwind", "Framer Motion",
-    "GraphQL", "Node.js", "Figma", "Storybook", "Vitest",
-    "Playwright", "WebGL", "PWA", "Accessibility", "Performance",
   ],
 };
