@@ -71,7 +71,7 @@ export default function About() {
                   {portfolio.skills.technologies.map((skill, index) => (
                     <div
                       key={skill}
-                      className="relative group flex flex-col rounded-xl items-center gap-2 p-4 border border-ink-secondary bg-ink-secondary transition-colors duration-200 hover:border-ink font-body text-ink-muted"
+                      className="relative group flex flex-col rounded-lg items-center gap-2 p-4 border border-ink/40 bg-bg transition-colors duration-200 hover:border-ink/40 font-body text-ink-muted"
                     >
                       <img
                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
