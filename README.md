@@ -1,6 +1,6 @@
 # Janine Vallente — Portfolio
 
-A modern, animated developer portfolio built with **Next.js 15** and **Framer Motion**. Showcases projects, experience, and skills with smooth page transitions, scroll-driven animations, and a custom cursor — all designed and built from scratch.
+A modern, animated developer portfolio built with **Next.js 15** and **Framer Motion**. Showcases projects, experience, and skills with smooth page transitions, scroll-driven animations, and a custom cursor. The current website is the 2nd iteration of my portfolio.
 
 ---
 
