@@ -46,7 +46,7 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
               </span>
               <span className="font-body text-xs tracking-[0.12em] uppercase font-normal text-accent">
-                Available for work
+                Available to work
               </span>
             </div>
  
