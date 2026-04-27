@@ -195,6 +195,13 @@ export default function ProjectDetail() {
               <div className="mt-10">
                 <FadeUp delay={0.05}>
                   <div className="flex items-center gap-3 mb-20 md:mb-28">
+                    {project.title === "Portfolio Website" && (
+                      <>
+                        <div className="group bg-accent inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black text-[0.75rem] tracking-[0.1em]">
+                          Current Live Site
+                        </div>
+                      </>
+                    )}
                     {project.hasUrl && (
                       <a
                         href={project.url}
