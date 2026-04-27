@@ -117,7 +117,7 @@ export default function ProjectDetail() {
                     className="font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
                   >
                     {tag}{i < project.tags.length - 1 && (
-                      <span className="text-border ml-1">·</span>
+                      <span className="inline-block w-1.5 h-1.5 bg-ink/70 rounded-full ml-2 mb-0.5" />
                     )}
                   </span>
                 ))}
