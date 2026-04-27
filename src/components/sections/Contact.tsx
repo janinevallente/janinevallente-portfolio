@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
 import SectionReveal from "@/components/ui/SectionReveal";
@@ -70,7 +71,7 @@ export default function Contact() {
           <WordReveal
             text="Let's build something together."
             delay={0.1}
-            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.1]"
+            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.2]"
           />
         </div>
 
@@ -87,7 +88,7 @@ export default function Contact() {
           <div className="mt-10 mb-20">
             <a
               href={`mailto:${portfolio.email}`}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-white hover:border-white"
+              className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
             >
               <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                 Get in touch
@@ -97,7 +98,7 @@ export default function Contact() {
                 animate={{ x: [0, 3, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               >
-                ↗
+                <ArrowUpRight size={15} />
               </motion.span>
             </a>
           </div>

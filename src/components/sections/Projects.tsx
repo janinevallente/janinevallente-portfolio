@@ -10,6 +10,7 @@ import RevealLine from "@/components/ui/RevealLine";
 import FloatingImageCard from "@/components/ui/FloatingImageCard";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { portfolio } from "@/lib/data";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
   const router = useRouter();
@@ -118,25 +119,25 @@ export default function Projects() {
                   <span className="font-body text-xs flex-shrink-0 tabular-nums text-ink-muted">
                     {project.id}
                   </span>
-                  <h3 className="font-display font-semibold text-ink text-[clamp(1.6rem,3.5vw,3rem)] tracking-[-0.02em] leading-[1.2] whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-200">
+                  <h3 className="font-display font-semibold text-ink text-[clamp(1.65rem,3.6vw,3rem)] tracking-[-0.02em] leading-[1.2] whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-200">
                     {project.title}
                   </h3>
                 </div>
 
                 {/* Right: meta (desktop only) */}
                 <div className="hidden md:flex items-center gap-8 flex-shrink-0">
-                  <span className="font-body text-xs w-36 text-left uppercase text-ink-muted">
+                  <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] text-left tracking-[-0.01em] w-36">
                     {project.category}
                   </span>
-                  <span className="font-body text-xs tabular-nums w-36 text-center text-ink-muted">
+                  <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] text-center tracking-[-0.01em] w-36">
                     {project.year}
                   </span>
                 </div>
 
                 {/* Mobile arrow */}
-                <span className="md:hidden text-sm flex-shrink-0 cursor-none text-ink-muted">
-                  ↗
-                </span>
+                <div className="md:hidden flex-shrink-0 cursor-none text-ink">
+                  <ArrowUpRight size={15} />
+                </div>
               </div>
             </motion.li>
           ))}
@@ -144,22 +145,24 @@ export default function Projects() {
         </ul>
       </div>
 
-      {/* Floating image card */}
-      <FloatingImageCard
-        x={cursor.x}
-        y={cursor.y}
-        active={hovered.active}
-        index={hovered.index}
-        projects={portfolio.projects}
-      />
+      {/* Floating image card & cursor - desktop only */}
+      <div className="hidden lg:block">
+        <FloatingImageCard
+          x={cursor.x}
+          y={cursor.y}
+          active={hovered.active}
+          index={hovered.index}
+          projects={portfolio.projects}
+        />
 
-      {/* Custom cursor */}
-      <CustomCursor
-        x={cursor.x}
-        y={cursor.y}
-        active={hovered.active}
-        label="View"
-      />
+        {/* Custom cursor */}
+        <CustomCursor
+          x={cursor.x}
+          y={cursor.y}
+          active={hovered.active}
+          label="View"
+        />
+      </div>
     </section>
   );
 }

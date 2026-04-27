@@ -1,8 +1,10 @@
 "use client";
 
-import { portfolio } from "@/lib/data";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import WordReveal from "@/components/ui/WordReveal";
 import FadeUp from "@/components/ui/FadeUp";
+import { portfolio } from "@/lib/data";
 
 export default function About() {
   return (
@@ -28,7 +30,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Bio */}
           <FadeUp delay={0.1}>
-            <div className="font-body text-base text-ink/80 leading-relaxed">
+            <div className="font-body text-[clamp(1rem,1.5vw,1.125rem)] text-ink/80 leading-relaxed">
               <p className="mb-5">
                 I began as an Android developer working with Kotlin and Firebase,
                 then expanded into frontend web development and built a strong interest
@@ -46,15 +48,23 @@ export default function About() {
                 video games, or attending hobby conventions.&quot;
               </p>
 
-              <div className="mt-10 flex items-center gap-4">
+              <div className="mt-10">
                 <a
                   href={portfolio.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 text-sm transition-all duration-300 border-b border-ink pb-0.5 hover:gap-4 font-body text-ink"
+                  className="bg-ink group inline-flex items-center gap-3 px-6 py-3.5 border border-ink font-body text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
                 >
-                  View Résumé
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                  <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                    View Resume
+                  </span>
+                  <motion.span
+                    className="text-white transition-colors duration-300 group-hover:text-ink"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  >
+                    <ArrowUpRight size={15} />
+                  </motion.span>
                 </a>
               </div>
             </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroImg from "@/assets/images/hero-img.webp";
 import Marquee from "@/components/ui/Marquee";
@@ -12,19 +11,13 @@ export default function Hero() {
       className="bg-hero relative h-screen overflow-hidden flex flex-col"
     >
       {/* Hero image */}
-      <div className="absolute inset-0">
-        <Image
-          src={HeroImg}
-          alt="Janine Vallente"
-          fill
-          priority
-          quality={95}
-          sizes="100vw"
-          className="object-cover object-top opacity-95"
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black" />
-      </div>
+      <img
+        src={HeroImg.src}
+        alt="Janine Vallente"
+        className="absolute inset-0 w-full h-full object-cover object-top opacity-95"
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/5 to-black" />
 
       {/* Top-right descriptor */}
       <motion.div

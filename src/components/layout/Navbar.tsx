@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
@@ -181,8 +182,8 @@ export default function Navbar() {
                       >
                         {link.label}
                       </span>
-                      <span className={`text-lg transition-colors duration-200 ${isActive ? "text-accent" : "text-white/25 group-hover:text-white/60"}`}>
-                        ↗
+                      <span className={`text-lg transition-colors duration-200 ${isActive ? "text-accent" : "text-white/60 group-hover:text-white/60"}`}>
+                        <ArrowUpRight size={20} />
                       </span>
                     </button>
                   </motion.li>

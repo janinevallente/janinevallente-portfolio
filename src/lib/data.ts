@@ -138,6 +138,18 @@ export const portfolio = {
 
   experience: [
     {
+      company: "Lennor Metier Consulting Philippines Inc.",
+      role: "Oracle EPM Cloud Consultant (Trainee)",
+      period: "Feb 2026 — Mar 2026",
+      description: [
+        "Participated in structured training on Oracle EPM Cloud Planning, focusing on enterprise financial and workforce planning concepts",
+        "Explored configuration fundamentals of planning applications, including dimensions, metadata, forms, and business rules",
+        "Made web forms and performed data validation within Oracle EPM metadata",
+        "Gained hands-on exposure to enterprise financial systems and business application processes",
+      ],
+      technologies: [""],
+    },
+    {
       company: "MYT SoftDev Solutions Inc.",
       role: "Junior Software Developer",
       period: "Jun 2024 — Oct 2025",
