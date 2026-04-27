@@ -142,9 +142,10 @@ export const portfolio = {
       role: "Oracle EPM Cloud Consultant (Trainee)",
       period: "Feb 2026 — Mar 2026",
       description: [
-        "Participated structured training on Oracle EPM Cloud, focusing on enterprise financial and workforce planning concepts.",
-        "Developed web forms and performed data validation within Oracle EPM metadata.",
-        "Gained hands-on exposure to enterprise financial systems and business application processes."
+        "Participated in structured training on Oracle EPM Cloud Planning, focusing on enterprise financial and workforce planning concepts",
+        "Explored configuration fundamentals of planning applications, including dimensions, metadata, forms, and business rules",
+        "Made web forms and performed data validation within Oracle EPM metadata",
+        "Gained hands-on exposure to enterprise financial systems and business application processes",
       ],
       technologies: [""],
     },
