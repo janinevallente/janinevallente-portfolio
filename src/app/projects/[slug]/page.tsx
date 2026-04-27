@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -161,14 +160,10 @@ export default function ProjectDetail() {
                   aspectRatio: project?.images?.length === 1 ? "19/10" : "2/1",
                 }}
               >
-                <Image
-                  src={img}
+                <img
+                  src={img.src}
                   alt={`${project.title} screenshot ${i + 1}`}
-                  fill
-                  priority={i === 0}
-                  quality={95}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1400px) calc((100vw - 6rem) / 2), calc(1400px / 2)"
-                  className="object-cover object-top"
+                  className="w-full h-full object-cover object-top"
                 />
               </motion.div>
             ))}

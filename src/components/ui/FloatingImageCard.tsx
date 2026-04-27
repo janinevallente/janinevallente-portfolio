@@ -1,5 +1,4 @@
 import { motion} from "framer-motion";
-import Image from "next/image";
 import { portfolio } from "@/lib/data";
 
 type Project = (typeof portfolio.projects)[number];
@@ -47,12 +46,10 @@ export default function FloatingImageCard({
             className="relative w-full"
             style={{ height: `${100 / projects.length}%` }}
           >
-            <Image
-              src={p.images[0]}
+            <img
+              src={p.images[0].src}
               alt={p.title}
-              fill
-              sizes="400px"
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
