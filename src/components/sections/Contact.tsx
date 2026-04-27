@@ -87,7 +87,7 @@ export default function Contact() {
           <div className="mt-10 mb-20">
             <a
               href={`mailto:${portfolio.email}`}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-white hover:border-white"
+              className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
             >
               <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                 Get in touch

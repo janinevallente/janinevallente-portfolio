@@ -87,7 +87,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
-                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.category}
               </motion.p>
@@ -113,7 +113,7 @@ export default function ProjectDetail() {
                 {project.tags.map((tag, i) => (
                   <span
                     key={tag}
-                    className="font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
+                    className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
                   >
                     {tag}{i < project.tags.length - 1 && (
                       <span className="inline-block w-1.5 h-1.5 bg-ink/70 rounded-full ml-2 mb-0.5" />
@@ -138,7 +138,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.78 }}
-                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.year}
               </motion.p>
@@ -192,32 +192,52 @@ export default function ProjectDetail() {
                   <div className="flex items-center gap-3 mb-20 md:mb-28">
                     {project.title === "Portfolio Website" && (
                       <>
-                        <div className="group bg-accent inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black text-[0.75rem] tracking-[0.1em]">
+                        <div className="bg-accent group inline-flex items-center gap-3 px-6 py-3.5 border border-accent font-body text-sm tracking-wide uppercase transition-all duration-300">
                           Current Live Site
                         </div>
                       </>
                     )}
                     {project.hasUrl && (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group bg-accent inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black text-[0.75rem] tracking-[0.1em]"
-                      >
-                        Live Site
-                        <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                      </a>
+                      <>
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-accent group inline-flex items-center gap-3 px-6 py-3.5 border border-accent font-body text-sm tracking-wide uppercase transition-all duration-300 hover:bg-ink hover:border-ink"
+                        >
+                          <span className="text-ink transition-colors duration-300 group-hover:text-white">
+                            Live Site
+                          </span>
+                          <motion.span
+                            className="text-ink transition-colors duration-300 group-hover:text-white"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            ↗
+                          </motion.span>
+                        </a>
+                      </>
                     )}
                     {project?.hasGithub && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group bg-ink inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-white text-[0.75rem] tracking-[0.1em]"
-                      >
-                        GitHub
-                        <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                      </a>
+                      <>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-ink group inline-flex items-center gap-3 px-6 py-3.5 border border-ink font-body text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+                        >
+                          <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                            Github
+                          </span>
+                          <motion.span
+                            className="text-white transition-colors duration-300 group-hover:text-ink"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            ↗
+                          </motion.span>
+                        </a>
+                      </>
                     )}
                   </div>
                 </FadeUp>
