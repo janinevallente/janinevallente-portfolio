@@ -26,18 +26,29 @@ export default function Experience() {
         </FadeUp>
 
         {/* Heading */}
-        <div className="mb-20">
+        <div className="mb-10">
           <WordReveal
             text="Where I've Worked"
             className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-none"
           />
         </div>
 
+        {/* Subtext */}
+        <FadeUp delay={0.18}>
+          <p className="font-body font-light text-white/60 leading-relaxed text-[clamp(1rem,1.7vw,1.3rem)] italic">
+            "I started my career as a Software Developer Intern, where I built a strong foundation
+            in development workflows and debugging. I progressed into a Junior Software Developer
+            role, contributing to enterprise-level systems and improving application reliability.
+            Recently, I explored Oracle EPM Cloud, expanding my knowledge into financial systems
+            and enterprise planning solutions."
+          </p>
+        </FadeUp>
+
         {/* Jobs */}
         <div>
           {portfolio.experience.map((job, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group py-10 md:py-14 border-t border-white-14 transition-all duration-300">
+              <div className="group py-10 md:py-14 border-b border-white-14 transition-all duration-300">
                 <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 md:gap-12 items-start">
                   {/* Period */}
                   <p className="font-body text-xs pt-1 tracking-wide text-white/30">
@@ -74,8 +85,6 @@ export default function Experience() {
               </div>
             </FadeUp>
           ))}
-          {/* Bottom border */}
-          <div className="border-t border-white-14" />
         </div>
       </div>
     </section>
