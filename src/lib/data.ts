@@ -90,6 +90,8 @@ export const portfolio = {
       url: "https://pokedexhub.vercel.app/",
       hasGithub: true,
       github: "https://github.com/janinevallente/pokedex-app",
+      hasPublication: false,
+      publication: "",
       featured: true,
     },
     {
@@ -104,6 +106,8 @@ export const portfolio = {
       url: "",
       hasGithub: true,
       github: "https://github.com/janinevallente/financevue-dashboard",
+      hasPublication: false,
+      publication: "",
       featured: false,
     },
     {
@@ -118,6 +122,8 @@ export const portfolio = {
       url: "",
       hasGithub: true,
       github: "https://github.com/janinevallente/aquafusion-mobile-kotlin",
+      hasPublication: true,
+      publication: "https://zenodo.org/records/14847793",
       featured: false,
     },
     {
@@ -132,6 +138,8 @@ export const portfolio = {
       url: "",
       hasGithub: true,
       github: "https://github.com/janinevallente/janinevallente-portfolio",
+      hasPublication: false,
+      publication: "",
       featured: true,
     },
   ],
