@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import WordReveal from "@/components/ui/WordReveal";
@@ -32,12 +32,27 @@ export default function Projects() {
     [router]
   );
 
+  // Dismiss floating card + cursor when section scrolls out of viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setHovered((prev) => ({ ...prev, active: false }));
+        }
+      },
+      { threshold: 0 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="projects"
       ref={sectionRef}
       className="bg-bg py-28 md:py-40"
       onPointerMove={handlePointerMove}
+      onPointerLeave={() => setHovered((prev) => ({ ...prev, active: false }))}
     >
       <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
 
