@@ -1,35 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
-// import Marquee from "@/components/ui/Marquee";
-import Footer from "@/components/layout/Footer";
+import Preloader from "@/components/ui/Preloader";
+
+const SESSION_KEY = "portfolio_loaded";
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const hasLoaded = sessionStorage.getItem(SESSION_KEY) === "1";
+    setLoaded(hasLoaded);
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (loaded) {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  }, [loaded]);
+
+  const handleDone = () => {
+    sessionStorage.setItem(SESSION_KEY, "1");
+    setLoaded(true);
+  };
+
+  if (!ready) {
+    return <div className="fixed inset-0 bg-ink z-[100]" />;
+  }
+
   return (
-    <main className="relative overflow-x-hidden">
-      <Navbar />
+    <>
+      <AnimatePresence mode="wait">
+        {!loaded && <Preloader key="preloader" onDone={handleDone} />}
+      </AnimatePresence>
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loaded ? 1 : 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <Hero />
-
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
       </motion.div>
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
-      {/* <Marquee /> */}
-      <Footer />
-    </main>
+    </>
   );
 }

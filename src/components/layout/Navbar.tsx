@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
@@ -11,158 +12,211 @@ const navLinks = [
   { href: "contact", label: "Contact" },
 ];
 
-// Sections with a dark (bg-ink) background
-const DARK_SECTIONS = ["about", "projects"];
-
-const NAVBAR_HEIGHT = 64; // matches h-16
-const SCROLL_OFFSET = -64; // to let navbar scroll lower to each section (section will hide under navbar)
-
-
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  const top = el.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT - (SCROLL_OFFSET);
-  window.scrollTo({ top, behavior: "smooth" });
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const isProjectPage = pathname?.includes("/projects") ?? false;
 
   useEffect(() => {
-    const update = () => {
-      setScrolled(window.scrollY > 40);
-
-      const probeX = window.innerWidth / 2;
-      const probeY = Math.min(window.innerHeight - 1, NAVBAR_HEIGHT + 10);
-      const element = document.elementFromPoint(probeX, probeY);
-
-      const dark = Boolean(
-        element &&
-        DARK_SECTIONS.some((id) => element.closest(`#${id}`))
-      );
-      setIsDark(dark);
-
-      // Determine active section
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
       const sections = navLinks
-        .map((link) => document.getElementById(link.href))
+        .map((l) => document.getElementById(l.href))
         .filter(Boolean) as HTMLElement[];
-
       let current = "";
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].getBoundingClientRect().top <= NAVBAR_HEIGHT + 16) {
-          current = sections[i].id;
-          break;
-        }
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= 120) current = el.id;
       }
-      setActiveSection(current);
+      setActive(current);
     };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Derived style tokens
-  const logoColor = isDark ? "text-paper hover:text-accent" : "text-ink hover:text-accent";
-  const linkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
-  const activeLinkColor = "text-accent";
-  const resumeBorder = isDark
-    ? "border-paper text-paper hover:bg-paper hover:text-ink"
-    : "border-ink text-ink hover:bg-ink hover:text-paper";
-  const hamburgerBg = isDark ? "bg-paper" : "bg-ink";
-  const mobileBg = isDark ? "bg-ink border-paper/10" : "bg-paper border-border";
-  const mobileLinkColor = isDark ? "text-paper/60 hover:text-paper" : "text-ink hover:text-accent";
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
-  const headerBg = scrolled
-    ? isDark
-      ? "bg-ink/90 backdrop-blur-md border-b border-paper/10 shadow-sm"
-      : "bg-paper/90 backdrop-blur-md border-b border-border shadow-sm"
-    : "bg-transparent";
+  const handleNavClick = (href: string) => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      if (isProjectPage) {
+        router.push(`/#${href}`);
+      } else {
+        scrollTo(href);
+      }
+    }, menuOpen ? 400 : 0);
+  };
+
+  const forceDark = isProjectPage;
+  const isDark = forceDark || scrolled;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <>
+      <nav
+        className={[
+          "fixed top-0 inset-x-0 z-50 transition-all duration-500",
+          scrolled ? "py-3 px-8" : "py-5 px-8",
+          isDark || menuOpen
+            ? "bg-ink/90 backdrop-blur-[14px]"
+            : "bg-transparent",
+        ].join(" ")}
+      >
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+          {/* Brand */}
+          <button
+            onClick={() =>
+              isProjectPage
+                ? router.push("/")
+                : window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+            className="group flex items-center gap-0.5 cursor-pointer"
+          >
+            <span className="font-display text-sm uppercase tracking-widest-2 text-white leading-none overflow-hidden h-[1.1em]">
+              <span className="block transition-transform duration-500 ease-expo-out">
+                <span className="text-accent">&lt;</span>
+                {" "}{portfolio.name.split(" ")[0]} V.{" "}
+                <span className="text-accent">/&gt;</span>
+              </span>
+            </span>
+          </button>
 
-        {/* Logo */}
-        <Link href="/" className={`font-display text-xl tracking-tight transition-colors ${logoColor}`}>
-          <span className="font-md">&lt; </span>
-          {portfolio.name.split(" ")[0]} V<span className="text-accent">.</span>
-          <span className="font-md"> &gt;</span>
-        </Link>
+          {/* Desktop links */}
+          <ul className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive =
+                active === link.href ||
+                (isProjectPage && link.href === "projects");
+              return (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleNavClick(link.href)}
+                    className="relative px-4 py-2 text-sm cursor-pointer group overflow-hidden font-body tracking-[0.02em]"
+                  >
+                    <span
+                      className={`transition-colors duration-200 ${
+                        isActive ? "text-accent" : "text-white/55"
+                      }`}
+                    >
+                      {isActive && (
+                        <span className="inline-block w-1 h-1 rounded-full mr-1.5 mb-0.5 bg-accent" />
+                      )}
+                      {link.label}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <button
-                onClick={() => scrollToSection(link.href)}
-                className={`font-mono text-sm tracking-wide transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : linkColor
-                  }`}
-              >
-                {link.label}
-              </button>
-            </li>
-          ))}
-          <li>
-            <a
-              href={portfolio.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`font-mono text-sm px-4 py-2 border transition-all duration-200 ${resumeBorder}`}
-            >
-              Resume ↗
-            </a>
-          </li>
-        </ul>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-px transition-opacity duration-200 ${hamburgerBg} ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px transition-transform duration-200 ${hamburgerBg} ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="md:hidden relative w-6 h-5 flex flex-col justify-between cursor-pointer z-[60]"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <motion.span
+              className="block h-px w-full bg-white origin-center"
+              animate={menuOpen ? { rotate: 45, y: 10 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <motion.span
+              className="block h-px w-full bg-white"
+              animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block h-px w-full bg-white origin-center"
+              animate={menuOpen ? { rotate: -45, y: -10 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className={`md:hidden border-b px-6 py-6 ${mobileBg}`}>
-          <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <button
-                  onClick={() => { scrollToSection(link.href); setMenuOpen(false); }}
-                  className={`font-mono text-sm transition-colors cursor-pointer ${activeSection === link.href ? activeLinkColor : mobileLinkColor
-                    }`}
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-            <li className="pt-2">
-              <a
-                href={portfolio.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`font-mono text-sm px-4 py-2 border transition-all duration-200 inline-block ${resumeBorder}`}
-              >
-                Resume ↗
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 bg-ink flex flex-col px-8 pt-28 pb-12 md:hidden"
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ul className="flex flex-col gap-1 flex-1 justify-center">
+              {navLinks.map((link, i) => {
+                const isActive =
+                  active === link.href ||
+                  (isProjectPage && link.href === "projects");
+                return (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 0.1 + i * 0.07,
+                    }}
+                  >
+                    <button
+                      onClick={() => handleNavClick(link.href)}
+                      className="group w-full text-left py-5 border-b border-white/8 flex items-center justify-between"
+                    >
+                      <span
+                        className={`font-display font-bold text-[clamp(2rem,8vw,3.5rem)] tracking-tight leading-none transition-colors duration-200 ${
+                          isActive ? "text-accent" : "text-white/70 group-hover:text-white"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                      <span className={`text-lg transition-colors duration-200 ${isActive ? "text-accent" : "text-white/25 group-hover:text-white/60"}`}>
+                        ↗
+                      </span>
+                    </button>
+                  </motion.li>
+                );
+              })}
+            </ul>
+
+            {/* Footer info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.45 }}
+              className="flex items-center justify-between"
+            >
+              <p className="font-body text-xs tracking-widest text-white/25 uppercase">
+                {portfolio.name}
+              </p>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/25 bg-accent/5">
+                <span className="relative flex h-1.5 w-1.5">
+                  <motion.span
+                    className="absolute inline-flex h-full w-full rounded-full bg-accent"
+                    animate={{ scale: [1, 1.9, 1], opacity: [0.7, 0, 0.7] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+                </span>
+                <span className="font-body text-[0.65rem] tracking-widest uppercase text-accent">
+                  Available
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

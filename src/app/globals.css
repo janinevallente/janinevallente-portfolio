@@ -2,16 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
 
 :root {
-  --font-display: 'DM Serif Display', serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-body: "Inter Tight", sans-serif;
+
+  --color-bg: #f0ede6;
+  --color-hero: #20201e;
+  --color-ink: #111110;
+  --color-ink-secondary: #1c1c1a;
+  --color-ink-muted: #6b6a67;
+  --color-surface: #1a1a18;
+  --color-accent: #c8f04a;
+  --color-border: #d8d5ce;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -19,76 +29,56 @@ html {
 }
 
 body {
-  background-color: #f5f2eb;
-  color: #0a0a0a;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: #e8622a;
-  color: #f5f2eb;
-}
-
-/* Grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
+  background: var(--color-ink);
+  color: var(--color-bg);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #f5f2eb;
+  background: var(--color-bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #d4cfc6;
-  border-radius: 3px;
+  background: #c5c2bb;
+  border-radius: 99px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #8a8578;
+  background: #999891;
 }
 
-/* Animation delay utilities */
-.delay-100 {
-  animation-delay: 0.1s;
+/* Hide default cursor over project list area */
+.projects-list-area {
+  cursor: none;
+}
+.projects-list-area * {
+  cursor: none;
 }
 
-.delay-200 {
-  animation-delay: 0.2s;
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-.delay-600 {
-  animation-delay: 0.6s;
-}
-
-.delay-700 {
-  animation-delay: 0.7s;
-}
-
-.opacity-0-init {
-  opacity: 0;
+/* Page transition overlay */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
 }

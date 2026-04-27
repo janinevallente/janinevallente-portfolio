@@ -1,101 +1,96 @@
+"use client";
+
 import { portfolio } from "@/lib/data";
+import WordReveal from "@/components/ui/WordReveal";
+import FadeUp from "@/components/ui/FadeUp";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 px-6 bg-ink text-paper">
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="mb-16 pb-6 border-b border-paper/10">
-          <p className="font-mono text-xs text-paper/40 tracking-widest uppercase mb-2">02 / About</p>
-          <h2 className="font-display text-5xl md:text-6xl text-paper">About Me</h2>
+    <section id="about" className="bg-bg py-28 md:py-40">
+      <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
+        {/* Label */}
+        <FadeUp>
+          <p className="mb-16 text-xs tracking-widest-5 uppercase font-body text-ink-muted">
+            01 — About
+          </p>
+        </FadeUp>
+
+        {/* Large word-reveal paragraph */}
+        <div className="mb-20">
+          <WordReveal
+            text="Hello, I'm Janine Vallente. I'm a Software Developer specializing Front-end Web Development & Mobile Development. I build interfaces people remember — clean, responsive, and built with care."
+            delay={0.05}
+            className="font-display text-[clamp(1.65rem,3.6vw,3rem)] font-bold leading-[1.22] text-ink tracking-tighter"
+          />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* Two-column: bio + skills */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Bio */}
-          <div>
-            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
-              I began my journey as an aspiring Android developer, working with Kotlin and Firebase.
-              Overtime, I expanded into frontend web development and developed a strong interest in building
-              responsive, user-focused interfaces. < br />
-            </p>
-            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
-              Today, I combine my background in mobile and software development with frontend expertise
-              to build applications that are not only functional, but intuitive and reliable.
-            </p>
-            <p className="font-body text-md md:text-lg text-paper/70 leading-relaxed mb-6">
-              I am currently open to full-time and contract opportunities.
-            </p>
-            <p className="font-body text-paper/50 leading-relaxed mb-8">
-              When I&apos;m not pushing code, you&apos;ll find me building <em>Gunpla</em> kits, playing video games, or attending hobby conventions.
-            </p>
-          </div>
+          <FadeUp delay={0.1}>
+            <div className="font-body text-base text-ink/80 leading-relaxed">
+              <p className="mb-5">
+                I began as an Android developer working with Kotlin and Firebase,
+                then expanded into frontend web development and built a strong interest
+                in responsive, user-focused interfaces.
+              </p>
+              <p className="mb-5">
+                Today, I combine mobile and software development background with frontend
+                expertise to build applications that are functional, intuitive, and reliable.
+              </p>
+              <p className="mb-5">
+                I am currently open to full-time and contract opportunities.
+              </p>
+              <p className="text-ink/80 italic">
+                &quot;When not pushing code, you&apos;ll find me building Gunpla kits, playing
+                video games, or attending hobby conventions.&quot;
+              </p>
+
+              <div className="mt-10 flex items-center gap-4">
+                <a
+                  href={portfolio.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 text-sm transition-all duration-300 border-b border-ink pb-0.5 hover:gap-4 font-body text-ink"
+                >
+                  View Résumé
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                </a>
+              </div>
+            </div>
+          </FadeUp>
 
           {/* Skills */}
-          <div>
-            <div className="mb-8">
-              <h3 className="font-mono text-xs text-paper/40 tracking-widest uppercase mb-4">
-                Core Stack
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {portfolio.skills.core.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-mono text-sm px-3 py-1.5 border border-accent text-accent"
-                  >
-                    {skill}
-                  </span>
-                ))}
+          <FadeUp delay={0.2}>
+            <div className="flex flex-col gap-10">
+              <div>
+                <p className="text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
+                  Technologies I&apos;ve Worked With
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {portfolio.skills.technologies.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="relative group flex flex-col rounded-xl items-center gap-2 p-4 border border-ink-secondary bg-ink-secondary transition-colors duration-200 hover:border-ink font-body text-ink-muted"
+                    >
+                      <img
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
+                        alt={skill}
+                        className="w-8 h-8"
+                      />
+                      {/* Tooltip */}
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                        <div className="bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg">
+                          {skill}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-
-            <div className="mb-8">
-              <h3 className="font-mono text-xs text-paper/40 tracking-widest uppercase mb-4">
-                Mobile Development
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {portfolio.skills.mobile.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-mono text-sm px-3 py-1.5 border border-accent text-accent"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-mono text-xs text-paper/40 tracking-widest uppercase mb-4">
-                Also Comfortable With
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {portfolio.skills.also.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-mono text-sm px-3 py-1.5 border border-paper/15 text-paper/50 hover:border-paper/40 hover:text-paper/80 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          </FadeUp>
         </div>
-
-        {/* Stats row - need these for the future */}
-        {/* <div className="mt-20 pt-16 border-t border-paper/10 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { value: "1+", label: "Years of experience" },
-            { value: "20+", label: "Projects" },
-            { value: "15+", label: "Happy clients" },
-            { value: "∞", label: "Cups of coffee" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="font-display text-5xl text-accent mb-2">{stat.value}</p>
-              <p className="font-mono text-xs text-paper/40 uppercase tracking-wide">{stat.label}</p>
-            </div>
-          ))}
-        </div> */}
       </div>
     </section>
   );
