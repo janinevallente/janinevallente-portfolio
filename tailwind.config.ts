@@ -28,6 +28,7 @@ const config: Config = {
         surface: "#1a1a18",
         accent: "#c8f04a",
         border: "#d8d5ce",
+        primary: "#0961bb",
         // Derived white-alpha tokens (used in dark sections)
         "white-5":  "#ffffff0d",
         "white-7":  "#ffffff12",

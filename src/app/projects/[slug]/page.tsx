@@ -55,9 +55,9 @@ export default function ProjectDetail() {
           >
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3"
+              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3 hover:text-ink hover:underline hover:decoration-black"
             >
-              ← Back to Projects
+              <ArrowLeft size={14} /> Back to Projects
             </Link>
           </motion.div>
 
@@ -240,6 +240,27 @@ export default function ProjectDetail() {
                         </a>
                       </>
                     )}
+                    {project?.hasPublication && (
+                      <>
+                        <a
+                          href={project.publication}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-primary group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-primary font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-primary"
+                        >
+                          <span className="text-white transition-colors duration-300 group-hover:text-primary">
+                            Publication
+                          </span>
+                          <motion.span
+                            className="text-white transition-colors duration-300 group-hover:text-primary"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <ArrowUpRight size={15} />
+                          </motion.span>
+                        </a>
+                      </>
+                    )}
                   </div>
                 </FadeUp>
               </div>
@@ -257,7 +278,7 @@ export default function ProjectDetail() {
                       className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
                     >
                       <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
-                        <ArrowLeft size={14} strokeWidth={1} className="inline mr-1" /> Previous
+                        <ArrowLeft size={14} strokeWidth={1.5} className="inline mr-1" /> Previous
                       </span>
                       <span className="ms-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {prevProject?.title}
@@ -274,7 +295,7 @@ export default function ProjectDetail() {
                       className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
                     >
                       <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
-                        Next <ArrowRight size={14} strokeWidth={1} className="inline ml-1" />
+                        Next <ArrowRight size={14} strokeWidth={1.5} className="inline ml-1" />
                       </span>
                       <span className="me-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {nextProject?.title}
