@@ -10,6 +10,7 @@ import RevealLine from "@/components/ui/RevealLine";
 import FloatingImageCard from "@/components/ui/FloatingImageCard";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { portfolio } from "@/lib/data";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
   const router = useRouter();
@@ -134,9 +135,9 @@ export default function Projects() {
                 </div>
 
                 {/* Mobile arrow */}
-                <span className="md:hidden text-sm flex-shrink-0 cursor-none text-ink-muted">
-                  ↗
-                </span>
+                <div className="md:hidden flex-shrink-0 cursor-none text-ink">
+                  <ArrowUpRight size={15} />
+                </div>
               </div>
             </motion.li>
           ))}
@@ -144,22 +145,24 @@ export default function Projects() {
         </ul>
       </div>
 
-      {/* Floating image card */}
-      <FloatingImageCard
-        x={cursor.x}
-        y={cursor.y}
-        active={hovered.active}
-        index={hovered.index}
-        projects={portfolio.projects}
-      />
+      {/* Floating image card & cursor - desktop only */}
+      <div className="hidden lg:block">
+        <FloatingImageCard
+          x={cursor.x}
+          y={cursor.y}
+          active={hovered.active}
+          index={hovered.index}
+          projects={portfolio.projects}
+        />
 
-      {/* Custom cursor */}
-      <CustomCursor
-        x={cursor.x}
-        y={cursor.y}
-        active={hovered.active}
-        label="View"
-      />
+        {/* Custom cursor */}
+        <CustomCursor
+          x={cursor.x}
+          y={cursor.y}
+          active={hovered.active}
+          label="View"
+        />
+      </div>
     </section>
   );
 }

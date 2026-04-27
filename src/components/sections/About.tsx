@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import WordReveal from "@/components/ui/WordReveal";
 import FadeUp from "@/components/ui/FadeUp";
 import { portfolio } from "@/lib/data";
@@ -62,7 +63,7 @@ export default function About() {
                     animate={{ x: [0, 3, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                   >
-                    ↗
+                    <ArrowUpRight size={15} />
                   </motion.span>
                 </a>
               </div>

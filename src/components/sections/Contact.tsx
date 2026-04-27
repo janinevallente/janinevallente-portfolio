@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
 import SectionReveal from "@/components/ui/SectionReveal";
@@ -97,7 +98,7 @@ export default function Contact() {
                 animate={{ x: [0, 3, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               >
-                ↗
+                <ArrowUpRight size={15} />
               </motion.span>
             </a>
           </div>

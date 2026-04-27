@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -189,10 +190,10 @@ export default function ProjectDetail() {
               {/* Links */}
               <div className="mt-10">
                 <FadeUp delay={0.05}>
-                  <div className="flex items-center gap-3 mb-20 md:mb-28">
+                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-20 md:mb-28">
                     {project.title === "Portfolio Website" && (
                       <>
-                        <div className="bg-accent group inline-flex items-center gap-3 px-6 py-3.5 border border-accent font-body text-sm tracking-wide uppercase transition-all duration-300">
+                        <div className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300">
                           Current Live Site
                         </div>
                       </>
@@ -203,7 +204,7 @@ export default function ProjectDetail() {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-accent group inline-flex items-center gap-3 px-6 py-3.5 border border-accent font-body text-sm tracking-wide uppercase transition-all duration-300 hover:bg-ink hover:border-ink"
+                          className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-ink hover:border-ink"
                         >
                           <span className="text-ink transition-colors duration-300 group-hover:text-white">
                             Live Site
@@ -213,7 +214,7 @@ export default function ProjectDetail() {
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
-                            ↗
+                            <ArrowUpRight size={15} />
                           </motion.span>
                         </a>
                       </>
@@ -224,7 +225,7 @@ export default function ProjectDetail() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-ink group inline-flex items-center gap-3 px-6 py-3.5 border border-ink font-body text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+                          className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
                         >
                           <span className="text-white transition-colors duration-300 group-hover:text-ink">
                             Github
@@ -234,7 +235,7 @@ export default function ProjectDetail() {
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
-                            ↗
+                            <ArrowUpRight size={15} />
                           </motion.span>
                         </a>
                       </>
@@ -255,8 +256,8 @@ export default function ProjectDetail() {
                       href={`/projects/${prevProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
                     >
-                      <span className="ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
-                        ← Previous
+                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                        <ArrowLeft size={14} strokeWidth={1} className="inline mr-1" /> Previous
                       </span>
                       <span className="ms-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {prevProject?.title}
@@ -273,7 +274,7 @@ export default function ProjectDetail() {
                       className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
                     >
                       <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
-                        Next →
+                        Next <ArrowRight size={14} strokeWidth={1} className="inline ml-1" />
                       </span>
                       <span className="me-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {nextProject?.title}
