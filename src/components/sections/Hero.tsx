@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { portfolio } from "@/lib/data";
-import HeroImg from "@/assets/images/hero-img.png";
+import HeroImg from "@/assets/images/hero-img.webp";
 import Marquee from "@/components/ui/Marquee";
 
 export default function Hero() {

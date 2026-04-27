@@ -7,6 +7,11 @@ import PokedexHubImg2 from "@/assets/images/pokedexhub2.webp"
 import FinanceVueImg from "@/assets/images/financevue.webp"
 import AquafusionImg from "@/assets/images/aquafusion.webp"
 import PortfolioImg from "@/assets/images/portfolio.webp"
+import PortfolioImg2 from "@/assets/images/portfolio2.webp"
+import PortfolioImg3 from "@/assets/images/portfolio3.webp"
+import PortfolioImg4 from "@/assets/images/portfolio4.webp"
+import PortfolioImg5 from "@/assets/images/portfolio5.webp"
+import PortfolioImg6 from "@/assets/images/portfolio6.webp"
 
 export const portfolio = {
   name: "Janine Vallente",
@@ -118,13 +123,13 @@ export const portfolio = {
       title: "Portfolio Website",
       category: "Website",
       description: "A portfolio website that showcases my work, experience, and frontend expertise, featuring clean UI, smooth animations, and optimized performance using modern web technologies.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
       year: "2026",
-      images: [PortfolioImg],
+      images: [PortfolioImg, PortfolioImg2, PortfolioImg3, PortfolioImg4, PortfolioImg5, PortfolioImg6],
       hasUrl: false,
       url: "",
-      hasGithub: false,
-      github: "",
+      hasGithub: true,
+      github: "https://github.com/janinevallente/janinevallente-portfolio",
       featured: true,
     },
   ],
