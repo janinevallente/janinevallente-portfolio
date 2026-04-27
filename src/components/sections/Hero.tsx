@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import HeroImg from "@/assets/images/hero-img.webp";
 import Marquee from "@/components/ui/Marquee";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -70,7 +71,9 @@ export default function Hero() {
           <div />
           <div className="hidden md:flex items-center gap-2 text-xs text-accent font-body tracking-wider uppercase">
             Scroll
-            <span className="inline-block animate-bounce">↓</span>
+            <div className="inline-block animate-bounce">
+              <ArrowDown size={15}/>
+            </div>
           </div>
         </motion.div>
       </div>
