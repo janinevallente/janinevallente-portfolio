@@ -70,7 +70,7 @@ export default function Contact() {
           <WordReveal
             text="Let's build something together."
             delay={0.1}
-            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.1]"
+            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.2]"
           />
         </div>
 
