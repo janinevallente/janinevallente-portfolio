@@ -32,9 +32,9 @@ export default function About() {
           <FadeUp delay={0.1}>
             <div className="font-body text-[clamp(1rem,1.5vw,1.125rem)] text-ink/80 leading-relaxed">
               <p className="mb-5">
-                I began as an Android developer working with Kotlin and Firebase,
-                then expanded into frontend web development and built a strong interest
-                in responsive, user-focused interfaces.
+                I began my journey as an aspiring Android developer, working with Kotlin and Firebase on our thesis project.
+                Overtime, I expanded into frontend web development and developed a strong interest in building
+                responsive, user-focused interfaces.
               </p>
               <p className="mb-5">
                 Today, I combine mobile and software development background with frontend
