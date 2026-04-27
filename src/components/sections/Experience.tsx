@@ -1,39 +1,30 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-
-function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.2 });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import FadeUp from "@/components/ui/FadeUp"
 
 export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-28 md:py-40"
-      style={{ backgroundColor: "#111110", color: "white" }}
+      className="bg-ink py-28 md:py-40"
+      style={{ color: "white" }}
     >
+      {/* Subtle grain overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "128px",
+        }}
+      />
+
       <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
         <FadeUp>
-          <p
-            className="mb-16 text-xs tracking-[0.2em] uppercase"
-            style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.3)" }}
-          >
+          <p className="mb-16 text-xs tracking-[0.2em] uppercase font-body text-white/30">
             02 — Experience
           </p>
         </FadeUp>
@@ -59,7 +50,7 @@ export default function Experience() {
             <FadeUp key={i} delay={i * 0.1}>
               <div
                 className="group py-10 md:py-14 border-t transition-all duration-300"
-                style={{ borderColor: "rgba(255,255,255,0.08)" }}
+                style={{ borderColor: "#ffffff14" }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 md:gap-12 items-start">
                   {/* Period */}
@@ -67,7 +58,7 @@ export default function Experience() {
                     className="text-xs pt-1 tracking-wide"
                     style={{
                       fontFamily: "var(--font-body)",
-                      color: "rgba(255,255,255,0.3)",
+                      color: "#ffffff4d",
                     }}
                   >
                     {job.period}
@@ -106,7 +97,7 @@ export default function Experience() {
                             className="text-sm leading-relaxed"
                             style={{
                               fontFamily: "var(--font-body)",
-                              color: "rgba(255,255,255,0.45)",
+                              color: "#ffffff73",
                               fontWeight: 300,
                             }}
                           >
@@ -115,23 +106,6 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
-
-                    {/* Tech tags */}
-                    {/* <div className="flex flex-wrap gap-2">
-                      {job.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs px-2.5 py-1 border"
-                          style={{
-                            fontFamily: "var(--font-body)",
-                            color: "rgba(255,255,255,0.3)",
-                            borderColor: "rgba(255,255,255,0.1)",
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div> */}
                   </div>
 
                   {/* Arrow */}
@@ -146,7 +120,7 @@ export default function Experience() {
             </FadeUp>
           ))}
           {/* Bottom border */}
-          <div className="border-t" style={{ borderColor: "rgba(255,255,255,0.08)" }} />
+          <div className="border-t" style={{ borderColor: "#ffffff14" }} />
         </div>
       </div>
     </section>
