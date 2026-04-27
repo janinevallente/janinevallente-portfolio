@@ -15,8 +15,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       <motion.div key={pathname}>
         {/* Curtain overlay — slides down to cover, then slides up to reveal */}
         <motion.div
-          className="fixed inset-0 z-[200] origin-top"
-          style={{ backgroundColor: "#111110" }}
+          className="fixed inset-0 z-[200] origin-top bg-ink"
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 0 }}
           exit={{ scaleY: 0 }}
@@ -25,8 +24,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
         {/* Entering: black curtain drops from top, then lifts off */}
         <motion.div
-          className="fixed inset-0 z-[200] origin-top"
-          style={{ backgroundColor: "#111110" }}
+          className="fixed inset-0 z-[200] origin-top bg-ink"
           initial={{ scaleY: 1 }}
           animate={{ scaleY: 0, transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 } }}
         />

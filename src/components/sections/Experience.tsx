@@ -2,15 +2,11 @@
 
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp"
+import FadeUp from "@/components/ui/FadeUp";
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="bg-ink py-28 md:py-40"
-      style={{ color: "white" }}
-    >
+    <section id="experience" className="relative bg-ink text-white py-28 md:py-40">
       {/* Subtle grain overlay */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
@@ -24,23 +20,16 @@ export default function Experience() {
       <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
         <FadeUp>
-          <p className="mb-16 text-xs tracking-[0.2em] uppercase font-body text-white/30">
+          <p className="mb-16 text-xs tracking-widest-5 uppercase font-body text-white/30">
             02 — Experience
           </p>
         </FadeUp>
 
         {/* Heading */}
-        <div className="mb-20 md:mb-20">
+        <div className="mb-20">
           <WordReveal
             text="Where I've Worked"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              lineHeight: 1,
-              color: "white",
-            }}
+            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-none"
           />
         </div>
 
@@ -48,40 +37,19 @@ export default function Experience() {
         <div>
           {portfolio.experience.map((job, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div
-                className="group py-10 md:py-14 border-t transition-all duration-300"
-                style={{ borderColor: "#ffffff14" }}
-              >
+              <div className="group py-10 md:py-14 border-t border-white-14 transition-all duration-300">
                 <div className="grid grid-cols-1 md:grid-cols-[180px_1fr_auto] gap-6 md:gap-12 items-start">
                   {/* Period */}
-                  <p
-                    className="text-xs pt-1 tracking-wide"
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      color: "#ffffff4d",
-                    }}
-                  >
+                  <p className="font-body text-xs pt-1 tracking-wide text-white/30">
                     {job.period}
                   </p>
 
                   {/* Role + description */}
                   <div>
-                    <h3
-                      className="mb-1 transition-colors duration-200 group-hover:text-[#c8f04a]"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                        fontWeight: 600,
-                        letterSpacing: "-0.02em",
-                        color: "white",
-                      }}
-                    >
+                    <h3 className="mb-1 font-display font-semibold text-white text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] transition-colors duration-200 group-hover:text-accent">
                       {job.role}
                     </h3>
-                    <p
-                      className="mb-6 text-sm"
-                      style={{ fontFamily: "var(--font-body)", color: "rgba(255,255,255,0.35)" }}
-                    >
+                    <p className="mb-6 font-body text-sm text-white/35">
                       {job.company}
                     </p>
 
@@ -89,18 +57,8 @@ export default function Experience() {
                     <ul className="flex flex-col gap-2.5 mb-4">
                       {job.description.map((point, j) => (
                         <li key={j} className="flex items-start gap-3">
-                          <span
-                            className="mt-[7px] w-1 h-1 rounded-full flex-shrink-0"
-                            style={{ backgroundColor: "#c8f04a" }}
-                          />
-                          <span
-                            className="text-sm leading-relaxed"
-                            style={{
-                              fontFamily: "var(--font-body)",
-                              color: "#ffffff73",
-                              fontWeight: 300,
-                            }}
-                          >
+                          <span className="mt-[7px] w-1 h-1 rounded-full flex-shrink-0 bg-accent" />
+                          <span className="font-body text-sm font-light leading-relaxed text-white/45">
                             {point}
                           </span>
                         </li>
@@ -109,10 +67,7 @@ export default function Experience() {
                   </div>
 
                   {/* Arrow */}
-                  <div
-                    className="hidden md:block text-2xl transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1"
-                    style={{ color: "#c8f04a" }}
-                  >
+                  <div className="hidden md:block text-2xl text-accent transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1">
                     ↗
                   </div>
                 </div>
@@ -120,7 +75,7 @@ export default function Experience() {
             </FadeUp>
           ))}
           {/* Bottom border */}
-          <div className="border-t" style={{ borderColor: "#ffffff14" }} />
+          <div className="border-t border-white-14" />
         </div>
       </div>
     </section>

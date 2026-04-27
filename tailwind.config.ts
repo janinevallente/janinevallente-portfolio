@@ -20,12 +20,39 @@ const config: Config = {
       colors: {
         bg: "#f0ede6",
         hero: "#20201e",
-        ink: "#111110",
-        "ink-secondary": "#111110",
-        "ink-muted": "#6b6a67",
+        ink: {
+          DEFAULT: "#111110",
+          secondary: "#1c1c1a",
+          muted: "#6b6a67",
+        },
         surface: "#1a1a18",
         accent: "#c8f04a",
         border: "#d8d5ce",
+        // Derived white-alpha tokens (used in dark sections)
+        "white-5":  "#ffffff0d",
+        "white-7":  "#ffffff12",
+        "white-8":  "#ffffff14",
+        "white-12": "#ffffff1f",
+        "white-14": "#ffffff24",
+        "white-20": "#ffffff33",
+        "white-25": "#ffffff40",
+        "white-35": "#ffffff59",
+        "white-55": "#ffffff8c",
+        // Accent alpha tokens
+        "accent-5":  "#c8f04a0d",
+        "accent-25": "#c8f04a40",
+        // Scrollbar colors
+        "scrollbar-thumb": "#c5c2bb",
+        "scrollbar-thumb-hover": "#999891",
+      },
+      fontSize: {
+        "2xs": "0.72rem",
+      },
+      letterSpacing: {
+        "widest-2": "0.12em",
+        "widest-3": "0.16em",
+        "widest-4": "0.18em",
+        "widest-5": "0.20em",
       },
       transitionTimingFunction: {
         "expo-out": "cubic-bezier(0.16, 1, 0.3, 1)",

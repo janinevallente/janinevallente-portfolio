@@ -44,8 +44,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     <AnimatePresence>
       {!done && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center"
-          style={{ backgroundColor: "#111110" }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
@@ -70,14 +69,8 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <span
-              className="w-2 h-2 rounded-full flex-shrink-0"
-              style={{ backgroundColor: "#c8f04a" }}
-            />
-            <p
-              className="text-2xl md:text-4xl tracking-tight"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-            >
+            <span className="w-2 h-2 rounded-full flex-shrink-0 bg-accent" />
+            <p className="font-display font-medium text-2xl md:text-4xl tracking-tight">
               {words[Math.min(index, words.length - 1)]}
             </p>
           </motion.div>

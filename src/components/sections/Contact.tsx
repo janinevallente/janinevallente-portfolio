@@ -19,8 +19,8 @@ export default function Contact() {
     <motion.section
       id="contact"
       ref={sectionRef}
-      style={{ y, backgroundColor: "#111110", color: "white" }}
-      className="relative py-28 md:py-40 overflow-hidden"
+      style={{ y }}
+      className="relative bg-ink text-white py-28 md:py-40 overflow-hidden"
     >
       {/* Subtle grain overlay */}
       <div
@@ -37,7 +37,7 @@ export default function Contact() {
         {/* Top row: label + open to work badge */}
         <FadeUp>
           <div className="mb-16 flex items-center justify-between flex-wrap gap-4">
-            <p className="text-xs tracking-[0.2em] uppercase font-body text-white/30">
+            <p className="text-xs tracking-widest-5 uppercase font-body text-white/30">
               04 — Contact
             </p>
 
@@ -47,26 +47,18 @@ export default function Contact() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="flex items-center gap-2.5 px-4 py-2 rounded-full border"
-              style={{ borderColor: "rgba(200,240,74,0.25)", backgroundColor: "rgba(200,240,74,0.05)" }}
+              className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-accent-25 bg-accent-5"
             >
               {/* Pulsing dot */}
               <span className="relative flex h-2 w-2">
                 <motion.span
-                  className="absolute inline-flex h-full w-full rounded-full"
-                  style={{ backgroundColor: "#c8f04a" }}
+                  className="absolute inline-flex h-full w-full rounded-full bg-accent"
                   animate={{ scale: [1, 1.9, 1], opacity: [0.7, 0, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ backgroundColor: "#c8f04a" }}
-                />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
               </span>
-              <span
-                className="text-xs tracking-[0.12em] uppercase"
-                style={{ fontFamily: "var(--font-body)", color: "#c8f04a", fontWeight: 400 }}
-              >
+              <span className="font-body text-xs tracking-[0.12em] uppercase font-normal text-accent">
                 Available to work
               </span>
             </motion.div>
@@ -78,23 +70,13 @@ export default function Contact() {
           <WordReveal
             text="Let's build something together."
             delay={0.1}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
-              color: "white",
-            }}
+            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.1]"
           />
         </div>
 
         {/* Subtext */}
         <FadeUp delay={0.18}>
-          <p
-            className="font-body font-light text-white/60 leading-relaxed"
-            style={{ fontSize: "clamp(1rem, 1.7vw, 1.3rem)" }}
-          >
+          <p className="font-body font-light text-white/60 leading-relaxed text-[clamp(1rem,1.7vw,1.3rem)]">
             Whether you have a project in mind, an open role, or just want to say
             hello — my inbox is always open.
           </p>
@@ -105,15 +87,7 @@ export default function Contact() {
           <div className="mt-10 mb-20">
             <a
               href={`mailto:${portfolio.email}`}
-              className="group inline-flex items-center gap-3 px-8 py-3.5 border transition-all duration-300 hover:bg-white"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.78rem",
-                color: "white",
-                borderColor: "#c8f04a",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
+              className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-white hover:border-white"
             >
               <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                 Get in touch
@@ -134,18 +108,12 @@ export default function Contact() {
           <div className="mt-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
             {/* Email */}
             <div>
-              <p className="mb-3 text-xs font-body text-accent/80 tracking-[0.16em] uppercase">
+              <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
                 Email
               </p>
               <a
                 href={`mailto:${portfolio.email}`}
-                className="transition-colors duration-200 hover:text-[#c8f04a]"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "clamp(0.88rem, 1.4vw, 1.05rem)",
-                  color: "#ffffff8c",
-                  fontWeight: 300,
-                }}
+                className="font-body font-light text-white-55 text-[clamp(0.88rem,1.4vw,1.05rem)] transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
               >
                 {portfolio.email}
               </a>
@@ -153,7 +121,7 @@ export default function Contact() {
 
             {/* Socials */}
             <div>
-              <p className="mb-3 text-xs font-body text-accent/80 tracking-[0.16em] uppercase">
+              <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
                 Socials
               </p>
               <div className="flex gap-6">
@@ -163,11 +131,7 @@ export default function Contact() {
                     href={url as string}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm capitalize text-[#ffffff8c] transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontWeight: 300,
-                    }}
+                    className="font-body font-light text-sm capitalize text-white-55 transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
                   >
                     {platform}
                   </a>

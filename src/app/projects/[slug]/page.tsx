@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useInView  } from "framer-motion";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,8 +9,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionReveal from "@/components/ui/SectionReveal";
 import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp"
-import RevealLine from "@/components/ui/RevealLine"
+import FadeUp from "@/components/ui/FadeUp";
+import RevealLine from "@/components/ui/RevealLine";
 import { portfolio } from "@/lib/data";
 
 export default function ProjectDetail() {
@@ -55,7 +55,7 @@ export default function ProjectDetail() {
           >
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 text-xs tracking-[0.16em] uppercase transition-all duration-200 hover:gap-3 font-body text-ink-muted"
+              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3"
             >
               ← Back to Projects
             </Link>
@@ -66,12 +66,7 @@ export default function ProjectDetail() {
             <WordReveal
               text={project.title}
               delay={0.4}
-              className="font-display font-bold text-ink"
-              style={{
-                fontSize: "clamp(3rem, 9vw, 9rem)",
-                letterSpacing: "-0.03em",
-                lineHeight: 0.9,
-              }}
+              className="font-display font-bold text-ink text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
             />
           </div>
 
@@ -84,7 +79,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
               >
                 Category
               </motion.p>
@@ -93,11 +88,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
-                className="mt-5 font-display font-medium text-ink"
-                style={{
-                  fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-                  letterSpacing: "-0.01em",
-                }}
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
               >
                 {project.category}
               </motion.p>
@@ -109,7 +100,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
               >
                 Tech Stack
               </motion.p>
@@ -123,11 +114,7 @@ export default function ProjectDetail() {
                 {project.tags.map((tag, i) => (
                   <span
                     key={tag}
-                    className="font-display font-medium text-ink"
-                    style={{
-                      fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-                      letterSpacing: "-0.01em",
-                    }}
+                    className="font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
                   >
                     {tag}{i < project.tags.length - 1 && (
                       <span className="text-border ml-1">·</span>
@@ -143,7 +130,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="text-xs tracking-[0.05em] uppercase mb-4 font-body text-ink-muted font-medium"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
               >
                 Year
               </motion.p>
@@ -152,11 +139,7 @@ export default function ProjectDetail() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.78 }}
-                className="mt-5 font-display font-medium text-ink"
-                style={{
-                  fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-                  letterSpacing: "-0.01em",
-                }}
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.4vw,1.2rem)] tracking-[-0.01em]"
               >
                 {project.year}
               </motion.p>
@@ -166,7 +149,7 @@ export default function ProjectDetail() {
 
         {/* ── Image collage ── */}
         <div className="mt-16 md:mt-20 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto">
-          <div className={`grid ${project?.images?.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-2 sm:gap-3`}>
+          <div className={`grid ${project?.images?.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"} gap-2 sm:gap-3`}>
             {project.images.map((img, i) => (
               <motion.div
                 key={i}
@@ -198,9 +181,7 @@ export default function ProjectDetail() {
           {/* Overview */}
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
             <SectionReveal delay={0} direction="fade">
-              <p
-                className="text-xs tracking-[0.2em] uppercase pt-1 font-body text-ink-muted"
-              >
+              <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
                 Overview
               </p>
             </SectionReveal>
@@ -208,12 +189,7 @@ export default function ProjectDetail() {
               <WordReveal
                 text={project.description}
                 delay={0.05}
-                className="font-display font-semibold text-ink"
-                style={{
-                  fontSize: "clamp(1.25rem, 2.2vw, 1.9rem)",
-                  lineHeight: 1.45,
-                  letterSpacing: "-0.015em",
-                }}
+                className="font-display font-semibold text-ink text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]"
               />
               {/* Links */}
               <div className="mt-10">
@@ -224,11 +200,7 @@ export default function ProjectDetail() {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-accent group inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black"
-                        style={{
-                          fontSize: "0.75rem",
-                          letterSpacing: "0.1em",
-                        }}
+                        className="group bg-accent inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-black text-[0.75rem] tracking-[0.1em]"
                       >
                         Live Site
                         <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
@@ -239,11 +211,7 @@ export default function ProjectDetail() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-ink group inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-white"
-                        style={{
-                          fontSize: "0.75rem",
-                          letterSpacing: "0.1em",
-                        }}
+                        className="group bg-ink inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-300 hover:opacity-80 font-body font-semibold uppercase text-white text-[0.75rem] tracking-[0.1em]"
                       >
                         GitHub
                         <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
@@ -265,17 +233,10 @@ export default function ProjectDetail() {
                       href={`/projects/${prevProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
                     >
-                      <span className="ms-3 text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-white/60 font-body text-ink-muted">
-                        ← Previous 
+                      <span className="ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                        ← Previous
                       </span>
-                      <span
-                        className="ms-3 transition-colors duration-300 group-hover:text-white font-display font-bold text-ink"
-                        style={{
-                          fontSize: "clamp(1.25rem, 2.5vw, 1.8rem)",
-                          letterSpacing: "-0.02em",
-                          lineHeight: 1.2,
-                        }}
-                      >
+                      <span className="ms-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {prevProject?.title}
                       </span>
                     </Link>
@@ -283,28 +244,21 @@ export default function ProjectDetail() {
                 ) : (
                   <div />
                 )}
-                {nextProject ? (                 
+                {nextProject ? (
                   <FadeUp delay={0.12}>
                     <Link
                       href={`/projects/${nextProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
                     >
-                      <span className="me-3 text-xs tracking-[0.15em] uppercase transition-colors duration-300 group-hover:text-white/60 font-body text-ink-muted">
+                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
                         Next →
                       </span>
-                      <span
-                        className="me-3 transition-colors duration-300 group-hover:text-white font-display font-bold text-ink"
-                        style={{
-                          fontSize: "clamp(1.25rem, 2.5vw, 1.8rem)",
-                          letterSpacing: "-0.02em",
-                          lineHeight: 1.2,
-                        }}
-                      >
+                      <span className="me-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
                         {nextProject?.title}
                       </span>
                     </Link>
                   </FadeUp>
-                ):(
+                ) : (
                   <div />
                 )}
               </div>

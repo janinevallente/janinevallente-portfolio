@@ -2,7 +2,7 @@
 
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp"
+import FadeUp from "@/components/ui/FadeUp";
 
 export default function About() {
   return (
@@ -10,13 +10,13 @@ export default function About() {
       <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
         <FadeUp>
-          <p className="mb-16 text-xs tracking-[0.2em] uppercase font-body text-ink-muted">
+          <p className="mb-16 text-xs tracking-widest-5 uppercase font-body text-ink-muted">
             01 — About
           </p>
         </FadeUp>
 
         {/* Large word-reveal paragraph */}
-        <div className="mb-20 md:mb-20">
+        <div className="mb-20">
           <WordReveal
             text="Hello, I'm Janine Vallente. I'm a Software Developer specializing Front-end Web Development & Mobile Development. I build interfaces people remember — clean, responsive, and built with care."
             delay={0.05}
@@ -28,7 +28,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Bio */}
           <FadeUp delay={0.1}>
-            <div className="font-body text-base text-ink/80 leading-relaxed font-body">
+            <div className="font-body text-base text-ink/80 leading-relaxed">
               <p className="mb-5">
                 I began as an Android developer working with Kotlin and Firebase,
                 then expanded into frontend web development and built a strong interest
@@ -42,8 +42,8 @@ export default function About() {
                 I am currently open to full-time and contract opportunities.
               </p>
               <p className="text-ink/80 italic">
-                "When not pushing code, you'll find me building Gunpla kits, playing
-                video games, or attending hobby conventions."
+                &quot;When not pushing code, you&apos;ll find me building Gunpla kits, playing
+                video games, or attending hobby conventions.&quot;
               </p>
 
               <div className="mt-10 flex items-center gap-4">
@@ -64,22 +64,22 @@ export default function About() {
           <FadeUp delay={0.2}>
             <div className="flex flex-col gap-10">
               <div>
-                <p className="text-xs tracking-[0.18em] uppercase mb-4 font-body text-ink">
-                  Technologies I've Worked With
+                <p className="text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
+                  Technologies I&apos;ve Worked With
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {portfolio.skills.technologies.map((skill, index) => (
                     <div
                       key={skill}
-                      className="relative group flex flex-col rounded-xl items-center gap-2 p-4 border border-color-ink-secondary bg-ink-secondary transition-colors duration-200 hover:border-ink font-body text-ink-muted"
+                      className="relative group flex flex-col rounded-xl items-center gap-2 p-4 border border-ink-secondary bg-ink-secondary transition-colors duration-200 hover:border-ink font-body text-ink-muted"
                     >
-                      <img 
+                      <img
                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
                         alt={skill}
                         className="w-8 h-8"
                       />
                       {/* Tooltip */}
-                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
                         <div className="bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg">
                           {skill}
                         </div>
