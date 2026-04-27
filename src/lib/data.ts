@@ -34,7 +34,7 @@ export const portfolio = {
     technologies: [
       "HTML", "CSS", "JavaScript", "TypeScript", "Bootstrap", "Tailwind CSS",
       "Material UI", "Ant Design", "Kotlin", "Firebase", "React", "Next.js",
-      "Vue", "Nuxt", "Vite", "Node.js", "MongoDB", "Java", "React Native", "Git", "Figma",
+      "Vue", "Nuxt", "Vite", "Node.js", "MongoDB", "Java", "React Native", "Git", "Figma", "Vercel", "Netlify",
     ],
     icons: [
       "html5/html5-original",
@@ -58,6 +58,8 @@ export const portfolio = {
       "react/react-original",
       "git/git-original",
       "figma/figma-original",
+      "vercel/vercel-original",
+      "netlify/netlify-original",
     ],
   },
 
