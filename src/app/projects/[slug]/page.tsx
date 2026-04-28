@@ -29,6 +29,10 @@ export default function ProjectDetail() {
   const prevProject = portfolio.projects[currentIndex - 1] ?? null;
   const nextProject = portfolio.projects[currentIndex + 1] ?? null;
 
+const handleBackToProjects = () => {
+  router.push("/?scrollTo=projects");
+};
+
   return (
     <>
       {/* Page entrance curtain */}
@@ -53,12 +57,12 @@ export default function ProjectDetail() {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
             className="mb-14"
           >
-            <Link
-              href="/#projects"
+            <button
+              onClick={handleBackToProjects}
               className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3 hover:text-ink hover:underline hover:decoration-black"
             >
               <ArrowLeft size={14} /> Back to Projects
-            </Link>
+            </button>
           </motion.div>
 
           {/* Giant title */}
