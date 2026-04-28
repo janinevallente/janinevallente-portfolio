@@ -20,7 +20,7 @@ export default function About() {
         {/* Large word-reveal paragraph */}
         <div className="mb-20">
           <WordReveal
-            text="Hello, I'm Janine Vallente. I'm a Software Developer specializing Front-end Web Development & Mobile Development. I build interfaces people remember — clean, responsive, and built with care."
+            text="Hello, I'm Janine Vallente. I'm a Software Developer based in Cebu City, PH. I build interfaces people remember — clean, responsive, and built with care."
             delay={0.05}
             className="font-display text-[clamp(1.65rem,3.6vw,3rem)] font-bold leading-[1.22] text-ink tracking-tighter"
           />
@@ -31,6 +31,9 @@ export default function About() {
           {/* Bio */}
           <FadeUp delay={0.1}>
             <div className="font-body text-[clamp(1rem,1.5vw,1.125rem)] text-ink/80 leading-relaxed">
+              <p className="text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
+                My Bio
+              </p>
               <p className="mb-5">
                 I began my journey as an aspiring Android developer, working with Kotlin and Firebase on our thesis project.
                 Overtime, I expanded into frontend web development and developed a strong interest in building
@@ -72,31 +75,26 @@ export default function About() {
 
           {/* Skills */}
           <FadeUp delay={0.2}>
-            <div className="flex flex-col gap-10">
-              <div>
-                <p className="text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
-                  Technologies I&apos;ve Worked With
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {portfolio.skills.technologies.map((skill, index) => (
-                    <div
-                      key={skill}
-                      className="relative group flex flex-col rounded-lg items-center gap-2 p-4 border border-ink/40 bg-bg transition-colors duration-200 hover:border-ink/40 font-body text-ink-muted"
-                    >
-                      <img
-                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
-                        alt={skill}
-                        className="w-8 h-8"
-                      />
-                      {/* Tooltip */}
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                        <div className="bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg">
-                          {skill}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+            <div>
+              <p className="ps-0 lg:ps-5 text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
+                Technologies I&apos;ve Worked With
+              </p>
+              <div className="ps-5 md:ps-0 flex flex-wrap gap-2">
+                {portfolio.skills.technologies.map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="flex flex-col items-center justify-center gap-2 p-1 w-[90px] h-[90px] bg-bg transition-colors duration-200 hover:border-ink/50"
+                  >
+                    <img
+                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
+                      alt={skill}
+                      className="w-10 h-10"
+                    />
+                    <span className="text-[12px] text-ink/90 p-1 truncate w-full text-center">
+                      {skill}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </FadeUp>
