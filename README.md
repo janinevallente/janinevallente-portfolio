@@ -47,6 +47,12 @@ src/
 ├── assets/
 │   └── images/                     # Project screenshots (.webp)
 ├── components/
+│   ├── animations/
+│   │   ├── FadeUp.tsx              # Fade + slide-up scroll trigger
+│   │   ├── PageTransition.tsx      # Curtain-drop page transition
+│   │   ├── ScrollToProject.tsx     # Handles scroll to projects section on back navigation
+│   │   ├── SectionReveal.tsx       # Scroll-triggered section entrance
+│   │   └── WordReveal.tsx          # Word-by-word text reveal animation
 │   ├── layout/
 │   │   ├── Navbar.tsx              # Fixed nav with mobile drawer
 │   │   └── Footer.tsx              # Copyright footer
@@ -58,14 +64,10 @@ src/
 │   │   └── Contact.tsx             # Email, socials, and CTA
 │   └── ui/
 │       ├── CustomCursor.tsx        # Branded cursor overlay
-│       ├── FadeUp.tsx              # Fade + slide-up scroll trigger
 │       ├── FloatingImageCard.tsx   # Cursor-following project image card
 │       ├── Marquee.tsx             # Infinite-scroll hero name strip
-│       ├── PageTransition.tsx      # Curtain-drop page transition
 │       ├── Preloader.tsx           # Word-cycling animated intro screen
-│       ├── RevealLine.tsx          # Animated horizontal rule
-│       ├── SectionReveal.tsx       # Scroll-triggered section entrance
-│       └── WordReveal.tsx          # Word-by-word text reveal animation
+│       └── RevealLine.tsx          # Animated horizontal rule
 ├── lib/
 │   └── data.ts                     # All portfolio content (projects, experience, skills)
 └── globals.d.ts                    # Global type declarations
