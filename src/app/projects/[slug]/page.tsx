@@ -108,7 +108,7 @@ export default function ProjectDetail() {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.73 }}
                 className="mt-5 flex flex-wrap gap-1.5"
               >
                 {project.tags.map((tag, i) => (
@@ -138,7 +138,7 @@ export default function ProjectDetail() {
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.78 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.74 }}
                 className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.year}
@@ -181,15 +181,17 @@ export default function ProjectDetail() {
                 Overview
               </p>
             </SectionReveal>
+
+            {/* Project Description */}
             <div>
-              <WordReveal
-                text={project.description}
-                delay={0.05}
-                className="font-display font-semibold text-ink text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]"
-              />
+              <FadeUp delay={0.3}>
+                <p className="font-display font-semibold text-ink text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
+                  {project.description}
+                </p>
+              </FadeUp>
               {/* Links */}
               <div className="mt-10">
-                <FadeUp delay={0.05}>
+                <FadeUp delay={0.2}>
                   <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-20 md:mb-28">
                     {project.title === "Portfolio Website" && (
                       <>
@@ -265,6 +267,7 @@ export default function ProjectDetail() {
                 </FadeUp>
               </div>
             </div>
+
           </div>
 
           {/* Prev / Next */}
@@ -272,7 +275,7 @@ export default function ProjectDetail() {
             <div className="pt-7 border-t border-border">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 {prevProject ? (
-                  <FadeUp delay={0.07}>
+                  <FadeUp delay={0.1}>
                     <Link
                       href={`/projects/${prevProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
@@ -289,7 +292,7 @@ export default function ProjectDetail() {
                   <div />
                 )}
                 {nextProject ? (
-                  <FadeUp delay={0.12}>
+                  <FadeUp delay={0.1}>
                     <Link
                       href={`/projects/${nextProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
