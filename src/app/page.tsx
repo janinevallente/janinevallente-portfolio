@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,12 +11,12 @@ import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Preloader from "@/components/ui/Preloader";
+import ScrollToProject from "@/components/animations/ScrollToProject";
 
 const SESSION_KEY = "portfolio_loaded";
 
 export default function Home() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [loaded, setLoaded] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -25,22 +25,6 @@ export default function Home() {
     setLoaded(hasLoaded);
     setReady(true);
   }, []);
-
-
-  useEffect(() => {
-  // Check if we need to scroll to projects section
-    const scrollToProject = searchParams.get('scrollTo');
-    if (scrollToProject === 'projects') {
-      setTimeout(() => {
-        const projectsSection = document.getElementById("projects");
-        if (projectsSection) {
-          projectsSection.scrollIntoView({ behavior: "smooth" });
-        }
-        // Remove the scrollTo parameter from URL without causing a page reload
-        router.replace('/', { scroll: false });
-      }, 100);
-    }
-  }, [searchParams, router]);
 
   useEffect(() => {
     if (loaded) {
@@ -65,6 +49,10 @@ export default function Home() {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <ScrollToProject />
+      </Suspense>
+
       <AnimatePresence mode="wait">
         {!loaded && <Preloader key="preloader" onDone={handleDone} />}
       </AnimatePresence>
