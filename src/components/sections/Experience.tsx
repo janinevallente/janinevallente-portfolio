@@ -1,8 +1,8 @@
 "use client";
 
 import { portfolio } from "@/lib/data";
-import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import WordReveal from "@/components/animations/WordReveal";
+import FadeUp from "@/components/animations/FadeUp";
 
 export default function Experience() {
   return (

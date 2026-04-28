@@ -3,9 +3,9 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import WordReveal from "@/components/ui/WordReveal";
-import SectionReveal from "@/components/ui/SectionReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import WordReveal from "@/components/animations/WordReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
+import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import FloatingImageCard from "@/components/ui/FloatingImageCard";
 import CustomCursor from "@/components/ui/CustomCursor";

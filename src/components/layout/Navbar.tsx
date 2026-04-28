@@ -14,7 +14,10 @@ const navLinks = [
 ];
 
 function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 export default function Navbar() {
@@ -27,7 +30,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 60);
+    setScrolled(window.scrollY > 60);
+    
+    // Only track sections if not on project detail page
+    if (!isProjectPage) {
       const sections = navLinks
         .map((l) => document.getElementById(l.href))
         .filter(Boolean) as HTMLElement[];
@@ -36,27 +42,33 @@ export default function Navbar() {
         if (el.getBoundingClientRect().top <= 120) current = el.id;
       }
       setActive(current);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    }
+  };
 
-  // Lock body scroll when menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  return () => window.removeEventListener("scroll", onScroll);
+  
+  }, [isProjectPage]);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    setTimeout(() => {
-      if (isProjectPage) {
+    
+    const navigateToSection = () => {
+      if (isProjectPage && href === "projects") {
+        router.push("/?scrollTo=projects");
+      } else if (isProjectPage) {
         router.push(`/#${href}`);
       } else {
         scrollTo(href);
       }
-    }, menuOpen ? 400 : 0);
+    };
+
+    if (menuOpen) {
+      setTimeout(navigateToSection, 400);
+    } else {
+      navigateToSection();
+    }
   };
 
   const forceDark = isProjectPage;

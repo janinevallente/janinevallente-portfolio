@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,10 +11,12 @@ import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Preloader from "@/components/ui/Preloader";
+import ScrollToProject from "@/components/animations/ScrollToProject";
 
 const SESSION_KEY = "portfolio_loaded";
 
 export default function Home() {
+  const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -46,6 +49,10 @@ export default function Home() {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <ScrollToProject />
+      </Suspense>
+
       <AnimatePresence mode="wait">
         {!loaded && <Preloader key="preloader" onDone={handleDone} />}
       </AnimatePresence>

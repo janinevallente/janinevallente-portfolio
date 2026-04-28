@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import WordReveal from "@/components/animations/WordReveal";
+import FadeUp from "@/components/animations/FadeUp";
 import { portfolio } from "@/lib/data";
 
 export default function About() {
@@ -50,8 +50,40 @@ export default function About() {
                 &quot;When not pushing code, you&apos;ll find me building Gunpla kits, playing
                 video games, or attending hobby conventions.&quot;
               </p>
+            </div>
+          </FadeUp>
 
-              <div className="mt-10">
+          {/* Skills */}
+          <FadeUp delay={0.2}>
+            <div>
+              <p className="ps-0 lg:ps-5 text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
+                Technologies I&apos;ve Worked With
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {portfolio.skills.technologies.map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="flex flex-col items-center justify-center gap-2 p-1 w-[90px] h-[90px] bg-bg transition-colors duration-200 hover:border-ink/50"
+                  >
+                    <img
+                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
+                      alt={skill}
+                      className="w-10 h-10"
+                    />
+                    <span className="text-[12px] text-ink/90 p-1 truncate w-full text-center">
+                      {skill}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+
+        {/*View resume btn */}
+        <div>
+          <FadeUp>
+              <div className="mt-10 md:mt-0">
                 <a
                   href={portfolio.resumeUrl}
                   target="_blank"
@@ -70,33 +102,6 @@ export default function About() {
                   </motion.span>
                 </a>
               </div>
-            </div>
-          </FadeUp>
-
-          {/* Skills */}
-          <FadeUp delay={0.2}>
-            <div>
-              <p className="ps-0 lg:ps-5 text-xs tracking-widest-4 uppercase mb-4 font-body text-ink">
-                Technologies I&apos;ve Worked With
-              </p>
-              <div className="ps-5 md:ps-0 flex flex-wrap gap-2">
-                {portfolio.skills.technologies.map((skill, index) => (
-                  <div
-                    key={skill}
-                    className="flex flex-col items-center justify-center gap-2 p-1 w-[90px] h-[90px] bg-bg transition-colors duration-200 hover:border-ink/50"
-                  >
-                    <img
-                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
-                      alt={skill}
-                      className="w-10 h-10"
-                    />
-                    <span className="text-[12px] text-ink/90 p-1 truncate w-full text-center">
-                      {skill}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </FadeUp>
         </div>
       </div>
