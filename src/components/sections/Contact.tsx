@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
-import WordReveal from "@/components/ui/WordReveal";
-import SectionReveal from "@/components/ui/SectionReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import WordReveal from "@/components/animations/WordReveal";
+import SectionReveal from "@/components/animations/SectionReveal";
+import FadeUp from "@/components/animations/FadeUp";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);

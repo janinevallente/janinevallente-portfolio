@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import WordReveal from "@/components/animations/WordReveal";
+import FadeUp from "@/components/animations/FadeUp";
 import { portfolio } from "@/lib/data";
 
 export default function About() {

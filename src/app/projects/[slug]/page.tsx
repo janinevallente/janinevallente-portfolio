@@ -7,9 +7,9 @@ import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import SectionReveal from "@/components/ui/SectionReveal";
-import WordReveal from "@/components/ui/WordReveal";
-import FadeUp from "@/components/ui/FadeUp";
+import SectionReveal from "@/components/animations/SectionReveal";
+import WordReveal from "@/components/animations/WordReveal";
+import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import { portfolio } from "@/lib/data";
 
