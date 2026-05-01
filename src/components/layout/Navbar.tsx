@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
 
 const navLinks = [
+  { href: "home", label: "Home" },
   { href: "about", label: "About" },
   { href: "experience", label: "Experience" },
   { href: "projects", label: "Projects" },
