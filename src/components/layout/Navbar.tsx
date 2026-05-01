@@ -31,45 +31,44 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-    setScrolled(window.scrollY > 60);
-    
-    // Only track sections if not on project detail page
-    if (!isProjectPage) {
-      const sections = navLinks
-        .map((l) => document.getElementById(l.href))
-        .filter(Boolean) as HTMLElement[];
-      let current = "";
-      for (const el of sections) {
-        if (el.getBoundingClientRect().top <= 120) current = el.id;
-      }
-      setActive(current);
-    }
-  };
+      setScrolled(window.scrollY > 60);
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-  return () => window.removeEventListener("scroll", onScroll);
-  
+      if (!isProjectPage) {
+        const sections = navLinks
+          .map((l) => document.getElementById(l.href))
+          .filter(Boolean) as HTMLElement[];
+        let current = "";
+        for (const el of sections) {
+          if (el.getBoundingClientRect().top <= 120) current = el.id;
+        }
+        setActive(current);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, [isProjectPage]);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    
-    const navigateToSection = () => {
-      if (isProjectPage && href === "projects") {
-        router.push("/?scrollTo=projects");
-      } else if (isProjectPage) {
-        router.push(`/#${href}`);
+
+    const navigate = () => {
+      if (isProjectPage) {
+        // Always use ?scrollTo= — never push a hash — so the URL stays clean
+        router.push(`/?scrollTo=${href}`);
       } else {
         scrollTo(href);
       }
     };
 
-    if (menuOpen) {
-      setTimeout(navigateToSection, 400);
-    } else {
-      navigateToSection();
-    }
+    setTimeout(navigate, menuOpen ? 400 : 0);
   };
 
   const forceDark = isProjectPage;

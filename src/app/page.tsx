@@ -11,7 +11,7 @@ import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 import Preloader from "@/components/ui/Preloader";
-import ScrollToProject from "@/components/animations/ScrollToProject";
+import ScrollToSection from "@/components/animations/ScrollToSection";
 
 const SESSION_KEY = "portfolio_loaded";
 
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={null}>
-        <ScrollToProject />
+        <ScrollToSection />
       </Suspense>
 
       <AnimatePresence mode="wait">
