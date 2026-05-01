@@ -1,12 +1,35 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/lib/data";
 import WordReveal from "@/components/animations/WordReveal";
 import SectionReveal from "@/components/animations/SectionReveal";
 import FadeUp from "@/components/animations/FadeUp";
+
+function useLocalTime() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-PH", {
+          timeZone: "Asia/Manila",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        })
+      );
+    };
+    update();
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return time;
+}
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,6 +38,7 @@ export default function Contact() {
     offset: ["start end", "end end"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["6%", "0%"]);
+  const localTime = useLocalTime();
 
   return (
     <motion.section
@@ -50,7 +74,6 @@ export default function Contact() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-accent-25 bg-accent-5"
             >
-              {/* Pulsing dot */}
               <span className="relative flex h-2 w-2">
                 <motion.span
                   className="absolute inline-flex h-full w-full rounded-full bg-accent"
@@ -85,7 +108,7 @@ export default function Contact() {
 
         {/* CTA button */}
         <FadeUp delay={0.26}>
-          <div className="mt-10 mb-20">
+          <div className="mt-10 mb-20 pb-10">
             <a
               href={`mailto:${portfolio.email}`}
               className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
@@ -104,41 +127,68 @@ export default function Contact() {
           </div>
         </FadeUp>
 
-        {/* Bottom row — email + socials */}
+        {/* Bottom row — email + socials + time + resume */}
         <SectionReveal delay={0.12} direction="fade">
-          <div className="mt-10 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
-            {/* Email */}
+          <div className="mt-10 pt-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8">
+
             <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
                 Email
               </p>
               <a
                 href={`mailto:${portfolio.email}`}
-                className="font-body font-light text-white-55 text-[clamp(0.88rem,1.4vw,1.05rem)] transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
+                className="font-body font-light text-white/55 text-[clamp(0.8rem,1.2vw,0.95rem)] transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5 break-all"
               >
                 {portfolio.email}
               </a>
             </div>
 
-            {/* Socials */}
+            <div>
+              <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
+                Local Time
+              </p>
+              <p className="font-body font-light text-white/55 text-[clamp(0.8rem,1.2vw,0.95rem)] tabular-nums">
+                {localTime}
+              </p>
+              <p className="mt-1 font-body text-[10px] text-white/25 uppercase tracking-wider">
+                PHT · UTC+8
+              </p>
+            </div>
+
+            <div>
+              <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
+                Resume
+              </p>
+              <a
+                href={portfolio.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 font-body font-light text-[clamp(0.8rem,1.2vw,0.95rem)] text-white/55 transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
+              >
+                View PDF
+                <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+
             <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
                 Socials
               </p>
-              <div className="flex gap-6">
+              <div className="flex flex-col gap-2">
                 {Object.entries(portfolio.social).map(([platform, url]) => (
                   <a
                     key={platform}
                     href={url as string}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-body font-light text-sm capitalize text-white-55 transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5"
+                    className="font-body font-light text-[clamp(0.8rem,1.2vw,0.95rem)] capitalize text-white/55 transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5 w-fit"
                   >
                     {platform}
                   </a>
                 ))}
               </div>
             </div>
+
           </div>
         </SectionReveal>
       </div>

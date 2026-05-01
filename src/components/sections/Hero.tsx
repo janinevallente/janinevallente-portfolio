@@ -8,7 +8,7 @@ import { ArrowDown } from "lucide-react";
 export default function Hero() {
   return (
     <section
-      id="hero"
+      id="home"
       className="bg-hero relative h-screen overflow-hidden flex flex-col"
     >
       {/* Hero image */}

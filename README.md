@@ -7,6 +7,7 @@ A modern, animated developer portfolio built with **Next.js 15** and **Framer Mo
 ## Features
 
 - **Animated preloader** — word-cycling intro screen shown once per session; skipped on back-navigation from project pages
+- **Image lightbox gallery** — click on any project image to open a full-screen lightbox with keyboard navigation (arrow keys), touch-friendly swipe controls, and image counter for multi-image projects
 - **Custom cursor** — replaces the default cursor with a branded circle when hovering over projects
 - **Floating image card** — follows the cursor across the projects list, previewing each project's screenshot
 - **Scroll-driven animations** — section reveals, word-by-word text animation, and parallax contact section powered by Framer Motion
@@ -50,7 +51,7 @@ src/
 │   ├── animations/
 │   │   ├── FadeUp.tsx              # Fade + slide-up scroll trigger
 │   │   ├── PageTransition.tsx      # Curtain-drop page transition
-│   │   ├── ScrollToProject.tsx     # Handles scroll to projects section on back navigation
+│   │   ├── ScrollToSection.tsx     # Handles scroll to any section on back navigation
 │   │   ├── SectionReveal.tsx       # Scroll-triggered section entrance
 │   │   └── WordReveal.tsx          # Word-by-word text reveal animation
 │   ├── layout/
@@ -65,6 +66,7 @@ src/
 │   └── ui/
 │       ├── CustomCursor.tsx        # Branded cursor overlay
 │       ├── FloatingImageCard.tsx   # Cursor-following project image card
+│       ├── Lightbox.tsx            # Full-screen image gallery with swipe & keyboard nav
 │       ├── Marquee.tsx             # Infinite-scroll hero name strip
 │       ├── Preloader.tsx           # Word-cycling animated intro screen
 │       └── RevealLine.tsx          # Animated horizontal rule

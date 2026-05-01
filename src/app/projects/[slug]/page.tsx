@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
@@ -11,11 +11,14 @@ import SectionReveal from "@/components/animations/SectionReveal";
 import WordReveal from "@/components/animations/WordReveal";
 import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
+import Lightbox from "@/components/ui/Lightbox";
 import { portfolio } from "@/lib/data";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const project = portfolio.projects.find((p) => p.id === slug);
 
@@ -29,9 +32,20 @@ export default function ProjectDetail() {
   const prevProject = portfolio.projects[currentIndex - 1] ?? null;
   const nextProject = portfolio.projects[currentIndex + 1] ?? null;
 
-const handleBackToProjects = () => {
-  router.push("/?scrollTo=projects");
-};
+  const handleBackToProjects = () => {
+    router.push("/?scrollTo=projects");
+  };
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  // Prepare images array for lightbox
+  const lightboxImages = project.images.map((img, i) => ({
+    src: img.src,
+    alt: `${project.title} screenshot ${i + 1}`,
+  }));
 
   return (
     <>
@@ -160,16 +174,38 @@ const handleBackToProjects = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.65 + i * 0.1 }}
-                className="relative overflow-hidden"
+                className="relative overflow-hidden cursor-pointer group"
                 style={{
                   aspectRatio: project?.images?.length === 1 ? "19/10" : "2/1",
                 }}
+                onClick={() => handleImageClick(i)}
               >
                 <img
                   src={img.src}
                   alt={`${project.title} screenshot ${i + 1}`}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
+                {/* Overlay with zoom icon */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="24" 
+                      height="24" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="white" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -319,6 +355,13 @@ const handleBackToProjects = () => {
       </main>
 
       <Footer />
+
+      <Lightbox
+        images={lightboxImages}
+        initialIndex={selectedImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </>
   );
 }
