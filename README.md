@@ -144,7 +144,13 @@ Add a new entry to the `projects` array in `data.ts`:
   url: "https://your-live-url.com",
   hasGithub: true,
   github: "https://github.com/you/your-repo",
-  featured: true,
+  hasPublication: true,
+  publication: "https://your-publication-url.com",
+  featured: false,
+  hasContibutors: true,
+  contributors: ["ContributorName"],
+  contributorsImg: [ContributorImg],
+  contributorsLinkedIn: ["https://contributor-profile-url.com"],
 }
 ```
 
@@ -156,9 +162,9 @@ Add a new entry to the `projects` array in `data.ts`:
 | --- | ------------------------------------------------------ | ------------------ | --------- |
 | 01  | [LumiBooth](https://lumibooth.vercel.app)              | Web Application    | 2026      |
 | 02  | [Pokédex Hub](https://pokedexhub.vercel.app)           | Web Application    | 2026      |
-| 03  | FinanceVue                                             | Web Dashboard      | 2024      |
-| 04  | AquaFusion Mobile                                      | Mobile Application | 2023–2024 |
-| 05  | [Portfolio Website](https://janinevallente.vercel.app) | Website            | 2026      |
+| 03  | [Portfolio Website](https://janinevallente.vercel.app) | Website            | 2026      |
+| 04  | FinanceVue                                             | Web Dashboard      | 2024      |
+| 05  | AquaFusion Mobile                                      | Mobile Application | 2023–2024 |
 
 ---
 
