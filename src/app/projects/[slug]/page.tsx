@@ -232,7 +232,7 @@ export default function ProjectDetail() {
               {/* Links */}
               <div className="mt-10">
                 <FadeUp delay={0.2}>
-                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-20 md:mb-28">
+                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-14 md:mb-22">
                     {project.title === "Portfolio Website" && (
                       <>
                         <div className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300">
@@ -309,6 +309,45 @@ export default function ProjectDetail() {
             </div>
 
           </div>
+
+          {/* Other Contributors */}
+          {project.hasContibutors && (
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
+              <SectionReveal delay={0} direction="fade">
+                <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
+                  Other Contributors
+                </p>
+              </SectionReveal>
+
+              <div className="flex flex-col gap-4">
+                {project.contributors.map((name, i) => (
+                  <FadeUp key={name} delay={0.2 + i * 0.1}>
+                    <a
+                      href={project.contributorsLinkedIn?.[i] ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-4 w-fit"
+                    >
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-1 ring-border transition-all duration-300 group-hover:ring-1 group-hover:ring-ink">
+                        <img
+                          src={project.contributorsImg[i]?.src ?? project.contributorsImg[i]}
+                          alt={name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 group-hover:underline transition-all duration-200">
+                        {name}
+                      </span>
+                      <ArrowUpRight
+                        size={15}
+                        className="text-ink-muted opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                      />
+                    </a>
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Prev / Next */}
           {(prevProject || nextProject) && (
