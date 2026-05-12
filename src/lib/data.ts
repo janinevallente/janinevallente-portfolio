@@ -21,7 +21,7 @@ export const portfolio = {
   email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
   resumeUrl:
-    "https://drive.google.com/file/d/1TcG5-064fDYwgyvobND2YveHSONgL-4p/view?usp=sharing",
+    "https://drive.google.com/file/d/1THnyLrMoR6dY9QIN68CIqMs4vstRSpP0/view?usp=sharing",
 
   social: {
     linkedin: "https://linkedin.com/in/janine-christine-vallente",
