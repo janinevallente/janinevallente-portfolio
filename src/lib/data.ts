@@ -17,6 +17,7 @@ import PortfolioImg4 from "@/assets/images/portfolio4.webp";
 import PortfolioImg5 from "@/assets/images/portfolio5.webp";
 import PortfolioImg6 from "@/assets/images/portfolio6.webp";
 import ContibutorImg from "@/assets/images/contributor1.webp";
+import ContibutorImg2 from "@/assets/images/contributor2.webp";
 
 export const portfolio = {
   name: "Janine Vallente",
@@ -197,7 +198,7 @@ export const portfolio = {
       publication: "",
       featured: false,
       hasContibutors: true,
-      contributors: ["Elijah Nicholas Esguerra"],
+      contributors: ["Elijah Nicholas Esguerra (Backend Developer)"],
       contributorsImg: [ContibutorImg],
       contributorsLinkedIn: ["https://www.linkedin.com/in/en-esguerra/"],
     },
@@ -217,10 +218,16 @@ export const portfolio = {
       hasPublication: true,
       publication: "https://zenodo.org/records/14847793",
       featured: false,
-      hasContibutors: false,
-      contributors: [],
-      contributorsImg: [],
-      contributorsLinkedIn: [],
+      hasContibutors: true,
+      contributors: [
+        "Junester Ursora II (IoT Integration Developer)",
+        "Elijah Nicholas Esguerra (Web Developer for Aquafusion Web)",
+      ],
+      contributorsImg: [ContibutorImg2, ContibutorImg],
+      contributorsLinkedIn: [
+        "https://www.linkedin.com/in/junester/",
+        "https://www.linkedin.com/in/en-esguerra/",
+      ],
     },
   ],
 
