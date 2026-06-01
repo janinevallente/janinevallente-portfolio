@@ -2,8 +2,12 @@ import LumiBoothImg from "@/assets/images/lumibooth.webp";
 import LumiBoothImg2 from "@/assets/images/lumibooth2.webp";
 import LumiBoothImg3 from "@/assets/images/lumibooth3.webp";
 import LumiBoothImg4 from "@/assets/images/lumibooth4.webp";
-import PokedexHubImg from "@/assets/images/pokedexhub.webp";
-import PokedexHubImg2 from "@/assets/images/pokedexhub2.webp";
+import SwiftKeysImg from "@/assets/images/swiftkeys.webp";
+import SwiftKeysImg2 from "@/assets/images/swiftkeys2.webp";
+import SwiftKeysImg3 from "@/assets/images/swiftkeys3.webp";
+import SwiftKeysImg4 from "@/assets/images/swiftkeys4.webp";
+import SwiftKeysImg5 from "@/assets/images/swiftkeys5.webp";
+import SwiftKeysImg6 from "@/assets/images/swiftkeys6.webp";
 import FinanceVueImg from "@/assets/images/financevue.webp";
 import AquafusionImg from "@/assets/images/aquafusion.webp";
 import PortfolioImg from "@/assets/images/portfolio.webp";
@@ -107,17 +111,33 @@ export const portfolio = {
     },
     {
       id: "02",
-      title: "Pokédex Hub",
+      title: "SwiftKeys",
       category: "Web Application",
       description:
-        "A modern Pokédex web application powered by the PokéAPI, allowing users to browse more than 1,000 Pokémon with advanced filtering by type and generation, detailed stat views, evolution chains, and encounter information. Implemented with Nuxt, TypeScript, and optimized for fast loading and smooth navigation.",
-      tags: ["Nuxt", "TypeScript", "CSS", "PokéAPI", "Vercel"],
+        "A retro arcade-themed typing speed test web application that allows users to challenge their typing skills through multiple difficulty levels, customizable test durations, real-time WPM and accuracy tracking, and detailed score history analytics. Built with Next.js, TypeScript, and Tailwind CSS for a fast, responsive experience with immersive interactions and a polished pixel-art design.",
+      tags: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Recharts",
+        "Web Audio API",
+        "Vercel",
+      ],
       year: "2026",
-      images: [PokedexHubImg, PokedexHubImg2],
+      images: [
+        SwiftKeysImg,
+        SwiftKeysImg2,
+        SwiftKeysImg3,
+        SwiftKeysImg4,
+        SwiftKeysImg5,
+        SwiftKeysImg6,
+      ],
       hasUrl: true,
-      url: "https://pokedexhub.vercel.app/",
+      url: "https://swiftkeys-wpm.vercel.app/",
       hasGithub: true,
-      github: "https://github.com/janinevallente/pokedex-app",
+      github: "https://github.com/janinevallente/swiftkeys",
       hasPublication: false,
       publication: "",
       featured: true,
