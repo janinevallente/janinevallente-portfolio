@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import WordReveal from "@/components/animations/WordReveal";
 import SectionReveal from "@/components/animations/SectionReveal";
 import FadeUp from "@/components/animations/FadeUp";
@@ -10,7 +11,6 @@ import RevealLine from "@/components/ui/RevealLine";
 import FloatingImageCard from "@/components/ui/FloatingImageCard";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { portfolio } from "@/lib/data";
-import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
   const router = useRouter();
@@ -143,6 +143,27 @@ export default function Projects() {
           ))}
           <RevealLine />
         </ul>
+
+        {/* View More on GitHub Button */}
+        <div className="mt-16 flex justify-center">
+            <a
+              href={portfolio?.social?.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+            >
+              <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                View More on GitHub
+              </span>
+              <motion.span
+                className="text-white transition-colors duration-300 group-hover:text-ink"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              >
+                <ArrowUpRight size={15} />
+              </motion.span>
+            </a>
+        </div>
       </div>
 
       {/* Floating image card & cursor - desktop only */}

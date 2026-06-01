@@ -28,7 +28,13 @@ export default function WordReveal({
       {words.map((word, i) => (
         <span
           key={i}
-          style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
+          style={{ 
+            display: "inline-block", 
+            overflow: "hidden", 
+            verticalAlign: "bottom", 
+            paddingBottom: "0.2em",
+            marginBottom: "-0.2em" 
+          }}
         >
           <motion.span
             style={{ display: "inline-block" }}
