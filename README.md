@@ -158,13 +158,14 @@ Add a new entry to the `projects` array in `data.ts`:
 
 ## Featured Projects
 
-| #   | Project                                                | Category           | Year      |
-| --- | ------------------------------------------------------ | ------------------ | --------- |
-| 01  | [LumiBooth](https://lumibooth.vercel.app)              | Web Application    | 2026      |
-| 02  | [SwiftKeys](https://swiftkeys-wpm.vercel.app)          | Web Application    | 2026      |
-| 03  | [Portfolio Website](https://janinevallente.vercel.app) | Website            | 2026      |
-| 04  | FinanceVue                                             | Web Dashboard      | 2024      |
-| 05  | AquaFusion Mobile                                      | Mobile Application | 2023–2024 |
+| #   | Project                                                | Category                      | Year      |
+| --- | ------------------------------------------------------ | ----------------------------- | --------- |
+| 01  | [Byteflow](https://byteflow-tools.netlify.com)         | Developer Toolkit             | 2026      |
+| 02  | [LumiBooth](https://lumibooth.vercel.app)              | Photo Booth Platform          | 2026      |
+| 03  | [SwiftKeys](https://swiftkeys-wpm.vercel.app)          | Typing Test Platform          | 2026      |
+| 04  | [Portfolio Website](https://janinevallente.vercel.app) | Personal Portfolio            | 2026      |
+| 05  | FinanceVue                                             | Financial Analytics Dashboard | 2024      |
+| 06  | AquaFusion Mobile                                      | IoT Monitoring Mobile App     | 2023–2024 |
 
 ---
 
