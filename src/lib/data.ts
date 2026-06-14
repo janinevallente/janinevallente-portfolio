@@ -1,3 +1,9 @@
+import ByteflowImg from "@/assets/images/byteflow.webp";
+import ByteflowImg2 from "@/assets/images/byteflow2.webp";
+import ByteflowImg3 from "@/assets/images/byteflow3.webp";
+import ByteflowImg4 from "@/assets/images/byteflow4.webp";
+import ByteflowImg5 from "@/assets/images/byteflow5.webp";
+import ByteflowImg6 from "@/assets/images/byteflow6.webp";
 import LumiBoothImg from "@/assets/images/lumibooth.webp";
 import LumiBoothImg2 from "@/assets/images/lumibooth2.webp";
 import LumiBoothImg3 from "@/assets/images/lumibooth3.webp";
@@ -93,8 +99,36 @@ export const portfolio = {
   projects: [
     {
       id: "01",
+      title: "Byteflow",
+      category: "Developer Toolkit",
+      description:
+        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, and frontend productivity features — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
+      tags: ["React", "Vite", "Javascript", "Tailwind CSS", "Netlify"],
+      year: "2026",
+      images: [
+        ByteflowImg,
+        ByteflowImg2,
+        ByteflowImg3,
+        ByteflowImg4,
+        ByteflowImg5,
+        ByteflowImg6,
+      ],
+      hasUrl: true,
+      url: "https://byteflow-tools.netlify.app/",
+      hasGithub: false,
+      github: "",
+      hasPublication: false,
+      publication: "",
+      featured: true,
+      hasContibutors: false,
+      contributors: [],
+      contributorsImg: [],
+      contributorsLinkedIn: [],
+    },
+    {
+      id: "02",
       title: "LumiBooth",
-      category: "Web Application",
+      category: "Photo Booth Platform",
       description:
         "A beautiful and intuitive photo strip booth web application that lets users capture photos, decorate them with stickers and filters, choose creative strip formats, and download polished results. Built with Next.js, TypeScript and Tailwind CSS for a smooth, responsive experience with fast performance and clean state management.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
@@ -111,14 +145,13 @@ export const portfolio = {
       contributorsLinkedIn: [],
     },
     {
-      id: "02",
+      id: "03",
       title: "SwiftKeys",
-      category: "Web Application",
+      category: "Typing Test Platform",
       description:
         "A retro arcade-themed typing speed test web application that allows users to challenge their typing skills through multiple difficulty levels, customizable test durations, real-time WPM and accuracy tracking, and detailed score history analytics. Built with Next.js, TypeScript, and Tailwind CSS for a fast, responsive experience with immersive interactions and a polished pixel-art design.",
       tags: [
         "Next.js",
-        "React",
         "TypeScript",
         "Tailwind CSS",
         "Framer Motion",
@@ -148,9 +181,9 @@ export const portfolio = {
       contributorsLinkedIn: [],
     },
     {
-      id: "03",
+      id: "04",
       title: "Portfolio Website",
-      category: "Website",
+      category: "Personal Portfolio",
       description:
         "This responsive portfolio website showcases my work, experience, and frontend expertise. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion for smooth animations, excellent performance, and a clean, professional user experience.",
       tags: [
@@ -182,9 +215,9 @@ export const portfolio = {
       contributorsLinkedIn: [],
     },
     {
-      id: "04",
+      id: "05",
       title: "FinanceVue",
-      category: "Web Dashboard",
+      category: "Financial Analytics Dashboard",
       description:
         "A corporate financial monitoring dashboard that visualizes key financial statements — income statement, balance sheet, and cash flow — through interactive charts and KPI summary cards. Supports multi-entity filtering, year-over-year comparisons, and Excel file uploads processed by a custom Flask API. Built with React, Vite, and TypeScript to deliver clear insights and data visualization for decision-making.",
       tags: ["React", "Vite", "TypeScript", "Python"],
@@ -203,9 +236,9 @@ export const portfolio = {
       contributorsLinkedIn: ["https://www.linkedin.com/in/en-esguerra/"],
     },
     {
-      id: "05",
+      id: "06",
       title: "AquaFusion Mobile",
-      category: "Mobile Application",
+      category: "IoT Monitoring Mobile App",
       description:
         "An IoT-based aquaponics monitoring mobile app that tracks real-time sensor data (pH levels, TDS, water level, temperature, and humidity) with intuitive graphs and instant notifications. Developed in Kotlin with Firebase to help users improve farming efficiency and reduce manual monitoring.",
       tags: ["Kotlin", "Firebase", "Android Studio"],
