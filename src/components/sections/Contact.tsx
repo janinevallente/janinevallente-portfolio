@@ -130,7 +130,7 @@ export default function Contact() {
 
         {/* Bottom row — email + socials + time + resume */}
         <SectionReveal delay={0.12} direction="fade">
-          <div className="mt-10 pt-10 grid grid-cols-2 md:grid-cols-3 gap-20">
+          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-20">
 
             <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
