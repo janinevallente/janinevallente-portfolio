@@ -29,7 +29,9 @@ export default function Hero() {
       >
         <div className="w-full px-8 md:px-12 pt-28 md:pt-32 flex flex-col md:flex-row md:items-start md:justify-end">
           <div className="flex flex-col items-end gap-3">
-            <div className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-accent-25 bg-accent-5">
+
+            {/* Update this only if looking for new opportunity*/}
+            {/* <div className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-accent-25 bg-accent-5">
               <span className="relative flex h-2 w-2">
                 <motion.span
                   className="absolute inline-flex h-full w-full rounded-full bg-accent"
@@ -41,10 +43,10 @@ export default function Hero() {
               <span className="font-body text-xs tracking-[0.12em] uppercase font-normal text-accent">
                 Available to work
               </span>
-            </div>
+            </div> */}
  
             <p className="font-body font-light leading-relaxed text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/55 text-right">
-              Software Developer <br />
+              Domain Support Associate | Software Developer <br />
               Based in Cebu City, Philippines
             </p>
           </div>

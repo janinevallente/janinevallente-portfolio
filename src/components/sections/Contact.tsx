@@ -67,7 +67,7 @@ export default function Contact() {
             </p>
 
             {/* Open to work pill */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.88 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -85,14 +85,14 @@ export default function Contact() {
               <span className="font-body text-xs tracking-[0.12em] uppercase font-normal text-accent">
                 Available to work
               </span>
-            </motion.div>
+            </motion.div> */}
           </div>
         </FadeUp>
 
         {/* Big headline */}
         <div className="mt-12 mb-6">
           <WordReveal
-            text="Let's build something together."
+            text="Let’s build and keep systems running smoothly."
             delay={0.1}
             className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.2]"
           />
@@ -101,7 +101,8 @@ export default function Contact() {
         {/* Subtext */}
         <FadeUp delay={0.18}>
           <p className="font-body font-light text-white/60 leading-relaxed text-[clamp(1rem,1.7vw,1.3rem)]">
-            Whether you have a project in mind, an open role, or just want to say
+            Whether you're building a new product, maintaining production systems,
+            need support either with domains, infrastructure, and web development, or just want to say
             hello — my inbox is always open.
           </p>
         </FadeUp>
@@ -129,7 +130,7 @@ export default function Contact() {
 
         {/* Bottom row — email + socials + time + resume */}
         <SectionReveal delay={0.12} direction="fade">
-          <div className="mt-10 pt-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8">
+          <div className="mt-10 pt-10 grid grid-cols-2 md:grid-cols-3 gap-20">
 
             <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
@@ -155,7 +156,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div>
+            {/* <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">
                 Resume
               </p>
@@ -168,7 +169,7 @@ export default function Contact() {
                 View PDF
                 <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
-            </div>
+            </div> */}
 
             <div>
               <p className="mb-3 text-xs font-body text-accent/80 tracking-widest-3 uppercase">

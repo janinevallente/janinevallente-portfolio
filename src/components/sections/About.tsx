@@ -1,14 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import WordReveal from "@/components/animations/WordReveal";
 import FadeUp from "@/components/animations/FadeUp";
 import { portfolio } from "@/lib/data";
 
 const stats = [
-  { value: "1.5+", label: "Years of Experience" },
-  { value: "15+", label: "Projects Built" },
+  { value: "2+", label: "Professional Years of Exp." },
+  { value: "15+", label: "Projects Delivered" },
   { value: "5+", label: "Technologies" },
   { value: "∞", label: "Console.log Debug Sessions" },
 ];
@@ -26,67 +24,75 @@ export default function About() {
         </FadeUp>
 
         {/* Large word-reveal paragraph */}
-        <div className="mb-14 md:mb-20">
-          <WordReveal
-            text="Hello, I'm Janine Vallente. I'm a Software Developer based in Cebu City, PH. I build interfaces people remember — clean, responsive, and built with care."
-            delay={0.05}
-            className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-ink tracking-tighter"
-          />
+        <div className="mb-14 md:mb-20"> 
+          <WordReveal text="Hello, I'm Janine Vallente. An IT Professional based in Cebu City, PH with a background in building applications, troubleshooting systems, and supporting web hosting environments." delay={0.05} className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-ink tracking-tighter" /> 
         </div>
 
         {/* Two-column: bio + skills */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
-          {/* Bio */}
-          <FadeUp delay={0.1}>
-            <div className="font-body text-[clamp(0.95rem,1.4vw,1.1rem)] text-ink/75 leading-relaxed">
-              <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
-                My Bio
-              </p>
-              <p className="mb-5">
-                I began my journey as an aspiring Android developer, working with Kotlin
-                and Firebase on our thesis project. Over time, I expanded into frontend
-                web development and developed a strong interest in building responsive,
-                user-focused interfaces.
-              </p>
-              <p className="mb-5">
-                Today, I combine my mobile and software development background with
-                frontend expertise to build applications that are functional, intuitive,
-                and reliable.
-              </p>
-              <p className="mb-5">
-                I am currently open to full-time and contract opportunities.
-              </p>
-              <p className="text-ink/60 italic text-[clamp(0.85rem,1.2vw,1rem)]">
-                &quot;When I'm not pushing code, you&apos;ll find me building Gunpla kits,
-                playing video games, or attending hobby conventions.&quot;
-              </p>
-            </div>
-          </FadeUp>
+        {/* Bio */}
+        <FadeUp delay={0.1}>
+          <div className="font-body text-[clamp(0.95rem,1.4vw,1.1rem)] text-ink/75 leading-relaxed">
+            <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
+              My Background
+            </p>
 
-          {/* Skills */}
+            <p className="mb-5"> I started my career in software development, 
+              specializing front-end development. I built clean, responsive, and 
+              user-centered interfaces while developing a strong foundation in debugging, 
+              system logic, and modern development workflows. 
+            </p>
+
+            <p className="mb-5">
+              Over time, my experience expanded beyond application development and
+              into technical operations and support. I currently work in the web
+              hosting industry, supporting domain and hosting-related services while
+              troubleshooting technical issues across live production environments.
+            </p>
+
+            <p className="mb-5">
+              This transition strengthened my understanding of how systems operate
+              beyond development — from DNS and hosting configurations to technical
+              troubleshooting, deployments, and customer-facing support. It also
+              helped me develop a more practical and reliability-focused approach
+              to technology.
+            </p>
+          </div>
+        </FadeUp>
+
+
+          {/* Skills + Open Roles */}
           <FadeUp delay={0.2}>
-            <div>
-              <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
-                Technologies I&apos;ve Worked With
-              </p>
-              <div className="flex flex-wrap gap-2 justify-start">
-                {portfolio.skills.technologies.map((skill, index) => (
-                  <div
-                    key={skill}
-                    className="flex flex-col items-center justify-center gap-2 w-[76px] h-[76px] sm:w-[82px] sm:h-[82px] bg-bg border border-ink/12 rounded-lg transition-colors duration-200 hover:border-ink/30"
-                  >
-                    <img
-                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${portfolio.skills.icons[index]}.svg`}
-                      alt={skill}
-                      className="w-8 h-8 sm:w-9 sm:h-9"
-                    />
-                    <span className="font-body text-[10px] text-ink/70 truncate w-full text-center px-1 leading-tight">
-                      {skill}
-                    </span>
-                  </div>
-                ))}
+            <div className="flex flex-col gap-10">
+
+              {/* Capabilities */}
+              <div>
+                <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
+                  What I Can Do
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {portfolio.skills.whatICanDo.map(({ area, detail }) => (
+                    <div
+                      key={area}
+                      className="group relative flex flex-col justify-between gap-6 p-5 bg-hero hover:bg-hero/80 transition-all duration-300 overflow-hidden"
+                    >
+                      {/* Decorative circle */}
+                      <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-white/5 group-hover:scale-150 transition-transform duration-500" />
+
+                      <div className="flex flex-col gap-1.5">
+                        <span className="mt-5 font-display text-[clamp(0.82rem,1.2vw,0.95rem)] font-bold text-white/85 leading-tight tracking-tight">
+                          {area}
+                        </span>
+                        <span className="font-body text-[clamp(0.72rem,1vw,0.82rem)] text-white/50 leading-relaxed">
+                          {detail}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+
             </div>
           </FadeUp>
         </div>
