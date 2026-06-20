@@ -103,7 +103,7 @@ export const portfolio = {
         id: "2",
         area: "Mobile Application Development",
         detail:
-          "Started with Android and cross-platform mobile development using Kotlin, React Native, Firebase, and MongoDB while learning application architecture and data flow.",
+          "Building Android and cross-platform mobile applications using Kotlin, React Native, Firebase, and MongoDB while learning application architecture and data flow.",
       },
       {
         id: "3",
