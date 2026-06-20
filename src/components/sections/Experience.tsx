@@ -33,17 +33,6 @@ export default function Experience() {
           />
         </div>
 
-        {/* Subtext — body: 16–18px */}
-        <FadeUp delay={0.18}>
-          <p className="font-body font-light text-white/60 leading-relaxed text-[clamp(1rem,1.5vw,1.125rem)] italic">
-            "I started my career as a Software Developer Intern, where I built a strong foundation
-            in development workflows and debugging. I progressed into a Junior Software Developer
-            role, contributing to enterprise-level systems and improving application reliability.
-            Recently, I explored Oracle EPM Cloud, expanding my knowledge into financial systems
-            and enterprise planning solutions."
-          </p>
-        </FadeUp>
-
         {/* Jobs */}
         <div>
           {portfolio.experience.map((job, i) => (
