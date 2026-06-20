@@ -31,36 +31,35 @@ export default function About() {
         {/* Two-column: bio + skills */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
-        {/* Bio */}
-        <FadeUp delay={0.1}>
-          <div className="font-body text-[clamp(0.95rem,1.4vw,1.1rem)] text-ink/75 leading-relaxed">
-            <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
-              My Background
-            </p>
+          {/* Bio */}
+          <FadeUp delay={0.1}>
+            <div className="font-body text-[clamp(0.95rem,1.4vw,1.1rem)] text-ink/75 leading-relaxed">
+              <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
+                My Background
+              </p>
 
-            <p className="mb-5"> I started my career in software development, 
-              specializing front-end development. I built clean, responsive, and 
-              user-centered interfaces while developing a strong foundation in debugging, 
-              system logic, and modern development workflows. 
-            </p>
+              <p className="mb-5"> I started my career in software development, 
+                specializing front-end development. I built clean, responsive, and 
+                user-centered interfaces while developing a strong foundation in debugging, 
+                system logic, and modern development workflows. 
+              </p>
 
-            <p className="mb-5">
-              Over time, my experience expanded beyond application development and
-              into technical operations and support. I currently work in the web
-              hosting industry, supporting domain and hosting-related services while
-              troubleshooting technical issues across live production environments.
-            </p>
+              <p className="mb-5">
+                Over time, my experience expanded beyond application development and
+                into technical operations and support. I currently work in the web
+                hosting industry, supporting domain and hosting-related services while
+                troubleshooting technical issues across live production environments.
+              </p>
 
-            <p className="mb-5">
-              This transition strengthened my understanding of how systems operate
-              beyond development — from DNS and hosting configurations to technical
-              troubleshooting, deployments, and customer-facing support. It also
-              helped me develop a more practical and reliability-focused approach
-              to technology.
-            </p>
-          </div>
-        </FadeUp>
-
+              <p className="mb-5">
+                This transition strengthened my understanding of how systems operate
+                beyond development — from DNS and hosting configurations to technical
+                troubleshooting, deployments, and customer-facing support. It also
+                helped me develop a more practical and reliability-focused approach
+                to technology.
+              </p>
+            </div>
+          </FadeUp>
 
           {/* Skills + Open Roles */}
           <FadeUp delay={0.2}>
@@ -71,7 +70,7 @@ export default function About() {
                 <p className="text-[11px] tracking-widest-4 uppercase mb-5 font-body text-ink font-medium">
                   What I Can Do
                 </p>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {portfolio.skills.whatICanDo.map(({ area, detail }) => (
                     <div
                       key={area}
@@ -99,9 +98,9 @@ export default function About() {
 
         {/* Stats row */}
         <FadeUp delay={0.05}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-ink/10">
+          <div className="grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-ink/10">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1.5">
+              <div key={stat.label} className="flex flex-col gap-1.5 mb-5 md:mb-0">
                 <span className="font-display font-bold text-[clamp(2rem,4vw,3rem)] tracking-tight text-ink leading-none">
                   {stat.value}
                 </span>

@@ -45,8 +45,9 @@ export default function Hero() {
               </span>
             </div> */}
  
-            <p className="font-body font-light leading-relaxed text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/55 text-right">
-              Domain Support Associate | Software Developer <br />
+                        <p className="font-body font-light leading-relaxed text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/55 text-right">
+              Domain Support Associate & <br/>
+              Software Developer <br />
               Based in Cebu City, Philippines
             </p>
           </div>
