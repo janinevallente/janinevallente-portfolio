@@ -98,9 +98,9 @@ export default function About() {
 
         {/* Stats row */}
         <FadeUp delay={0.05}>
-          <div className="grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-ink/10">
+         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-ink/10">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1.5 mb-5 md:mb-0">
+              <div key={stat.label} className="flex flex-col gap-1.5 mb-3.5 md:mb-0">
                 <span className="font-display font-bold text-[clamp(2rem,4vw,3rem)] tracking-tight text-ink leading-none">
                   {stat.value}
                 </span>
