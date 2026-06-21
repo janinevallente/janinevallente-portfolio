@@ -161,7 +161,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-ink flex flex-col px-8 pt-28 pb-12 md:hidden"
+            className="fixed inset-0 z-40 bg-ink flex flex-col px-10 pb-12 md:hidden"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -204,15 +204,13 @@ export default function Navbar() {
             </ul>
 
             {/* Footer info */}
-            <motion.div
+            {/* Update only looking for new opportunity */}
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.45 }}
               className="flex items-center justify-between"
             >
-              <p className="font-body text-xs tracking-widest text-white/25 uppercase">
-                {portfolio.name}
-              </p>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/25 bg-accent/5">
                 <span className="relative flex h-1.5 w-1.5">
                   <motion.span
@@ -226,7 +224,7 @@ export default function Navbar() {
                   Available
                 </span>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>
