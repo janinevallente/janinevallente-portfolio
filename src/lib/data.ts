@@ -28,12 +28,12 @@ import ContibutorImg2 from "@/assets/images/contributor2.webp";
 export const portfolio = {
   name: "Janine Vallente",
   role: "Frontend Developer",
-  tagline: "I build interfaces people remember.",
+  tagline: "Portfolio Website",
   email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
   social: {
     linkedIn: "https://linkedin.com/in/janine-christine-vallente",
-    github: "https://github.com/janinevallente",
+    gitHub: "https://github.com/janinevallente",
   },
 
   skills: {
@@ -95,9 +95,9 @@ export const portfolio = {
     whatICanDo: [
       {
         id: "1",
-        area: "Frontend Web Development",
+        area: "Front-end Web Development",
         detail:
-          "Building responsive and user-friendly web applications using modern frontend technologies with a focus on usability, performance, and clean UI implementation.",
+          "Building responsive and user-friendly web applications using modern front-end technologies with a focus on usability, performance, and clean UI implementation.",
       },
       {
         id: "2",
@@ -138,7 +138,7 @@ export const portfolio = {
       title: "Byteflow",
       category: "Developer Toolkit",
       description:
-        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, and frontend productivity features — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
+        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, and front-end productivity features — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
       tags: ["React", "Vite", "Javascript", "Tailwind CSS", "Netlify"],
       year: "2026",
       images: [
@@ -221,7 +221,7 @@ export const portfolio = {
       title: "Portfolio Website",
       category: "Personal Portfolio",
       description:
-        "This responsive portfolio website showcases my work, experience, and frontend expertise. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion for smooth animations, excellent performance, and a clean, professional user experience.",
+        "This responsive portfolio website showcases my work, experience, and front-end expertise. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion for smooth animations, excellent performance, and a clean, professional user experience.",
       tags: [
         "Next.js",
         "TypeScript",
@@ -306,16 +306,18 @@ export const portfolio = {
       role: "Domain Support Associate",
       period: "Jun 2026 — Present",
       description: [
-        "Provide technical support for domain and web hosting-related services, assisting customers with account, DNS, and configuration concerns",
-        "Troubleshoot hosting, domain resolution, email, and website accessibility issues across live production environments",
-        "Assist customers through technical issue resolution while maintaining clear and professional communication",
-        "Work with internal tools and hosting platforms to manage configurations, diagnose service-related concerns, and support operational workflows",
+        "Currently training in domain support, assisting customers through email and phone with domain, account, and service-related inquiries",
+        "(Details to follow as role responsibilities mature)",
+        // "Developing hands-on experience in DNS troubleshooting, domain management, website accessibility concerns, and hosting-related support workflows",
+        // "Assist customers with domain configurations, DNS record updates, domain transfers, and account-related requests while maintaining clear and professional communication",
+        // "Support ticket handling, issue investigation, customer follow-ups, and escalation processes to help ensure timely and accurate service resolution",
       ],
       technologies: [
         "DNS",
         "Web Hosting",
         "Domain Management",
         "Technical Support",
+        "Customer Support",
         "Troubleshooting",
       ],
     },
