@@ -39,12 +39,12 @@ export default function About() {
               </p>
 
               <p className="mb-5"> I started my career in software development, 
-                specializing front-end development. I built clean, responsive, and 
+                specializing front-end web development. I built clean, responsive, and 
                 user-centered interfaces while developing a strong foundation in debugging, 
                 system logic, and modern development workflows. 
               </p>
 
-              <p className="mb-5">
+              {/* <p className="mb-5">
                 Over time, my experience expanded beyond application development and
                 into technical operations and support. I currently work in the web
                 hosting industry, supporting domain and hosting-related services while
@@ -57,6 +57,19 @@ export default function About() {
                 troubleshooting, deployments, and customer-facing support. It also
                 helped me develop a more practical and reliability-focused approach
                 to technology.
+              </p> */}
+              <p className="mb-5">
+                Recently, I began expanding my experience into technical support and
+                operations within the web hosting industry. As part of my current role and
+                training, I’ve been gaining hands-on exposure to domains, hosting
+                environments, technical troubleshooting, and customer support workflows.
+              </p>
+
+              <p className="mb-5">
+                This experience has helped me better understand how systems operate beyond
+                development — from DNS fundamentals to maintaining reliable services and 
+                supporting real-world users. It has also broadened my perspective on building 
+                technology that is both functional and dependable.
               </p>
             </div>
           </FadeUp>
@@ -74,7 +87,7 @@ export default function About() {
                   {portfolio.skills.whatICanDo.map(({ area, detail }) => (
                     <div
                       key={area}
-                      className="group relative flex flex-col justify-between gap-6 p-5 bg-hero hover:bg-hero/80 transition-all duration-300 overflow-hidden"
+                      className="group relative flex flex-col justify-between gap-6 px-5 pt-4 pb-8 bg-hero hover:bg-hero/80 transition-all duration-300 overflow-hidden"
                     >
                       {/* Decorative circle */}
                       <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-white/5 group-hover:scale-150 transition-transform duration-500" />

@@ -102,7 +102,7 @@ export default function Contact() {
         <FadeUp delay={0.18}>
           <p className="font-body font-light text-white/60 leading-relaxed text-[clamp(1rem,1.7vw,1.3rem)]">
             Whether you're building a new product, maintaining production systems,
-            need support either with domains, infrastructure, and web development, or just want to say
+            need support either with domains, and application development, or just want to say
             hello — my inbox is always open.
           </p>
         </FadeUp>
