@@ -147,7 +147,7 @@ export default function Projects() {
         {/* View More on GitHub Button */}
         <div className="mt-16 flex justify-center">
             <a
-              href={portfolio?.social?.github}
+              href={portfolio?.social?.gitHub}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
