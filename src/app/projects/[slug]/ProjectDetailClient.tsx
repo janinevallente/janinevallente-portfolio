@@ -1,0 +1,405 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useParams, useRouter } from "next/navigation";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import SectionReveal from "@/components/animations/SectionReveal";
+import WordReveal from "@/components/animations/WordReveal";
+import FadeUp from "@/components/animations/FadeUp";
+import RevealLine from "@/components/ui/RevealLine";
+import Lightbox from "@/components/ui/Lightbox";
+import { portfolio } from "@/lib/data";
+
+export default function ProjectDetailClient({ slug }: { slug: string }) {
+  const router = useRouter();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const project = portfolio.projects.find((p) => p.id === slug);
+
+  useEffect(() => {
+    if (!project) router.replace("/");
+  }, [project, router]);
+
+  if (!project) return null;
+
+  const currentIndex = portfolio.projects.findIndex((p) => p.id === slug);
+  const prevProject = portfolio.projects[currentIndex - 1] ?? null;
+  const nextProject = portfolio.projects[currentIndex + 1] ?? null;
+
+  const handleBackToProjects = () => {
+    router.push("/?scrollTo=projects");
+  };
+
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  // Prepare images array for lightbox
+  const lightboxImages = project.images.map((img, i) => ({
+    src: img.src,
+    alt: `${project.title} screenshot ${i + 1}`,
+  }));
+
+  return (
+    <>
+      {/* Page entrance curtain */}
+      <motion.div
+        className="fixed inset-0 z-[200] origin-top bg-ink"
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: 0 }}
+        transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
+      />
+
+      <Navbar />
+
+      <main className="min-h-screen bg-bg">
+
+        {/* ── Header ── */}
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 pt-32 md:pt-40 pb-0">
+
+          {/* Back link */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+            className="mb-14"
+          >
+            <button
+              onClick={handleBackToProjects}
+              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3 hover:text-ink hover:underline hover:decoration-black"
+            >
+              <ArrowLeft size={14} /> Back to Projects
+            </button>
+          </motion.div>
+
+          {/* Giant title */}
+          <div className="mb-16 md:mb-20">
+            <WordReveal
+              text={project.title}
+              delay={0.4}
+              className="font-display font-bold text-ink text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
+            />
+          </div>
+
+          {/* ── Three-column metadata ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 px-2">
+
+            {/* Category */}
+            <div className="py-6 md:pr-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+              >
+                Category
+              </motion.p>
+              <RevealLine delay={0.6} />
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+              >
+                {project.category}
+              </motion.p>
+            </div>
+
+            {/* Tech stack */}
+            <div className="py-6 md:px-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+              >
+                Tech Stack
+              </motion.p>
+              <RevealLine delay={0.63} />
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.73 }}
+                className="mt-5 flex flex-wrap gap-1.5"
+              >
+                {project.tags.map((tag, i) => (
+                  <span
+                    key={tag}
+                    className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                  >
+                    {tag}{i < project.tags.length - 1 && (
+                      <span className="inline-block w-1.5 h-1.5 bg-ink/70 rounded-full ml-2 mb-0.5" />
+                    )}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Year */}
+            <div className="py-6 md:pl-10">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+              >
+                Year
+              </motion.p>
+              <RevealLine delay={0.66} />
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.74 }}
+                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+              >
+                {project.year}
+              </motion.p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Image collage ── */}
+        <div className="mt-16 md:mt-20 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto">
+          <div className={`grid ${project?.images?.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"} gap-2 sm:gap-3`}>
+            {project.images.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.65 + i * 0.1 }}
+                className="relative overflow-hidden cursor-pointer group"
+                style={{
+                  aspectRatio: project?.images?.length === 1 ? "19/10" : "2/1",
+                }}
+                onClick={() => handleImageClick(i)}
+              >
+                <img
+                  src={img.src}
+                  alt={`${project.title} screenshot ${i + 1}`}
+                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
+                {/* Overlay with zoom icon */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Overview + Prev/Next ── */}
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 py-20 md:py-28">
+
+          {/* Overview */}
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
+            <SectionReveal delay={0} direction="fade">
+              <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
+                Overview
+              </p>
+            </SectionReveal>
+
+            {/* Project Description */}
+            <div>
+              <FadeUp delay={0.3}>
+                <p className="font-display font-semibold text-ink text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
+                  {project.description}
+                </p>
+              </FadeUp>
+              {/* Links */}
+              <div className="mt-10">
+                <FadeUp delay={0.2}>
+                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-14 md:mb-22">
+                    {project.title === "Portfolio Website" && (
+                      <>
+                        <div className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300">
+                          Current Live Site
+                        </div>
+                      </>
+                    )}
+                    {project.hasUrl && (
+                      <>
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-ink hover:border-ink"
+                        >
+                          <span className="text-ink transition-colors duration-300 group-hover:text-white">
+                            Live Site
+                          </span>
+                          <motion.span
+                            className="text-ink transition-colors duration-300 group-hover:text-white"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <ArrowUpRight size={15} />
+                          </motion.span>
+                        </a>
+                      </>
+                    )}
+                    {project?.hasGithub && (
+                      <>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+                        >
+                          <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                            Github
+                          </span>
+                          <motion.span
+                            className="text-white transition-colors duration-300 group-hover:text-ink"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <ArrowUpRight size={15} />
+                          </motion.span>
+                        </a>
+                      </>
+                    )}
+                    {project?.hasPublication && (
+                      <>
+                        <a
+                          href={project.publication}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-primary group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-primary font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-primary"
+                        >
+                          <span className="text-white transition-colors duration-300 group-hover:text-primary">
+                            Publication
+                          </span>
+                          <motion.span
+                            className="text-white transition-colors duration-300 group-hover:text-primary"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                          >
+                            <ArrowUpRight size={15} />
+                          </motion.span>
+                        </a>
+                      </>
+                    )}
+                  </div>
+                </FadeUp>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Other Contributors */}
+          {project.hasContibutors && (
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
+              <SectionReveal delay={0} direction="fade">
+                <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
+                  Other Contributors
+                </p>
+              </SectionReveal>
+
+              <div className="flex flex-col gap-4">
+                {project.contributors.map((name, i) => (
+                  <FadeUp key={name} delay={0.2 + i * 0.1}>
+                    <a
+                      href={project.contributorsLinkedIn?.[i] ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-4 w-fit"
+                    >
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-1 ring-border transition-all duration-300 group-hover:ring-1 group-hover:ring-ink">
+                        <img
+                          src={project.contributorsImg[i]?.src ?? project.contributorsImg[i]}
+                          alt={name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 group-hover:underline transition-all duration-200">
+                        {name}
+                      </span>
+                      <ArrowUpRight
+                        size={15}
+                        className="text-ink-muted opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                      />
+                    </a>
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Prev / Next */}
+          {(prevProject || nextProject) && (
+            <div className="pt-7 border-t border-border">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                {prevProject ? (
+                  <FadeUp delay={0.1}>
+                    <Link
+                      href={`/projects/${prevProject?.id}`}
+                      className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
+                    >
+                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                        <ArrowLeft size={14} strokeWidth={1.5} className="inline mr-1" /> Previous
+                      </span>
+                      <span className="ms-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
+                        {prevProject?.title}
+                      </span>
+                    </Link>
+                  </FadeUp>
+                ) : (
+                  <div />
+                )}
+                {nextProject ? (
+                  <FadeUp delay={0.1}>
+                    <Link
+                      href={`/projects/${nextProject?.id}`}
+                      className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
+                    >
+                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                        Next <ArrowRight size={14} strokeWidth={1.5} className="inline ml-1" />
+                      </span>
+                      <span className="me-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
+                        {nextProject?.title}
+                      </span>
+                    </Link>
+                  </FadeUp>
+                ) : (
+                  <div />
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+
+      <Footer />
+
+      <Lightbox
+        images={lightboxImages}
+        initialIndex={selectedImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
+    </>
+  );
+}
