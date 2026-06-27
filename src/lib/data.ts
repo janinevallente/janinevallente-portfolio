@@ -138,7 +138,7 @@ export const portfolio = {
       title: "Byteflow",
       category: "Developer Toolkit",
       description:
-        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, and front-end productivity features — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
+        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, front-end productivity features, and network tools — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
       tags: ["React", "Vite", "Javascript", "Tailwind CSS", "Netlify"],
       year: "2026",
       images: [
@@ -222,13 +222,7 @@ export const portfolio = {
       category: "Personal Portfolio",
       description:
         "This responsive portfolio website showcases my work, experience, and front-end expertise. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion for smooth animations, excellent performance, and a clean, professional user experience.",
-      tags: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-        "Vercel",
-      ],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       year: "2026",
       images: [
         PortfolioImg,

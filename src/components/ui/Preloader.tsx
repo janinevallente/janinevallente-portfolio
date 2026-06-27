@@ -8,7 +8,6 @@ const words = [
   "Bonjour.",                // French
   "Ciao.",                   // Italian
   "Hallo.",                  // German
-  "Olá.",                    // Portuguese
   "Konnichiwa.",             // Japanese
   "Annyeonghaseyo.",         // Korean
   "Nǐ hǎo.",                 // Mandarin Chinese

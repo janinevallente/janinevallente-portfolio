@@ -145,25 +145,27 @@ export default function Projects() {
         </ul>
 
         {/* View More on GitHub Button */}
-        <div className="mt-16 flex justify-center">
-            <a
-              href={portfolio?.social?.gitHub}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
-            >
-              <span className="text-white transition-colors duration-300 group-hover:text-ink">
-                View More on GitHub
-              </span>
-              <motion.span
-                className="text-white transition-colors duration-300 group-hover:text-ink"
-                animate={{ x: [0, 3, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        <FadeUp delay={0.18}>
+          <div className="mt-16 flex justify-center">
+              <a
+                href={portfolio?.social?.gitHub}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
               >
-                <ArrowUpRight size={15} />
-              </motion.span>
-            </a>
-        </div>
+                <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                  View More on GitHub
+                </span>
+                <motion.span
+                  className="text-white transition-colors duration-300 group-hover:text-ink"
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                >
+                  <ArrowUpRight size={15} />
+                </motion.span>
+              </a>
+          </div>
+        </FadeUp>
       </div>
 
       {/* Floating image card & cursor - desktop only */}
