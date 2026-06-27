@@ -5,10 +5,10 @@ import FadeUp from "@/components/animations/FadeUp";
 import { portfolio } from "@/lib/data";
 
 const stats = [
-  { value: "2+", label: "Professional Years of Exp." },
-  { value: "15+", label: "Projects Delivered" },
-  { value: "5+", label: "Technologies" },
-  { value: "∞", label: "Console.log Debug Sessions" },
+  { value: "2+", label: "Years in Tech Industry" },
+  { value: "15+", label: "Projects & Deployment" },
+  { value: "20+", label: "Tools, Frameworks & Platforms" },
+  { value: "∞", label: "Technical Issues Resolved" },
 ];
 
 export default function About() {
