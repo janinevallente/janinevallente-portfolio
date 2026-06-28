@@ -320,7 +320,7 @@ export const portfolio = {
       role: "Junior Software Developer",
       period: "Jun 2024 — Oct 2025",
       description: [
-        " Developed and enhanced front-end features for enterprise web applications improving usability, responsiveness, and overall user experience",
+        "Developed and enhanced front-end features for web platforms across enterprise, healthcare, logistics, insurance, and voting systems, improving usability, responsiveness, and overall user experience",
         " Integrated RESTful APIs to enable efficient data flow and enhance system reliability",
         " Resolved development and post-deployment issues to ensure stable and consistent application performance",
         " Assisted in deployment activities and gained exposure to cPanel environments, including basic hosting, deployment coordination, and production issue verification",
