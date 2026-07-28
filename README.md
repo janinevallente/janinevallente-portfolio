@@ -133,7 +133,7 @@ Add a new entry to the `projects` array in `data.ts`:
 
 ```ts
 {
-  id: "06",
+  id: "05",
   title: "Your Project Name",
   category: "Web Application",
   description: "A short description of what you built and why.",
@@ -158,20 +158,18 @@ Add a new entry to the `projects` array in `data.ts`:
 
 ## Featured Projects
 
-| #   | Project                                                | Category                      | Year      |
-| --- | ------------------------------------------------------ | ----------------------------- | --------- |
-| 01  | [Byteflow](https://byteflow-tools.netlify.com)         | Developer Toolkit             | 2026      |
-| 02  | [LumiBooth](https://lumibooth.vercel.app)              | Photo Booth Platform          | 2026      |
-| 03  | [SwiftKeys](https://swiftkeys-wpm.vercel.app)          | Typing Test Platform          | 2026      |
-| 04  | [Portfolio Website](https://janinevallente.vercel.app) | Personal Portfolio            | 2026      |
-| 05  | FinanceVue                                             | Financial Analytics Dashboard | 2024      |
-| 06  | AquaFusion Mobile                                      | IoT Monitoring Mobile App     | 2023–2024 |
+| #   | Project                                         | Category                      | Year         |
+| --- | ----------------------------------------------- | ----------------------------- | ------------ |
+| 01  | [Byteflow](https://byteflow-tools.netlify.com)  | Developer Toolkit             | 2026-Present |
+| 02  | [Portfolio Website](https://janinevallente.com) | Personal Portfolio            | 2026         |
+| 03  | FinanceVue                                      | Financial Analytics Dashboard | 2024         |
+| 04  | AquaFusion Mobile                               | IoT Monitoring Mobile App     | 2023–2024    |
 
 ---
 
 ## Deployment
 
-This project is deployed on [Vercel](https://vercel.com). To deploy your own fork:
+This project is deployed on [Vercel](https://vercel.com) for backup purposes. To deploy your own fork:
 
 1. Push the repository to GitHub
 2. Import the project on [vercel.com](https://vercel.com/new)
