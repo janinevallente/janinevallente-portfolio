@@ -13,7 +13,7 @@ export default function CustomCursor({
 }) {
   return (
     <motion.div
-      className="fixed pointer-events-none z-[60] flex items-center justify-center rounded-full bg-accent w-[90px] h-[90px]"
+      className="fixed pointer-events-none z-[60] flex items-center justify-center rounded-full bg-black border border-white w-[90px] h-[90px]"
       style={{
         top: 0,
         left: 0,
@@ -23,7 +23,7 @@ export default function CustomCursor({
       animate={{ scale: active ? 1 : 0, opacity: active ? 1 : 0 }}
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
     >
-      <span className="font-body text-xs tracking-widest uppercase text-ink">
+      <span className="font-body text-xs tracking-widest uppercase text-white">
         {label}
       </span>
     </motion.div>

@@ -4,16 +4,6 @@ import ByteflowImg3 from "@/assets/images/byteflow3.webp";
 import ByteflowImg4 from "@/assets/images/byteflow4.webp";
 import ByteflowImg5 from "@/assets/images/byteflow5.webp";
 import ByteflowImg6 from "@/assets/images/byteflow6.webp";
-import LumiBoothImg from "@/assets/images/lumibooth.webp";
-import LumiBoothImg2 from "@/assets/images/lumibooth2.webp";
-import LumiBoothImg3 from "@/assets/images/lumibooth3.webp";
-import LumiBoothImg4 from "@/assets/images/lumibooth4.webp";
-import SwiftKeysImg from "@/assets/images/swiftkeys.webp";
-import SwiftKeysImg2 from "@/assets/images/swiftkeys2.webp";
-import SwiftKeysImg3 from "@/assets/images/swiftkeys3.webp";
-import SwiftKeysImg4 from "@/assets/images/swiftkeys4.webp";
-import SwiftKeysImg5 from "@/assets/images/swiftkeys5.webp";
-import SwiftKeysImg6 from "@/assets/images/swiftkeys6.webp";
 import FinanceVueImg from "@/assets/images/financevue.webp";
 import AquafusionImg from "@/assets/images/aquafusion.webp";
 import PortfolioImg from "@/assets/images/portfolio.webp";
@@ -107,15 +97,15 @@ export const portfolio = {
       },
       {
         id: "3",
-        area: "Technical Support & Troubleshooting",
+        area: "Domain Operations & Compliance",
         detail:
-          "Experienced in diagnosing technical issues, assisting users, and resolving system-related concerns across software, hosting, and web-based environments.",
+          "Handling domain registration, renewals, ownership transfers, claims, and access recovery with a strong focus on process accuracy and compliance.",
       },
       {
         id: "4",
-        area: "Domains & Web Hosting Support",
+        area: "DNS & Web Hosting Support",
         detail:
-          "Working with domain management, DNS configurations, hosting-related troubleshooting, and supporting customers within live production environments.",
+          "Working with DNS configurations (including nameserver updates and DNSSEC), domain management, and web hosting environments such as cPanel for website deployment and basic troubleshooting.",
       },
       // {
       //   num: "05",
@@ -138,9 +128,9 @@ export const portfolio = {
       title: "Byteflow",
       category: "Developer Toolkit",
       description:
-        "A growing collection of privacy-first tech utilities designed for developers and IT professionals. Byteflow includes image processing tools, color and accessibility utilities, Tailwind CSS helpers, front-end productivity features, and network tools — all running directly in the browser with no installs or unnecessary uploads. Built with React, Vite, and Tailwind CSS for a fast, lightweight, and seamless user experience, with future expansion into SEO, backend, and general-purpose development utilities.",
+        "A privacy-first toolkit for developers and IT professionals featuring browser-based utilities for image processing, design workflows, networking, domain operations, web performance, and security. Byteflow brings essential development and tech tools into a single fast, lightweight application built with React, Vite, and Tailwind CSS.",
       tags: ["React", "Vite", "Javascript", "Tailwind CSS", "Netlify"],
-      year: "2026",
+      year: "2026 - Present",
       images: [
         ByteflowImg,
         ByteflowImg2,
@@ -163,61 +153,6 @@ export const portfolio = {
     },
     {
       id: "02",
-      title: "LumiBooth",
-      category: "Photo Booth Platform",
-      description:
-        "A beautiful and intuitive photo strip booth web application that lets users capture photos, decorate them with stickers and filters, choose creative strip formats, and download polished results. Built with Next.js, TypeScript and Tailwind CSS for a smooth, responsive experience with fast performance and clean state management.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-      year: "2026",
-      images: [LumiBoothImg, LumiBoothImg2, LumiBoothImg3, LumiBoothImg4],
-      hasUrl: true,
-      url: "https://lumibooth.vercel.app/",
-      hasGithub: true,
-      github: "https://github.com/janinevallente/lumibooth-nextjs",
-      featured: true,
-      hasContibutors: false,
-      contributors: [],
-      contributorsImg: [],
-      contributorsLinkedIn: [],
-    },
-    {
-      id: "03",
-      title: "SwiftKeys",
-      category: "Typing Test Platform",
-      description:
-        "A retro arcade-themed typing speed test web application that allows users to challenge their typing skills through multiple difficulty levels, customizable test durations, real-time WPM and accuracy tracking, and detailed score history analytics. Built with Next.js, TypeScript, and Tailwind CSS for a fast, responsive experience with immersive interactions and a polished pixel-art design.",
-      tags: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-        "Recharts",
-        "Web Audio API",
-        "Vercel",
-      ],
-      year: "2026",
-      images: [
-        SwiftKeysImg,
-        SwiftKeysImg2,
-        SwiftKeysImg3,
-        SwiftKeysImg4,
-        SwiftKeysImg5,
-        SwiftKeysImg6,
-      ],
-      hasUrl: true,
-      url: "https://swiftkeys-wpm.vercel.app/",
-      hasGithub: true,
-      github: "https://github.com/janinevallente/swiftkeys",
-      hasPublication: false,
-      publication: "",
-      featured: true,
-      hasContibutors: false,
-      contributors: [],
-      contributorsImg: [],
-      contributorsLinkedIn: [],
-    },
-    {
-      id: "04",
       title: "Portfolio Website",
       category: "Personal Portfolio",
       description:
@@ -245,7 +180,7 @@ export const portfolio = {
       contributorsLinkedIn: [],
     },
     {
-      id: "05",
+      id: "03",
       title: "FinanceVue",
       category: "Financial Analytics Dashboard",
       description:
@@ -266,7 +201,7 @@ export const portfolio = {
       contributorsLinkedIn: ["https://www.linkedin.com/in/en-esguerra/"],
     },
     {
-      id: "06",
+      id: "04",
       title: "AquaFusion Mobile",
       category: "IoT Monitoring Mobile App",
       description:
@@ -300,11 +235,10 @@ export const portfolio = {
       role: "Domain Support Associate",
       period: "Jun 2026 — Present",
       description: [
-        "Currently training in domain support, assisting customers through email and phone with domain, account, and service-related inquiries",
-        "(Details to follow as role responsibilities mature)",
-        // "Developing hands-on experience in DNS troubleshooting, domain management, website accessibility concerns, and hosting-related support workflows",
-        // "Assist customers with domain configurations, DNS record updates, domain transfers, and account-related requests while maintaining clear and professional communication",
-        // "Support ticket handling, issue investigation, customer follow-ups, and escalation processes to help ensure timely and accurate service resolution",
+        "Manage end-to-end domain lifecycle operations, including registrations, renewals, transfers, ownership updates, and claims",
+        "Provision domain services, activate domain add-ons, and facilitate secure domain access recovery",
+        "Configure, validate, and troubleshoot DNS settings, including nameserver changes and DNSSEC implementation",
+        "Maintain compliance with registry and registrar policies while ensuring accurate and efficient domain operations",
       ],
       technologies: [
         "DNS",

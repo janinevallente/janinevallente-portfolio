@@ -4,18 +4,18 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const words = [
-  "Hola.",                   // Spanish
-  "Bonjour.",                // French
-  "Ciao.",                   // Italian
-  "Hallo.",                  // German
-  "Konnichiwa.",             // Japanese
-  "Annyeonghaseyo.",         // Korean
-  "Nǐ hǎo.",                 // Mandarin Chinese
-  "Sawadee ka",              // Thai
-  "Namaste.",                // Hindi
-  "Mabuhay.",                // Tagalog
-  "Kamusta.",                // Bisaya
-  "Hello.",                  // English
+  "Hola.",           // Spanish
+  "Bonjour.",        // French
+  "Ciao.",           // Italian
+  "Hallo.",          // German
+  "こんにちは。",     // Japanese
+  "안녕하세요.",      // Korean
+  "你好。",           // Simplified Chinese (Mandarin)
+  "สวัสดีค่ะ",          // Thai (female speaker)
+  "नमस्ते।",           // Hindi
+  "Mabuhay!",        // Tagalog
+  "Kumusta.",        // Cebuano (Bisaya)
+  "Hello.",          // English
 ];
 
 export default function Preloader({ onDone }: { onDone: () => void }) {
