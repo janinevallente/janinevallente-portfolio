@@ -8,7 +8,7 @@ const stats = [
   { value: "2+", label: "Years in Tech Industry" },
   { value: "15+", label: "Projects & Deployment" },
   { value: "20+", label: "Tools, Frameworks & Platforms" },
-  { value: "∞", label: "Technical Issues Resolved" },
+  { value: "100+", label: "Domain Processes Handled" },
 ];
 
 export default function About() {
@@ -25,7 +25,11 @@ export default function About() {
 
         {/* Large word-reveal paragraph */}
         <div className="mb-14 md:mb-20"> 
-          <WordReveal text="Hello, I'm Janine Vallente. An IT Professional based in Cebu City, PH with a background in building applications, troubleshooting systems, and supporting web hosting environments." delay={0.05} className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-ink tracking-tighter" /> 
+          <WordReveal 
+            text="Hello, I'm Jan. An IT professional based in Cebu City, Philippines, with experience building applications, troubleshooting technical issues, and supporting web hosting and domain operations." 
+            delay={0.05} 
+            className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-ink tracking-tighter" 
+          /> 
         </div>
 
         {/* Two-column: bio + skills */}
@@ -38,38 +42,26 @@ export default function About() {
                 My Background
               </p>
 
-              <p className="mb-5"> I started my career in software development, 
-                specializing front-end web development. I built clean, responsive, and 
-                user-centered interfaces while developing a strong foundation in debugging, 
-                system logic, and modern development workflows. 
-              </p>
-
-              {/* <p className="mb-5">
-                Over time, my experience expanded beyond application development and
-                into technical operations and support. I currently work in the web
-                hosting industry, supporting domain and hosting-related services while
-                troubleshooting technical issues across live production environments.
+              <p className="mb-5"> 
+                I started my career in software development, specializing in front-end web
+                development. I built clean, responsive, and user-centered web applications
+                while developing a strong foundation in debugging, system design, and modern
+                development workflows.
               </p>
 
               <p className="mb-5">
-                This transition strengthened my understanding of how systems operate
-                beyond development — from DNS and hosting configurations to technical
-                troubleshooting, deployments, and customer-facing support. It also
-                helped me develop a more practical and reliability-focused approach
-                to technology.
-              </p> */}
-              <p className="mb-5">
-                Recently, I began expanding my experience into technical support and
-                operations within the web hosting industry. As part of my current role and
-                training, I’ve been gaining hands-on exposure to domains, hosting
-                environments, technical troubleshooting, and customer support workflows.
+                Today, I work in domain operations with a focus on domain compliance, 
+                registration and renewals, ownership transfers, and DNS configurations 
+                such as updating nameservers and enabling DNSSEC records. This role has 
+                strengthened my attention to process accuracy and reliable support within 
+                the domain lifecycle.
               </p>
 
               <p className="mb-5">
-                This experience has helped me better understand how systems operate beyond
-                development — from DNS fundamentals to maintaining reliable services and 
-                supporting real-world users. It has also broadened my perspective on building 
-                technology that is both functional and dependable.
+                Combining my software development background with domain operations has given 
+                me a broader view of how websites and online services are managed beyond the 
+                code. I value clear processes, dependable systems, and work that allows me to 
+                deliver consistent and accurate support.
               </p>
             </div>
           </FadeUp>

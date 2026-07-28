@@ -107,15 +107,15 @@ export const portfolio = {
       },
       {
         id: "3",
-        area: "Technical Support & Troubleshooting",
+        area: "Domain Operations & Compliance",
         detail:
-          "Experienced in diagnosing technical issues, assisting users, and resolving system-related concerns across software, hosting, and web-based environments.",
+          "Handling domain registration, renewals, ownership transfers, claims, and access recovery with a strong focus on process accuracy and compliance.",
       },
       {
         id: "4",
-        area: "Domains & Web Hosting Support",
+        area: "DNS & Web Hosting Support",
         detail:
-          "Working with domain management, DNS configurations, hosting-related troubleshooting, and supporting customers within live production environments.",
+          "Working with DNS configurations (including nameserver updates and DNSSEC), domain management, and web hosting environments such as cPanel for website deployment and basic troubleshooting.",
       },
       // {
       //   num: "05",
@@ -300,11 +300,10 @@ export const portfolio = {
       role: "Domain Support Associate",
       period: "Jun 2026 — Present",
       description: [
-        "Currently training in domain support, assisting customers through email and phone with domain, account, and service-related inquiries",
-        "(Details to follow as role responsibilities mature)",
-        // "Developing hands-on experience in DNS troubleshooting, domain management, website accessibility concerns, and hosting-related support workflows",
-        // "Assist customers with domain configurations, DNS record updates, domain transfers, and account-related requests while maintaining clear and professional communication",
-        // "Support ticket handling, issue investigation, customer follow-ups, and escalation processes to help ensure timely and accurate service resolution",
+        "Manage end-to-end domain lifecycle operations, including registrations, renewals, transfers, ownership updates, and claims",
+        "Provision domain services, activate domain add-ons, and facilitate secure domain access recovery",
+        "Configure, validate, and troubleshoot DNS settings, including nameserver changes and DNSSEC implementation",
+        "Maintain compliance with registry and registrar policies while ensuring accurate and efficient domain operations",
       ],
       technologies: [
         "DNS",
