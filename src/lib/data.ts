@@ -1,9 +1,9 @@
-import ByteflowImg from "@/assets/images/byteflow.webp";
-import ByteflowImg2 from "@/assets/images/byteflow2.webp";
-import ByteflowImg3 from "@/assets/images/byteflow3.webp";
-import ByteflowImg4 from "@/assets/images/byteflow4.webp";
-import ByteflowImg5 from "@/assets/images/byteflow5.webp";
-import ByteflowImg6 from "@/assets/images/byteflow6.webp";
+import RivoImg from "@/assets/images/rivo.webp";
+import RivoImg2 from "@/assets/images/rivo2.webp";
+import RivoImg3 from "@/assets/images/rivo3.webp";
+import RivoImg4 from "@/assets/images/rivo4.webp";
+import RivoImg5 from "@/assets/images/rivo5.webp";
+import RivoImg6 from "@/assets/images/rivo6.webp";
 import FinanceVueImg from "@/assets/images/financevue.webp";
 import AquafusionImg from "@/assets/images/aquafusion.webp";
 import PortfolioImg from "@/assets/images/portfolio.webp";
@@ -125,24 +125,17 @@ export const portfolio = {
   projects: [
     {
       id: "01",
-      title: "Byteflow",
-      category: "Developer Toolkit",
+      title: "Rivo",
+      category: "Web Utilities Platform",
       description:
-        "A privacy-first toolkit for developers and IT professionals featuring browser-based utilities for image processing, design workflows, networking, domain operations, web performance, and security. Byteflow brings essential development and tech tools into a single fast, lightweight application built with React, Vite, and Tailwind CSS.",
-      tags: ["React", "Vite", "Javascript", "Tailwind CSS", "Netlify"],
+        "A privacy-first collection of browser-based web utilities for developers, designers, and IT professionals. Rivo brings together tools for image processing, design workflows, frontend development, networking, domain diagnostics, web performance, and security into a single fast, lightweight application built with React, Vite, and Tailwind CSS.",
+      tags: ["React", "Vite", "JavaScript", "Tailwind CSS", "Netlify"],
       year: "2026 - Present",
-      images: [
-        ByteflowImg,
-        ByteflowImg2,
-        ByteflowImg3,
-        ByteflowImg4,
-        ByteflowImg5,
-        ByteflowImg6,
-      ],
+      images: [RivoImg, RivoImg2, RivoImg3, RivoImg4, RivoImg5, RivoImg6],
       hasUrl: true,
-      url: "https://byteflow-tools.netlify.app/",
+      url: "https://rivo-tools.netlify.app/",
       hasGithub: true,
-      github: "https://github.com/janinevallente/byteflow",
+      github: "https://github.com/janinevallente/rivo-tools",
       hasPublication: false,
       publication: "",
       featured: true,
