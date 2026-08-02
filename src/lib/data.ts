@@ -17,7 +17,6 @@ import ContibutorImg2 from "@/assets/images/contributor2.webp";
 
 export const portfolio = {
   name: "Janine Vallente",
-  role: "Frontend Developer",
   tagline: "Portfolio Website",
   email: "janinexvallente@gmail.com",
   location: "Cebu City, Philippines",
