@@ -26,6 +26,12 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 body {
@@ -35,26 +41,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-::selection {
-  background: var(--color-ink);
-  color: var(--color-bg);
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
+/* Scrollbar hidden globally (any other scrollable containers) */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: #c5c2bb;
-  border-radius: 99px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #999891;
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 /* Hide default cursor over project list area */
