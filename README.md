@@ -160,7 +160,7 @@ Add a new entry to the `projects` array in `data.ts`:
 
 | #   | Project                                         | Category                      | Year         |
 | --- | ----------------------------------------------- | ----------------------------- | ------------ |
-| 01  | [Byteflow](https://byteflow-tools.netlify.com)  | Developer Toolkit             | 2026-Present |
+| 01  | [Rivo](https://rivo-tools.netlify.com)          | Web Utilities Platform        | 2026-Present |
 | 02  | [Portfolio Website](https://janinevallente.com) | Personal Portfolio            | 2026         |
 | 03  | FinanceVue                                      | Financial Analytics Dashboard | 2024         |
 | 04  | AquaFusion Mobile                               | IoT Monitoring Mobile App     | 2023–2024    |
