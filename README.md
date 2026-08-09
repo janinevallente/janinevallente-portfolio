@@ -8,6 +8,7 @@ A modern, animated developer portfolio built with **Next.js 15** and **Framer Mo
 
 - **Animated preloader** — word-cycling intro screen shown once per session; skipped on back-navigation from project pages
 - **Image lightbox gallery** — click on any project image to open a full-screen lightbox with keyboard navigation (arrow keys), touch-friendly swipe controls, and image counter for multi-image projects
+- **Skeleton loading placeholders** — project screenshots and contributor avatars on the project detail page show an animated skeleton while the image loads, then fade in smoothly once ready
 - **Custom cursor** — replaces the default cursor with a branded circle when hovering over projects
 - **Floating image card** — follows the cursor across the projects list, previewing each project's screenshot
 - **Scroll-driven animations** — section reveals, word-by-word text animation, and parallax contact section powered by Framer Motion
@@ -22,16 +23,17 @@ A modern, animated developer portfolio built with **Next.js 15** and **Framer Mo
 
 ## Tech Stack
 
-| Layer      | Technology                                                        |
-| ---------- | ----------------------------------------------------------------- |
-| Framework  | [Next.js 15](https://nextjs.org) (App Router)                     |
-| UI Library | [React 19](https://react.dev)                                     |
-| Language   | TypeScript                                                        |
-| Styling    | [Tailwind CSS v3](https://tailwindcss.com) (custom design tokens) |
-| Animation  | [Framer Motion](https://www.framer-motion.com)                    |
-| Icons      | [Lucide React](https://lucide.dev)                                |
-| Fonts      | Migra (display) + Plus Jakarta Sans (body) via Next.js Font       |
-| Deployment | [Vercel](https://vercel.com)                                      |
+| Layer         | Technology                                                               |
+| ------------- | ------------------------------------------------------------------------ |
+| Framework     | [Next.js 15](https://nextjs.org) (App Router)                            |
+| UI Library    | [React 19](https://react.dev)                                            |
+| Language      | TypeScript                                                               |
+| Styling       | [Tailwind CSS v3](https://tailwindcss.com) (custom design tokens)        |
+| Animation     | [Framer Motion](https://www.framer-motion.com)                           |
+| UI Components | [Ant Design](https://ant.design) (`Skeleton.Image` loading placeholders) |
+| Icons         | [Lucide React](https://lucide.dev)                                       |
+| Fonts         | Migra (display) + Plus Jakarta Sans (body) via Next.js Font              |
+| Deployment    | [Vercel](https://vercel.com)                                             |
 
 ---
 
@@ -66,6 +68,7 @@ src/
 │   └── ui/
 │       ├── CustomCursor.tsx        # Branded cursor overlay
 │       ├── FloatingImageCard.tsx   # Cursor-following project image card
+│       ├── ImageWithSkeleton.tsx   # <img> wrapper with an antd Skeleton.Image loading state
 │       ├── Lightbox.tsx            # Full-screen image gallery with swipe & keyboard nav
 │       ├── Marquee.tsx             # Infinite-scroll hero name strip
 │       ├── Preloader.tsx           # Word-cycling animated intro screen
@@ -181,6 +184,7 @@ This project is deployed on [Vercel](https://vercel.com) for backup purposes. To
 ## Acknowledgements
 
 - Animations powered by [Framer Motion](https://www.framer-motion.com)
+- Loading placeholders powered by [Ant Design](https://ant.design)
 - Tech stack icons from [Devicon](https://devicon.dev)
 - Deployed and hosted on [Vercel](https://vercel.com)
 
