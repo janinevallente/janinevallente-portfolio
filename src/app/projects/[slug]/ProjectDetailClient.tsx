@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
@@ -12,6 +12,7 @@ import WordReveal from "@/components/animations/WordReveal";
 import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import Lightbox from "@/components/ui/Lightbox";
+import ImageWithSkeleton from "@/components/ui/ImageWithSkeleton";
 import { portfolio } from "@/lib/data";
 
 export default function ProjectDetailClient({ slug }: { slug: string }) {
@@ -179,7 +180,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 }}
                 onClick={() => handleImageClick(i)}
               >
-                <img
+                <ImageWithSkeleton
                   src={img.src}
                   alt={`${project.title} screenshot ${i + 1}`}
                   className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
@@ -328,10 +329,11 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                       className="group inline-flex items-center gap-4 w-fit"
                     >
                       <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-1 ring-border transition-all duration-300 group-hover:ring-1 group-hover:ring-ink">
-                        <img
+                        <ImageWithSkeleton
                           src={project.contributorsImg[i]?.src ?? project.contributorsImg[i]}
                           alt={name}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          skeletonStyle={{ borderRadius: "9999px" }}
                         />
                       </div>
                       <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 group-hover:underline transition-all duration-200">
