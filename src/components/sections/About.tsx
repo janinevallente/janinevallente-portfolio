@@ -8,7 +8,7 @@ const stats = [
   { value: "2+", label: "Years in Tech Industry" },
   { value: "15+", label: "Projects & Deployment" },
   { value: "20+", label: "Tools, Frameworks & Platforms" },
-  { value: "100+", label: "Domain Processes Handled" },
+  { value: "200+", label: "Domain Processes Handled" },
 ];
 
 export default function About() {
