@@ -223,7 +223,7 @@ export const portfolio = {
 
   experience: [
     {
-      company: "Newfold Digital Philippines Inc.",
+      company: "Newfold Digital",
       role: "Domain Support Associate",
       period: "Jun 2026 — Present",
       description: [
@@ -231,14 +231,6 @@ export const portfolio = {
         "Provision domain services, activate domain add-ons, and facilitate secure domain access recovery",
         "Configure, validate, and troubleshoot DNS settings, including nameserver changes and DNSSEC implementation",
         "Maintain compliance with registry and registrar policies while ensuring accurate and efficient domain operations",
-      ],
-      technologies: [
-        "DNS",
-        "Web Hosting",
-        "Domain Management",
-        "Technical Support",
-        "Customer Support",
-        "Troubleshooting",
       ],
     },
     {
@@ -252,17 +244,6 @@ export const portfolio = {
         " Assisted in deployment activities and gained exposure to cPanel environments, including basic hosting, deployment coordination, and production issue verification",
         " Contributed to writing documentation to support team knowledge sharing and project continuity",
       ],
-      technologies: [
-        "React",
-        "JavaScript",
-        "TypeScript",
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "Tailwind CSS",
-        "AntDesign",
-        "Git",
-      ],
     },
     {
       company: "MYT SoftDev Solutions Inc.",
@@ -272,19 +253,6 @@ export const portfolio = {
         "Supported development and testing of web application modules while learning real-world workflows.",
         "Assisted in debugging issues across the codebase to maintain system reliability.",
         "Gained hands-on experience with version control, collaborative development, and production-level systems.",
-      ],
-      technologies: [
-        "React",
-        "JavaScript",
-        "TypeScript",
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "AntDesign",
-        "Node.js",
-        "PHP",
-        "MySQL",
-        "Git",
       ],
     },
   ],
