@@ -31,6 +31,10 @@ function useLocalTime() {
   return time;
 }
 
+function getGmailComposeUrl(email: string) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+}
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -111,7 +115,8 @@ export default function Contact() {
         <FadeUp delay={0.26}>
           <div className="mt-10 mb-20 pb-10">
             <a
-              href={`mailto:${portfolio.email}`}
+              target="_blank"
+              href={getGmailComposeUrl(portfolio.email)}
               className="group inline-flex items-center gap-3 px-8 py-3.5 border border-accent font-body text-[0.78rem] tracking-widest-2 uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
             >
               <span className="text-accent transition-colors duration-300 group-hover:text-ink">
@@ -137,7 +142,8 @@ export default function Contact() {
                 Email
               </p>
               <a
-                href={`mailto:${portfolio.email}`}
+                target="_blank"
+                href={getGmailComposeUrl(portfolio.email)}
                 className="font-body font-light text-white/55 text-[clamp(0.8rem,1.2vw,0.95rem)] transition-colors duration-200 hover:text-accent border-b border-transparent hover:border-accent pb-0.5 break-all"
               >
                 {portfolio.email}
