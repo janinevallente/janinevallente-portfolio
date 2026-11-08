@@ -81,7 +81,7 @@ export default function Navbar() {
           "fixed top-0 inset-x-0 z-50 transition-all duration-500",
           scrolled ? "py-3 px-8" : "py-5 px-8",
           isDark || menuOpen
-            ? "bg-ink/90 backdrop-blur-[14px]"
+            ? "bg-bg/90 backdrop-blur-[14px]"
             : "bg-transparent",
         ].join(" ")}
       >
