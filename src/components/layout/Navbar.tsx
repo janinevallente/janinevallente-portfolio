@@ -121,9 +121,6 @@ export default function Navbar() {
                         isActive ? "text-accent" : "text-white/55"
                       }`}
                     >
-                      {isActive && (
-                        <span className="inline-block w-1 h-1 rounded-full mr-1.5 mb-0.5 bg-accent" />
-                      )}
                       {link.label}
                     </span>
                   </button>
