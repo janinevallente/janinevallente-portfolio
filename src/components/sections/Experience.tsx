@@ -6,33 +6,17 @@ import FadeUp from "@/components/animations/FadeUp";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative bg-ink text-white py-28 md:py-40">
-      {/* Subtle grain overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "128px",
-        }}
-      />
+    <section id="experience" className="relative bg-bg text-white py-28 md:py-40">
 
       <div className="container max-w-[1400px] mx-auto px-8 md:px-12">
         {/* Label */}
         <FadeUp>
-          <p className="mb-16 text-xs tracking-widest-5 uppercase font-body text-white/30">
-            02 — Experience
+          <p className="mb-10 md:mb-16 font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-none">
+            My Work Experience
+            <span className="text-accent text-8xl ms-1">.</span>
           </p>
         </FadeUp>
-
-        {/* Heading */}
-        <div className="mb-10">
-          <WordReveal
-            text="Where I've Worked"
-            className="font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-none"
-          />
-        </div>
-
+        
         {/* Jobs */}
         <div>
           {portfolio.experience.map((job, i) => (
@@ -58,7 +42,7 @@ export default function Experience() {
                       {job.description.map((point, j) => (
                         <li key={j} className="flex items-start gap-3">
                           <span className="mt-[10px] w-1 h-1 rounded-full flex-shrink-0 bg-accent" />
-                          <span className="font-body text-md font-light leading-relaxed text-white-55">
+                          <span className="font-body text-md font-light leading-relaxed text-white/75">
                             {point}
                           </span>
                         </li>
