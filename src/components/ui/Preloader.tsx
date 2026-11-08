@@ -83,7 +83,6 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <span className="w-2 h-2 rounded-full flex-shrink-0 bg-accent" />
             <p className="font-display font-medium text-2xl md:text-4xl tracking-tight">
               {words[Math.min(index, words.length - 1)]}
             </p>
