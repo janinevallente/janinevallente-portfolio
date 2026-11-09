@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
@@ -13,7 +13,47 @@ import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import Lightbox from "@/components/ui/Lightbox";
 import ImageWithSkeleton from "@/components/ui/ImageWithSkeleton";
+import { getCursorPosition } from "@/lib/cursor-position";
+import { runCurtain } from "@/lib/curtain";
 import { portfolio } from "@/lib/data";
+
+/* Circle curtain: grows from the cursor until it covers the screen */
+function CircleCurtain() {
+  const [circle, setCircle] = useState<{ x: number; y: number; r: number } | null>(null);
+  const [visible, setVisible] = useState(true);
+
+  // Runs before paint so the circle starts exactly where the cursor was
+  useLayoutEffect(() => {
+    const { x, y } = getCursorPosition();
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    // Radius needed to reach the farthest corner from the cursor
+    const r = Math.hypot(Math.max(x, w - x), Math.max(y, h - y));
+    setCircle({ x, y, r });
+  }, []);
+
+  if (!circle || !visible) return null;
+
+  return (
+    <motion.div
+      className="pointer-events-none fixed inset-0 z-[200] bg-accent"
+      initial={{
+        clipPath: `circle(0px at ${circle.x}px ${circle.y}px)`,
+        opacity: 1,
+      }}
+      animate={{
+        clipPath: `circle(${circle.r + 2}px at ${circle.x}px ${circle.y}px)`,
+        opacity: [1, 1, 0],
+      }}
+      transition={{
+        clipPath: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+        // Hold fully covered while the circle grows, then fade to reveal the page
+        opacity: { duration: 1.2, times: [0, 0.7, 1], ease: "easeOut" },
+      }}
+      onAnimationComplete={() => setVisible(false)}
+    />
+  );
+}
 
 export default function ProjectDetailClient({ slug }: { slug: string }) {
   const router = useRouter();
@@ -33,7 +73,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
   const nextProject = portfolio.projects[currentIndex + 1] ?? null;
 
   const handleBackToProjects = () => {
-    router.push("/?scrollTo=projects");
+    runCurtain(() => router.push("/?scrollTo=projects"));
   };
 
   const handleImageClick = (index: number) => {
@@ -50,12 +90,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
   return (
     <>
       {/* Page entrance curtain */}
-      <motion.div
-        className="fixed inset-0 z-[200] origin-top bg-ink"
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
-      />
+      <CircleCurtain />
 
       <Navbar />
 
@@ -73,7 +108,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
           >
             <button
               onClick={handleBackToProjects}
-              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-ink-muted transition-all duration-200 hover:gap-3 hover:text-ink hover:underline hover:decoration-black"
+              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-white/75 transition-all duration-200 hover:gap-3 hover:text-accent hover:underline hover:decoration-accent"
             >
               <ArrowLeft size={14} /> Back to Projects
             </button>
@@ -84,7 +119,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
             <WordReveal
               text={project.title}
               delay={0.4}
-              className="font-display font-bold text-ink text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
+              className="font-display font-bold text-white text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
             />
           </div>
 
@@ -97,16 +132,19 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-accent"
               >
                 Category
               </motion.p>
-              <RevealLine delay={0.6} />
+              <RevealLine
+                color={'accent'}
+                delay={0.6} 
+              />
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
-                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.category}
               </motion.p>
@@ -118,11 +156,14 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-accent"
               >
                 Tech Stack
               </motion.p>
-              <RevealLine delay={0.63} />
+              <RevealLine
+                color={'accent'}
+                delay={0.63} 
+              />
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -132,10 +173,10 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 {project.tags.map((tag, i) => (
                   <span
                     key={tag}
-                    className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                    className="font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
                   >
                     {tag}{i < project.tags.length - 1 && (
-                      <span className="inline-block w-1.5 h-1.5 bg-ink/70 rounded-full ml-2 mb-0.5" />
+                      <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full ml-2 mb-0.5" />
                     )}
                   </span>
                 ))}
@@ -148,16 +189,19 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
-                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-ink-muted"
+                className="font-body font-medium text-xs tracking-[0.05em] uppercase mb-4 text-accent"
               >
                 Year
               </motion.p>
-              <RevealLine delay={0.66} />
+              <RevealLine
+                color={'accent'}
+                delay={0.66} 
+              />
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.74 }}
-                className="mt-5 font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.year}
               </motion.p>
@@ -217,7 +261,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
           {/* Overview */}
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
             <SectionReveal delay={0} direction="fade">
-              <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
+              <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-accent">
                 Overview
               </p>
             </SectionReveal>
@@ -225,18 +269,18 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
             {/* Project Description */}
             <div>
               <FadeUp delay={0.3}>
-                <p className="font-display font-semibold text-ink text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
+                <p className="font-display font-semibold text-white text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
                   {project.description}
                 </p>
               </FadeUp>
               {/* Links */}
               <div className="mt-10">
                 <FadeUp delay={0.2}>
-                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 mb-14 md:mb-22">
+                  <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-5 mb-14 md:mb-22">
                     {project.title === "Portfolio Website" && (
                       <>
-                        <div className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300">
-                          Current Live Site
+                        <div className="bg-accent rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300">
+                          You're viewing it now.
                         </div>
                       </>
                     )}
@@ -246,13 +290,13 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-accent group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-ink hover:border-ink"
+                          className="bg-bg rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
                         >
-                          <span className="text-ink transition-colors duration-300 group-hover:text-white">
+                          <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                             Live Site
                           </span>
                           <motion.span
-                            className="text-ink transition-colors duration-300 group-hover:text-white"
+                            className="text-accent transition-colors duration-300 group-hover:text-ink"
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
@@ -267,13 +311,13 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+                          className="bg-bg rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-accent hover:border-accent"
                         >
-                          <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                          <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                             Github
                           </span>
                           <motion.span
-                            className="text-white transition-colors duration-300 group-hover:text-ink"
+                            className="text-accent transition-colors duration-300 group-hover:text-ink"
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
@@ -288,13 +332,13 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           href={project.publication}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-primary group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-primary font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-primary"
+                          className="bg-bg rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-primary font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-primary hover:border-primary"
                         >
-                          <span className="text-white transition-colors duration-300 group-hover:text-primary">
+                          <span className="text-primary transition-colors duration-300 group-hover:text-white">
                             Publication
                           </span>
                           <motion.span
-                            className="text-white transition-colors duration-300 group-hover:text-primary"
+                            className="text-primary transition-colors duration-300 group-hover:text-white"
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
@@ -314,7 +358,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
           {project.hasContibutors && (
             <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-24 mb-12 md:mb-16">
               <SectionReveal delay={0} direction="fade">
-                <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-ink-muted">
+                <p className="font-body text-xs tracking-widest-5 uppercase pt-1 text-accent">
                   Other Contributors
                 </p>
               </SectionReveal>
@@ -328,7 +372,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-4 w-fit"
                     >
-                      <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-1 ring-border transition-all duration-300 group-hover:ring-1 group-hover:ring-ink">
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-1 ring-border transition-all duration-300 group-hover:ring-1 group-hover:ring-accent">
                         <ImageWithSkeleton
                           src={project.contributorsImg[i]?.src ?? project.contributorsImg[i]}
                           alt={name}
@@ -336,12 +380,12 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           skeletonStyle={{ borderRadius: "9999px" }}
                         />
                       </div>
-                      <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 group-hover:underline transition-all duration-200">
+                      <span className="font-display font-medium text-white text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 hover:text-accent group-hover:underline transition-all duration-200">
                         {name}
                       </span>
                       <ArrowUpRight
                         size={15}
-                        className="text-ink-muted opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                        className="text-accent opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
                       />
                     </a>
                   </FadeUp>
@@ -352,18 +396,18 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
 
           {/* Prev / Next */}
           {(prevProject || nextProject) && (
-            <div className="pt-7 border-t border-border">
+            <div className="border-t border-accent">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 {prevProject ? (
                   <FadeUp delay={0.1}>
                     <Link
                       href={`/projects/${prevProject?.id}`}
-                      className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-border transition-colors duration-300 hover:bg-ink"
+                      className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-accent/70 transition-colors duration-300 hover:bg-accent"
                     >
-                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-white transition-colors duration-300 group-hover:text-ink">
                         <ArrowLeft size={14} strokeWidth={1.5} className="inline mr-1" /> Previous
                       </span>
-                      <span className="ms-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
+                      <span className="ms-3 font-display font-bold text-white text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
                         {prevProject?.title}
                       </span>
                     </Link>
@@ -375,12 +419,12 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                   <FadeUp delay={0.1}>
                     <Link
                       href={`/projects/${nextProject?.id}`}
-                      className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-ink"
+                      className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-accent"
                     >
-                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-ink-muted transition-colors duration-300 group-hover:text-white/60">
+                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-white transition-colors duration-300 group-hover:text-ink">
                         Next <ArrowRight size={14} strokeWidth={1.5} className="inline ml-1" />
                       </span>
-                      <span className="me-3 font-display font-bold text-ink text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-white">
+                      <span className="me-3 font-display font-bold text-white text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
                         {nextProject?.title}
                       </span>
                     </Link>
