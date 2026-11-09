@@ -18,7 +18,7 @@ const config: Config = {
         body: ["var(--font-body)"],
       },
       colors: {
-        bg: "#010101",
+        bg: "#0B0B0C",
         hero: "#20201e",
         ink: {
           DEFAULT: "#111110",
@@ -26,9 +26,10 @@ const config: Config = {
           muted: "#6b6a67",
         },
         surface: "#1a1a18",
-        accent: "#8FFE09",
+        accent: "#B6FF2E",
         border: "#d8d5ce",
-        primary: "#0961bb",
+        primary: "#3780c9",
+        chalk: "#F3F2EE",
         // Derived white-alpha tokens (used in dark sections)
         "white-5": "#ffffff0d",
         "white-7": "#ffffff12",

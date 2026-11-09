@@ -7,15 +7,16 @@
   --font-display: "Syne", sans-serif;
   --font-body: "Inter Tight", sans-serif;
 
-  /* --color-bg: #f0ede6; */
-  --color-bg: #010101;
+  /* --color-bg: #010101; */
+  --color-bg: #0b0b0c;
   --color-hero: #20201e;
   --color-ink: #111110;
   --color-ink-secondary: #1c1c1a;
   --color-ink-muted: #6b6a67;
   --color-surface: #1a1a18;
-  --color-accent: #8ffe09;
+  --color-accent: #b6ff2e;
   --color-border: #d8d5ce;
+  --color-chalk: #f3f2ee;
 }
 
 * {
