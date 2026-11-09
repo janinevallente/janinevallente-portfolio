@@ -23,7 +23,7 @@ export default function CustomCursor({
       animate={{ scale: active ? 1 : 0, opacity: active ? 1 : 0 }}
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
     >
-      <span className="font-body text-xs uppercase text-black font-bold">
+      <span className="font-body text-xs uppercase text-black tracking-widest-2">
         {label}
       </span>
     </motion.div>

@@ -13,6 +13,7 @@ import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import Lightbox from "@/components/ui/Lightbox";
 import ImageWithSkeleton from "@/components/ui/ImageWithSkeleton";
+import Dot from "@/components/ui/Dot";
 import { getCursorPosition } from "@/lib/cursor-position";
 import { runCurtain } from "@/lib/curtain";
 import { portfolio } from "@/lib/data";
@@ -108,7 +109,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
           >
             <button
               onClick={handleBackToProjects}
-              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-white/75 transition-all duration-200 hover:gap-3 hover:text-accent hover:underline hover:decoration-accent"
+              className="inline-flex items-center gap-2 font-body text-xs tracking-widest-3 uppercase text-chalk/95 transition-all duration-200 hover:gap-3 hover:text-accent hover:underline hover:decoration-accent"
             >
               <ArrowLeft size={14} /> Back to Projects
             </button>
@@ -119,7 +120,8 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
             <WordReveal
               text={project.title}
               delay={0.4}
-              className="font-display font-bold text-white text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
+              suffix={<Dot />}
+              className="font-display font-bold text-chalk text-[clamp(3rem,9vw,9rem)] tracking-[-0.03em] leading-[0.9]"
             />
           </div>
 
@@ -137,14 +139,14 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 Category
               </motion.p>
               <RevealLine
-                color={'accent'}
+                color={'bg-accent/30'}
                 delay={0.6} 
               />
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.72 }}
-                className="mt-5 font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-chalk/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.category}
               </motion.p>
@@ -161,7 +163,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 Tech Stack
               </motion.p>
               <RevealLine
-                color={'accent'}
+                color={'bg-accent/30'}
                 delay={0.63} 
               />
               <motion.div
@@ -173,7 +175,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 {project.tags.map((tag, i) => (
                   <span
                     key={tag}
-                    className="font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                    className="font-display font-medium text-chalk/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
                   >
                     {tag}{i < project.tags.length - 1 && (
                       <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full ml-2 mb-0.5" />
@@ -194,14 +196,14 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                 Year
               </motion.p>
               <RevealLine
-                color={'accent'}
+                color={'bg-accent/30'}
                 delay={0.66} 
               />
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.74 }}
-                className="mt-5 font-display font-medium text-white/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
+                className="mt-5 font-display font-medium text-chalk/90 text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em]"
               >
                 {project.year}
               </motion.p>
@@ -269,7 +271,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
             {/* Project Description */}
             <div>
               <FadeUp delay={0.3}>
-                <p className="font-display font-semibold text-white text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
+                <p className="font-display font-semibold text-chalk text-[clamp(1.25rem,2.2vw,1.9rem)] leading-[1.45] tracking-[-0.015em]">
                   {project.description}
                 </p>
               </FadeUp>
@@ -334,11 +336,11 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           rel="noopener noreferrer"
                           className="bg-bg rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-primary font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-primary hover:border-primary"
                         >
-                          <span className="text-primary transition-colors duration-300 group-hover:text-white">
+                          <span className="text-primary transition-colors duration-300 group-hover:text-chalk">
                             Publication
                           </span>
                           <motion.span
-                            className="text-primary transition-colors duration-300 group-hover:text-white"
+                            className="text-primary transition-colors duration-300 group-hover:text-chalk"
                             animate={{ x: [0, 3, 0] }}
                             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                           >
@@ -380,7 +382,7 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                           skeletonStyle={{ borderRadius: "9999px" }}
                         />
                       </div>
-                      <span className="font-display font-medium text-white text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 hover:text-accent group-hover:underline transition-all duration-200">
+                      <span className="font-display font-medium text-chalk text-[clamp(1rem,1.5vw,1.125rem)] tracking-[-0.01em] underline-offset-4 hover:text-accent group-hover:underline transition-all duration-200">
                         {name}
                       </span>
                       <ArrowUpRight
@@ -396,18 +398,18 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
 
           {/* Prev / Next */}
           {(prevProject || nextProject) && (
-            <div className="border-t border-accent">
+            <div className="border-t border-accent/30">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                 {prevProject ? (
                   <FadeUp delay={0.1}>
                     <Link
                       href={`/projects/${prevProject?.id}`}
-                      className="group flex flex-col gap-2 py-8 md:pr-10 md:border-r border-accent/70 transition-colors duration-300 hover:bg-accent"
+                      className="group flex flex-col gap-2 py-8 md:pr-10 transition-colors duration-300 hover:bg-accent"
                     >
-                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-white transition-colors duration-300 group-hover:text-ink">
+                      <span className="ms-0 md:ms-3 font-body text-xs tracking-[0.15em] uppercase text-chalk transition-colors duration-300 group-hover:text-ink">
                         <ArrowLeft size={14} strokeWidth={1.5} className="inline mr-1" /> Previous
                       </span>
-                      <span className="ms-3 font-display font-bold text-white text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
+                      <span className="ms-3 font-display font-bold text-chalk text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
                         {prevProject?.title}
                       </span>
                     </Link>
@@ -421,10 +423,10 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
                       href={`/projects/${nextProject?.id}`}
                       className="group flex flex-col gap-2 py-8 md:pl-10 md:text-right transition-colors duration-300 hover:bg-accent"
                     >
-                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-white transition-colors duration-300 group-hover:text-ink">
+                      <span className="me-3 font-body text-xs tracking-[0.15em] uppercase text-chalk transition-colors duration-300 group-hover:text-ink">
                         Next <ArrowRight size={14} strokeWidth={1.5} className="inline ml-1" />
                       </span>
-                      <span className="me-3 font-display font-bold text-white text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
+                      <span className="me-3 font-display font-bold text-chalk text-[clamp(1.25rem,2.5vw,1.8rem)] tracking-[-0.02em] leading-[1.2] transition-colors duration-300 group-hover:text-ink">
                         {nextProject?.title}
                       </span>
                     </Link>
