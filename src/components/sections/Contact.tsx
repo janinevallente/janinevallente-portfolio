@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Globe } from "lucide-react";
+import { ArrowUpRight, Globe, MapPin } from "lucide-react";
 import { portfolio } from "@/lib/data";
 import FadeUp from "@/components/animations/FadeUp";
 import HeroImg from "@/assets/images/hero-img.webp";
@@ -64,12 +64,21 @@ function PhTime() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-2 text-[10px] sm:text-xs tracking-widest-2 uppercase text-chalk/80 md:justify-start">
-      <Globe size={12} aria-hidden="true" className="text-accent" />
-      {/* nbsp keeps the height stable until the client renders the time */}
-      <span className="tabular-nums">{time || "\u00A0"}</span>
+    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] sm:text-xs tracking-widest-2 uppercase text-chalk/80 md:justify-start">
+      <div className="flex items-center gap-1.5">
+        <MapPin size={12} aria-hidden="true" className="text-accent" />
+        <span>Cebu City, PH</span>
+      </div>
+
       <span aria-hidden="true">·</span>
-      <span>PHT · UTC+8</span>
+
+      <div className="flex items-center gap-1.5">
+        <Globe size={12} aria-hidden="true" className="text-accent" />
+        {/* nbsp keeps the height stable until the client renders the time */}
+        <span className="tabular-nums">{time || "\u00A0"}</span>
+        <span aria-hidden="true">·</span>
+        <span>PHT · UTC+8</span>
+      </div>
     </div>
   );
 }
