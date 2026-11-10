@@ -1,9 +1,13 @@
 "use client";
 
+import { Code2, Smartphone, Server, Globe} from "lucide-react";
 import WordReveal from "@/components/animations/WordReveal";
 import FadeUp from "@/components/animations/FadeUp";
-import { portfolio } from "@/lib/data";
 import SectionReveal from "../animations/SectionReveal";
+import Dot from "../ui/Dot";
+import { portfolio } from "@/lib/data";
+
+const cardIcons = [Code2, Smartphone, Server, Globe];
 
 const stats = [
   { value: "2+", label: "Years in Tech Industry" },
@@ -14,14 +18,19 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-bg py-20 md:py-40">
+    <section id="about" className="relative bg-bg pt-20 pb-12 md:pt-40 md:pb-20">
+      {/* Blend from the hero section's black gradient into the section background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 lg:h-48 md:h-20 h-10 bg-gradient-to-b from-black to-transparent"
+      />
       <div className="container max-w-[1400px] mx-auto px-6 md:px-12">
 
         {/* Label */}
         <FadeUp>
-          <p className="mb-10 md:mb-16 font-display font-bold text-white text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-none">
-            About Me
-            <span className="text-accent text-8xl ms-1">.</span>
+          <p className="mb-10 md:mb-16 font-display font-bold text-chalk text-[clamp(2.8rem,8vw,5.8rem)] tracking-[-0.03em] leading-none">
+            about me
+            <Dot />
           </p>
         </FadeUp>
 
@@ -30,7 +39,7 @@ export default function About() {
           <WordReveal 
             text="Hello, I'm Jan. An IT professional based in Cebu City, Philippines, with experience building applications, troubleshooting technical issues, and supporting web hosting and domain operations." 
             delay={0.05} 
-            className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-white tracking-tighter" 
+            className="font-display text-[clamp(1.45rem,3.2vw,2.75rem)] font-bold leading-[1.25] text-chalk tracking-tighter" 
           /> 
         </div>
 
@@ -44,7 +53,7 @@ export default function About() {
             </SectionReveal>
 
 
-            <div className="font-display text-white/75 text-[clamp(0.95rem,1.4vw,1.1rem)] leading-[1.45] tracking-[-0.015em]">
+            <div className="font-display text-chalk/95 text-[clamp(0.95rem,1.4vw,1.1rem)] leading-[1.45] tracking-[-0.015em]">
                 <FadeUp delay={0.3}>
                   <p className="mb-3">
                     I started my career in software development, specializing in front-end web
@@ -70,7 +79,7 @@ export default function About() {
           </div>
 
           <div className="">
-            {/* Skills + Open Roles */}
+            {/* Skills + What I can do */}
             <FadeUp delay={0.2}>
               <div className="flex flex-col gap-10">
 
@@ -80,29 +89,40 @@ export default function About() {
                     What I Can Do
                   </p>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {portfolio.skills.whatICanDo.map(({ area, detail }, i) => (
-                      <div
-                        key={area}
-                        className="group relative flex h-full min-h-[190px] flex-col justify-between gap-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.06]"
-                      >
-                        {/* Top row: index + arrow */}
-                        <div className="flex items-center justify-between">
-                          <span className="font-body text-xs font-medium tracking-widest-4 text-accent">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                        </div>
+                    {portfolio.skills.whatICanDo.map(({ area, detail }, i) => {
+                      const Icon = cardIcons[i % cardIcons.length];
 
-                        {/* Text */}
-                        <div className="flex flex-col gap-3">
-                          <h3 className="font-display text-[clamp(1.05rem,1.4vw,1.3rem)] font-bold leading-tight tracking-tight text-white">
-                            {area}
-                          </h3>
-                          <p className="font-body text-[clamp(0.8rem,1vw,0.9rem)] pb-5 leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-white/80">
-                            {detail}
-                          </p>
+                      return (
+                        <div
+                          key={area}
+                          className="group relative flex min-h-[300px] flex-col justify-between gap-10 overflow-hidden bg-bg border border-accent p-6 text-chalk transition-transform duration-500 hover:-translate-y-1 hover:bg-accent hover:text-ink md:min-h-[340px] md:p-8"
+                        >
+                          {/* Top row: icon + number */}
+                          <div className="flex items-start justify-between">
+                            <Icon
+                              aria-hidden="true"
+                              strokeWidth={1.25}
+                              className="h-14 w-14 transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 md:h-20 md:w-20"
+                            />
+                            <span className="font-display text-[clamp(2.5rem,4.5vw,3.75rem)] font-bold leading-none tracking-tight">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                          </div>
+
+                          {/* Title + highlighted detail */}
+                          <div className="flex flex-col gap-3">
+                            <h3 className="font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-bold lowercase leading-none tracking-[-0.04em]">
+                              {area}
+                            </h3>
+                            <p className="font-body text-[clamp(0.8rem,1vw,0.9rem)] font-medium leading-[2.1] text-bg italic">
+                              <span className="box-decoration-clone bg-accent px-2.5 py-1 group-hover:bg-white">
+                                {detail}
+                              </span>
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -112,10 +132,10 @@ export default function About() {
 
         {/* Stats row */}
         <FadeUp delay={0.05}>
-         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-white/10">
+         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 mt-12 md:mt-20 pt-12 md:pt-16 border-t border-accent/40">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col gap-1.5 mb-3.5 md:mb-0">
-                <span className="font-display font-bold text-[clamp(2rem,4vw,3rem)] tracking-tight text-white leading-none">
+                <span className="font-display font-bold text-[clamp(2rem,4vw,3rem)] tracking-tight text-chalk leading-none">
                   {stat.value}
                 </span>
                 <span className="font-body text-[11px] uppercase tracking-widest-3 text-accent leading-snug">
