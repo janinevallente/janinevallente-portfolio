@@ -11,7 +11,7 @@ function MarqueeTrack() {
           className="pe-16 font-display font-medium text-white text-[clamp(4rem,12vw,12rem)] tracking-[-0.02em] leading-[0.9] whitespace-nowrap"
         >
           {portfolio.name}
-          <span className="text-accent ml-6">—</span>
+          <span className="text-accent ml-6"> —</span>
         </span>
       ))}
     </div>

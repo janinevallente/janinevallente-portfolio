@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { portfolio } from "@/lib/data";
+import CursorTracker from "@/components/layout/CursorTracker";
+import PageCurtain from "@/components/layout/PageCurtain";
 
 const siteDescription = `${portfolio.name} is an IT professional based in Cebu City, Philippines, with experience building applications, troubleshooting technical issues, and supporting web hosting and domain operations.`;
 
@@ -72,7 +74,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CursorTracker />
+        <PageCurtain />
+        {children}
+      </body>
     </html>
   );
 }

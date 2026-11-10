@@ -4,12 +4,12 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import WordReveal from "@/components/animations/WordReveal";
 import SectionReveal from "@/components/animations/SectionReveal";
 import FadeUp from "@/components/animations/FadeUp";
 import RevealLine from "@/components/ui/RevealLine";
 import FloatingImageCard from "@/components/ui/FloatingImageCard";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Dot from "../ui/Dot";
 import { portfolio } from "@/lib/data";
 
 export default function Projects() {
@@ -59,36 +59,25 @@ export default function Projects() {
 
         {/* Label */}
         <FadeUp>
-          <p className="mb-16 text-xs tracking-widest-5 uppercase font-body text-ink-muted">
-            03 — Projects
+          <p className="mb-10 md:mb-16 font-display font-bold text-chalk text-[clamp(2.8rem,8vw,5.8rem)] tracking-[-0.03em] leading-none">
+            featured projects
+            <Dot />
           </p>
         </FadeUp>
-
-        {/* Heading */}
-        <div className="mb-20">
-          <WordReveal
-            text="Featured Projects"
-            delay={0.1}
-            className="font-display font-bold text-ink text-[clamp(2.5rem,6vw,5.5rem)] tracking-[-0.03em] leading-[1.2]"
-          />
-        </div>
 
         {/* Column headers */}
         <SectionReveal delay={0.15} direction="fade">
           <div className="hidden md:flex items-center justify-between pb-4 cursor-default">
             <div className="flex items-center gap-5 flex-1 min-w-0">
-              <span className="font-body text-xs tracking-widest-4 uppercase w-6 flex-shrink-0 text-ink-muted">
-                #
-              </span>
-              <span className="font-body text-xs tracking-widest-4 uppercase text-ink-muted">
+              <span className="font-body text-xs tracking-widest-4 uppercase text-accent">
                 Title
               </span>
             </div>
             <div className="flex items-center gap-8 flex-shrink-0">
-              <span className="font-body text-xs tracking-widest-4 uppercase w-36 text-left text-ink-muted">
+              <span className="font-body text-xs tracking-widest-4 uppercase w-36 text-left text-accent">
                 Category
               </span>
-              <span className="font-body text-xs tracking-widest-4 uppercase w-36 text-center text-ink-muted">
+              <span className="font-body text-xs tracking-widest-4 uppercase w-36 text-center text-accent">
                 Year
               </span>
             </div>
@@ -97,7 +86,7 @@ export default function Projects() {
 
         {/* Project list */}
         <ul
-          className="group cursor-none"
+          className="cursor-none"
           onPointerLeave={() => setHovered((prev) => ({ ...prev, active: false }))}
         >
           {portfolio.projects.map((project, i) => (
@@ -108,28 +97,25 @@ export default function Projects() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.07 }}
             >
-              <RevealLine />
+              <RevealLine color={'bg-accent/30'}/>
               <div
-                className="relative py-7 md:py-8 flex items-center justify-between gap-6 cursor-none transition-opacity duration-300 group-hover:opacity-40 hover:!opacity-100"
+                className="group/row relative py-7 md:py-8 flex items-center justify-between gap-6 cursor-none"
                 onPointerEnter={() => setHovered({ active: true, index: i })}
                 onClick={() => handleProjectClick(project.id)}
               >
                 {/* Left: index + title */}
                 <div className="flex items-baseline gap-5 min-w-0 flex-1">
-                  <span className="font-body text-xs flex-shrink-0 tabular-nums text-ink-muted">
-                    {project.id}
-                  </span>
-                  <h3 className="font-display font-semibold text-ink text-[clamp(1.65rem,3.6vw,3rem)] tracking-[-0.02em] leading-[1.2] whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-200">
+                  <h3 className="font-display font-semibold text-chalk text-[clamp(1.65rem,3.6vw,3rem)] tracking-[-0.02em] leading-[1.2] whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-300 group-hover/row:text-accent">
                     {project.title}
                   </h3>
                 </div>
 
                 {/* Right: meta (desktop only) */}
                 <div className="hidden md:flex items-center gap-8 flex-shrink-0">
-                  <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] text-left tracking-[-0.01em] w-36">
+                  <span className="font-display font-medium text-chalk/95 text-[clamp(1rem,1.5vw,1.125rem)] text-left tracking-[-0.01em] w-36 transition-colors duration-300 group-hover/row:text-accent">
                     {project.category}
                   </span>
-                  <span className="font-display font-medium text-ink text-[clamp(1rem,1.5vw,1.125rem)] text-center tracking-[-0.01em] w-36">
+                  <span className="font-display font-medium text-chalk/95 text-[clamp(1rem,1.5vw,1.125rem)] text-center tracking-[-0.01em] w-36 transition-colors duration-300 group-hover/row:text-accent">
                     {project.year}
                   </span>
                 </div>
@@ -141,7 +127,7 @@ export default function Projects() {
               </div>
             </motion.li>
           ))}
-          <RevealLine />
+          <RevealLine color={'bg-accent/30'}/>
         </ul>
 
         {/* View More on GitHub Button */}
@@ -151,13 +137,13 @@ export default function Projects() {
                 href={portfolio?.social?.gitHub}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-ink group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-ink font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-bg hover:border-ink"
+                className="bg-bg rounded-3xl group inline-flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3.5 border border-accent font-body text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:bg-accent hover:border-ink"
               >
-                <span className="text-white transition-colors duration-300 group-hover:text-ink">
+                <span className="text-accent transition-colors duration-300 group-hover:text-ink">
                   View More on GitHub
                 </span>
                 <motion.span
-                  className="text-white transition-colors duration-300 group-hover:text-ink"
+                  className="text-accent transition-colors duration-300 group-hover:text-ink"
                   animate={{ x: [0, 3, 0] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                 >

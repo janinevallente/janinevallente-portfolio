@@ -45,7 +45,7 @@ export default function Hero() {
               </span>
             </div> */}
  
-            <p className="font-body font-light leading-relaxed text-[clamp(0.9rem,1.5vw,1.1rem)] text-white/55 text-right">
+            <p className="font-body font-light leading-relaxed text-[clamp(0.9rem,1.5vw,1.1rem)] text-chalk/95 text-right">
               Domain Support Associate & <br/>
               Software Developer <br />
               Based in Cebu City, Philippines
@@ -62,22 +62,6 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <Marquee />
-        </motion.div>
-
-        {/* Scroll cue */}
-        <motion.div
-          className="flex items-end justify-between px-8 md:px-12 mt-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-        >
-          <div />
-          <div className="hidden md:flex items-center gap-2 text-xs text-accent font-body tracking-wider uppercase">
-            Scroll
-            <div className="inline-block animate-bounce">
-              <ArrowDown size={15}/>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

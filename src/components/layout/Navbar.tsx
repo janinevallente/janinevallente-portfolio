@@ -81,7 +81,7 @@ export default function Navbar() {
           "fixed top-0 inset-x-0 z-50 transition-all duration-500",
           scrolled ? "py-3 px-8" : "py-5 px-8",
           isDark || menuOpen
-            ? "bg-ink/90 backdrop-blur-[14px]"
+            ? "bg-bg/90 backdrop-blur-[14px]"
             : "bg-transparent",
         ].join(" ")}
       >
@@ -114,10 +114,10 @@ export default function Navbar() {
                 <li key={link.href}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="relative px-4 py-2 text-sm cursor-pointer group overflow-hidden font-body tracking-[0.02em]"
+                    className="relative px-4 py-2 text-xs cursor-pointer group overflow-hidden font-body tracking-widest-4"
                   >
                     <span
-                      className={`transition-colors duration-200 ${
+                      className={`transition-colors duration-200 uppercase ${
                         isActive ? "text-accent" : "text-white/55"
                       }`}
                     >
@@ -158,7 +158,7 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-ink flex flex-col px-10 pb-12 md:hidden"
+            className="fixed inset-0 z-40 bg-bg flex flex-col px-10 pb-12 md:hidden"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -182,17 +182,14 @@ export default function Navbar() {
                   >
                     <button
                       onClick={() => handleNavClick(link.href)}
-                      className="group w-full text-left py-5 border-b border-white/8 flex items-center justify-between"
+                      className="group w-full text-left py-5 border-b border-white-14 flex items-center justify-between"
                     >
                       <span
                         className={`font-display font-bold text-[clamp(2rem,8vw,3.5rem)] tracking-tight leading-none transition-colors duration-200 ${
-                          isActive ? "text-accent" : "text-white/70 group-hover:text-white"
+                          isActive ? "text-accent" : "text-chalk/90 group-hover:text-chalk"
                         }`}
                       >
                         {link.label}
-                      </span>
-                      <span className={`text-lg transition-colors duration-200 ${isActive ? "text-accent" : "text-white/60 group-hover:text-white/60"}`}>
-                        <ArrowUpRight size={20} />
                       </span>
                     </button>
                   </motion.li>

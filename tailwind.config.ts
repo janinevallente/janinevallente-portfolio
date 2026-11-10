@@ -18,7 +18,7 @@ const config: Config = {
         body: ["var(--font-body)"],
       },
       colors: {
-        bg: "#f0ede6",
+        bg: "#0B0B0C",
         hero: "#20201e",
         ink: {
           DEFAULT: "#111110",
@@ -26,13 +26,14 @@ const config: Config = {
           muted: "#6b6a67",
         },
         surface: "#1a1a18",
-        accent: "#c8f04a",
+        accent: "#B6FF2E",
         border: "#d8d5ce",
-        primary: "#0961bb",
+        primary: "#3780c9",
+        chalk: "#F3F2EE",
         // Derived white-alpha tokens (used in dark sections)
-        "white-5":  "#ffffff0d",
-        "white-7":  "#ffffff12",
-        "white-8":  "#ffffff14",
+        "white-5": "#ffffff0d",
+        "white-7": "#ffffff12",
+        "white-8": "#ffffff14",
         "white-12": "#ffffff1f",
         "white-14": "#ffffff24",
         "white-20": "#ffffff33",
@@ -40,7 +41,7 @@ const config: Config = {
         "white-35": "#ffffff59",
         "white-55": "#ffffff8c",
         // Accent alpha tokens
-        "accent-5":  "#c8f04a0d",
+        "accent-5": "#c8f04a0d",
         "accent-25": "#c8f04a40",
         // Scrollbar colors
         "scrollbar-thumb": "#c5c2bb",
