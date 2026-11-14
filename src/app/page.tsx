@@ -26,6 +26,21 @@ export default function Home() {
     setReady(true);
   }, []);
 
+  // While the preloader plays: start at the top and lock scrolling, so the
+  // page can't drift down (e.g. mobile scroll restoration or touch scrolling)
+  useEffect(() => {
+    if (!ready || loaded) return;
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [ready, loaded]);
+
   useEffect(() => {
     if (loaded) {
       const hash = window.location.hash;
