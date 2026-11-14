@@ -115,7 +115,7 @@ export default function About() {
                               {area}
                             </h3>
                             <p className="font-body text-[clamp(0.8rem,1vw,0.9rem)] font-medium leading-[2.1] text-bg italic">
-                              <span className="box-decoration-clone bg-accent px-2.5 py-1 group-hover:bg-white">
+                              <span className="box-decoration-clone bg-accent px-2.5 py-1 group-hover:bg-bg group-hover:text-white">
                                 {detail}
                               </span>
                             </p>
