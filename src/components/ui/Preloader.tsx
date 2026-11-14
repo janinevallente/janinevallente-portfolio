@@ -11,16 +11,22 @@ const words = [
   "こんにちは。",     // Japanese
   "안녕하세요.",      // Korean
   "你好。",           // Simplified Chinese (Mandarin)
-  "สวัสดีค่ะ",          // Thai (female speaker)
-  "नमस्ते।",           // Hindi
+  "สวัสดีค่ะ.",       // Thai (female speaker)
+  "नमस्ते।.",          // Hindi
   "Mabuhay!",        // Tagalog
   "Kumusta.",        // Cebuano (Bisaya)
   "Hello.",          // English
 ];
 
+/* Splits a word into its body and last character (safe for non-Latin scripts) */
+function splitLastChar(word: string) {
+  const chars = Array.from(word);
+  const last = chars.pop() ?? "";
+  return { body: chars.join(""), last };
+}
+
 export default function Preloader({ onDone }: { onDone: () => void }) {
   const [index, setIndex] = useState(0);
-
   const [done, setDone] = useState(false);
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
 
@@ -54,6 +60,8 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
     ? `M0 0 L${w} 0 L${w} ${h} Q${w / 2} ${h} 0 ${h} L0 0`
     : "M0 0";
 
+  const { body, last } = splitLastChar(words[Math.min(index, words.length - 1)]);
+
   return (
     <AnimatePresence>
       {!done && (
@@ -84,7 +92,8 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <p className="font-display font-medium text-2xl md:text-4xl tracking-tight">
-              {words[Math.min(index, words.length - 1)]}
+              {body}
+              <span className="text-accent">{last}</span>
             </p>
           </motion.div>
         </motion.div>
