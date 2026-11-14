@@ -63,6 +63,17 @@ export default function ProjectDetailClient({ slug }: { slug: string }) {
 
   const project = portfolio.projects.find((p) => p.id === slug);
 
+  // Always open a project at the top. Without this, the page can keep the
+  // scroll position of the project list (worst on mobile, where the global
+  // `scroll-behavior: smooth` makes the scroll-to-top slow or get cancelled).
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
+  }, [slug]);
+
   useEffect(() => {
     if (!project) router.replace("/");
   }, [project, router]);
